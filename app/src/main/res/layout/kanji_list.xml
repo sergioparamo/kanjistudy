@@ -9,7 +9,7 @@
     android:layout_marginRight="10dp"
     android:background="@color/colorAccent"
     android:paddingLeft="10dp">
-    <TextView
+    <!--<TextView
         android:id="@+id/characterTextView"
 
         android:layout_width="70dp"
@@ -17,7 +17,7 @@
         android:gravity="center"
         android:textStyle="bold"
         android:textSize="20dp"
-        android:text="Kanji:" />
+        android:text="Kanji:" />-->
 
     <TextView
     android:id="@+id/characterValueTextView"
@@ -25,11 +25,11 @@
     android:textSize="29dp"
     android:gravity="center"
     android:layout_width="80dp"
-    android:layout_height="50dp"
-    android:layout_toRightOf="@+id/characterTextView" />
+    android:layout_height="50dp"/>
+    <!--android:layout_toRightOf="@+id/characterTextView"-->
 
     <Button
-        android:id="@+id/soundTextView"
+        android:id="@+id/soundButton"
         android:layout_marginLeft="20dp"
         android:textSize="15dp"
         android:text="Play"

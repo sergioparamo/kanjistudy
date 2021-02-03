@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".views.MainActivity"
+    android:background="@color/colorBlue"
     >
 
     <androidx.recyclerview.widget.RecyclerView
@@ -25,6 +26,7 @@
         tools:listitem="@layout/kanji_list" />
 
     <TextView
+        style="@style/textStyle"
         android:id="@+id/currentLevelTextViewMain"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
@@ -38,6 +40,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
+        style="@style/textStyle"
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
