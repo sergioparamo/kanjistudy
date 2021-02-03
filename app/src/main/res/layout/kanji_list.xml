@@ -30,14 +30,11 @@
 
     <Button
         android:id="@+id/soundButton"
-        android:layout_marginLeft="20dp"
-        android:textSize="15dp"
-        android:text="Play"
         android:layout_width="80dp"
         android:layout_height="50dp"
-        android:layout_toRightOf="@+id/characterValueTextView" />
-
-
+        android:layout_toRightOf="@+id/characterValueTextView"
+        android:text="Play"
+        android:textSize="15dp" />
 
 
 </RelativeLayout>

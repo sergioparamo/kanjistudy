@@ -11,44 +11,46 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewMain"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
 
         android:layout_marginStart="5dp"
-        android:layout_marginTop="60dp"
-
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:visibility="visible"
+
+
+        app:layout_constraintBottom_toTopOf="@+id/next_level_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.42"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/currentLevelTextViewMain"
+        app:layout_constraintVertical_bias="1.0"
         tools:listitem="@layout/kanji_list" />
 
     <TextView
-        style="@style/textStyle"
         android:id="@+id/currentLevelTextViewMain"
+        style="@style/textStyle"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:hint="Level 1"
         android:gravity="center"
+        android:hint="Level 1"
         android:textSize="25dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerViewMain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
-        style="@style/textStyle"
         android:id="@+id/textView"
+        style="@style/textStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Kanji Study"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.544"
+        app:layout_constraintHorizontal_bias="0.552"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -58,25 +60,27 @@
         android:id="@+id/previous_level_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
         android:text="Previous level"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/recyclerViewMain"
-        app:layout_constraintHorizontal_bias="0.212"
+        app:layout_constraintHorizontal_bias="0.269"
         app:layout_constraintStart_toStartOf="@+id/recyclerViewMain"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerViewMain" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewMain"
+        app:layout_constraintVertical_bias="0.0"
+       />
 
     <Button
         android:id="@+id/next_level_button"
-        android:layout_width="121dp"
-        android:layout_height="47dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:text="Next level"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/recyclerViewMain"
-        app:layout_constraintHorizontal_bias="0.832"
+        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintRight_toRightOf="@id/next_level_button"
-        app:layout_constraintStart_toStartOf="@+id/recyclerViewMain"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerViewMain"
-        app:layout_constraintVertical_bias="0.492" />
+        app:layout_constraintStart_toStartOf="@+id/recyclerViewMain" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

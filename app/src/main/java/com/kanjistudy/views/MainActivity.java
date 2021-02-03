@@ -6,11 +6,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.kanjistudy.R;
 import com.kanjistudy.api.ApiKanji;
 import com.kanjistudy.controllers.LocalDBAdapter;
+import com.kanjistudy.controllers.ToastsConfig;
 import com.kanjistudy.database.KanjiDao;
 import com.kanjistudy.database.KanjiDatabase;
 import com.kanjistudy.database.KanjiRepository;
@@ -38,26 +41,43 @@ public class MainActivity extends AppCompatActivity {
     private Retrofit retrofit;
     private HttpLoggingInterceptor interceptor;
     private OkHttpClient.Builder httpClientBuilder;
+    private Button lastLevel, nextLevel;
 
     private String kanji;
-    private TextView kanjiValueTextView;
+    public TextView currentLevelTextView;
 
 
     //LOCAL DB VARIABLES
     static KanjiDatabase kanjiDatabase;
     static KanjiDao kanjiDao;
     static KanjiRepository kanjiRepository;
+    public static int levelIndex = 1;
 
+    ToastsConfig toastsConfig = new ToastsConfig();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-       /* kanjiList = new ArrayList<Kanji>();
-        myAdapter = new MyAdapter(kanjiList);*/
 
-       localDBAdapter = new LocalDBAdapter(localKanjiList);
+        lastLevel = findViewById(R.id.previous_level_button);
+        nextLevel = findViewById(R.id.next_level_button);
+        currentLevelTextView = findViewById(R.id.currentLevelTextViewMain);
+        currentLevelTextView.setText("Level " + levelIndex);
+
+        if (levelIndex == 1){
+            lastLevel.setVisibility(View.INVISIBLE);
+        }else if (levelIndex == 6){
+            nextLevel.setVisibility(View.INVISIBLE);
+        }
+
+
+
+
+        toastsConfig.showToastByDuration(getApplicationContext(), 2, Integer.toString(levelIndex));
+
+        localDBAdapter = new LocalDBAdapter(localKanjiList);
 
         recyclerViewMain = findViewById(R.id.recyclerViewMain);
         recyclerViewMain.setAdapter(localDBAdapter);
@@ -65,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerViewMain.setLayoutManager(layoutManager);
 
-        kanjiValueTextView = findViewById(R.id.characterValueTextView);
 
         //callApi("https://kanjiapi.dev/v1/kanji/grade-1");
 
@@ -73,6 +92,53 @@ public class MainActivity extends AppCompatActivity {
         kanjiDao = kanjiDatabase.kanjiDao();
         kanjiRepository = new KanjiRepository(kanjiDao);
         loadKanjis();
+
+        localKanjiList = kanjiRepository.getKanjisByLevel(levelIndex);
+        localDBAdapter.setKanjis(localKanjiList);
+
+        nextLevel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                levelIndex++;
+                toastsConfig.showToastByDuration(getApplicationContext(), 2, Integer.toString(levelIndex));
+
+                if (levelIndex == 6) {
+                    nextLevel.setVisibility(View.INVISIBLE);
+                } else {
+                    //Making visible the previous level button
+                    lastLevel.setVisibility(View.VISIBLE);
+                    //Loading the previous kanji dataset
+                    localKanjiList = kanjiRepository.getKanjisByLevel(levelIndex);
+                    localDBAdapter.setKanjis(localKanjiList);
+
+                }
+
+                currentLevelTextView.setText("Level " + levelIndex);
+
+            }
+        });
+
+        lastLevel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                levelIndex--;
+                toastsConfig.showToastByDuration(getApplicationContext(), 2, Integer.toString(levelIndex));
+
+                if (levelIndex == 1) {
+                    lastLevel.setVisibility(View.INVISIBLE);
+                }else{
+                    //Making visible the next level button
+                    nextLevel.setVisibility(View.VISIBLE);
+                    //Loading the next kanji dataset
+                    localKanjiList = kanjiRepository.getKanjisByLevel(levelIndex);
+                    localDBAdapter.setKanjis(localKanjiList);
+                }
+
+                currentLevelTextView.setText("Level " + levelIndex);
+            }
+        });
 
 
     }
@@ -159,14 +225,11 @@ public class MainActivity extends AppCompatActivity {
             kanjiRepository.insert(kanjiDb);
         }
 
-
-        for (int i = 1; i <= 6; i++) {
+        /*for (int i = 1; i <= 6; i++) {
             System.out.println("*************** NIVEL: " + i + " ******************************");
             System.out.println(kanjiRepository.getKanjisByLevel(i));
-        }
+        }*/
 
-
-        localDBAdapter.setKanjis(kanjiRepository.getAllKanjis());
 
     }
 }
