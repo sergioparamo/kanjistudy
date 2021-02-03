@@ -7,7 +7,6 @@
     android:paddingTop="5dp"
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
-    android:paddingStart="60dp"
     android:background="@color/colorAccent"
     android:paddingLeft="10dp">
     <TextView
@@ -23,7 +22,7 @@
     <TextView
     android:id="@+id/characterValueTextView"
     android:hint="右"
-    android:textSize="20dp"
+    android:textSize="29dp"
     android:gravity="center"
     android:layout_width="80dp"
     android:layout_height="50dp"

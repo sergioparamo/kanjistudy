@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.kanjistudy.R;
+import com.kanjistudy.models.Kanji;
 import com.kanjistudy.models.KanjiDb;
 
 import java.util.List;

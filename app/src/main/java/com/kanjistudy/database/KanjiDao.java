@@ -28,5 +28,7 @@ public interface KanjiDao {
     @Query("SELECT kanji FROM Kanji ")
     String[] getKanjiNames();
 
+    @Query("SELECT * FROM Kanji where nivel = :nivel")
+    List<KanjiDb> getKanjisByLevel(int nivel);
 
 }

@@ -6,11 +6,18 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "Kanji")
 public class KanjiDb {
+    @Override
+    public String toString() {
+        return "KanjiDb{" +
+                "kanjiId=" + kanjiId +
+                ", kanji='" + kanji + '\'' +
+                ", nivel='" + nivel + '\'' +
+                '}';
+    }
 
     @PrimaryKey(autoGenerate = true)
-
     @ColumnInfo(name = "question_id")
-    private int questionId;
+    private int kanjiId;
     private String kanji;
     private String nivel;
 
@@ -19,12 +26,12 @@ public class KanjiDb {
 
     }
 
-    public int getQuestionId() {
-        return questionId;
+    public int getKanjiId() {
+        return kanjiId;
     }
 
-    public void setQuestionId(int questionId) {
-        this.questionId = questionId;
+    public void setKanjiId(int kanjiId) {
+        this.kanjiId = kanjiId;
     }
 
     public String getKanji() {

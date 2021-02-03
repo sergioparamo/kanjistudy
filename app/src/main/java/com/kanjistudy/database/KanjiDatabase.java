@@ -2,10 +2,13 @@ package com.kanjistudy.database;
 
 import android.content.Context;
 
+import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.kanjistudy.models.KanjiDb;
 
+@Database(entities = {KanjiDb.class}, version = 1)
 public abstract class KanjiDatabase extends RoomDatabase  {
 
     public static KanjiDatabase INSTANCE;

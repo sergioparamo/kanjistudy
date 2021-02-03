@@ -10,21 +10,18 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewMain"
-        android:layout_width="374dp"
-        android:layout_height="545dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
 
         android:layout_marginStart="5dp"
         android:layout_marginTop="60dp"
 
         android:layout_marginEnd="5dp"
-        android:layout_marginBottom="16dp"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.42"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/kanji_list" />
 
     <TextView
@@ -58,27 +55,25 @@
         android:id="@+id/previous_level_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:text="Previous level"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/recyclerViewMain"
         app:layout_constraintHorizontal_bias="0.212"
         app:layout_constraintStart_toStartOf="@+id/recyclerViewMain"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerViewMain"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewMain" />
 
     <Button
         android:id="@+id/next_level_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_width="121dp"
+        android:layout_height="47dp"
         android:text="Next level"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/recyclerViewMain"
-        app:layout_constraintHorizontal_bias="0.856"
+        app:layout_constraintHorizontal_bias="0.832"
         app:layout_constraintRight_toRightOf="@id/next_level_button"
         app:layout_constraintStart_toStartOf="@+id/recyclerViewMain"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerViewMain" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewMain"
+        app:layout_constraintVertical_bias="0.492" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

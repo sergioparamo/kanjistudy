@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
        /* kanjiList = new ArrayList<Kanji>();
         myAdapter = new MyAdapter(kanjiList);*/
 
+       localDBAdapter = new LocalDBAdapter(localKanjiList);
+
         recyclerViewMain = findViewById(R.id.recyclerViewMain);
         recyclerViewMain.setAdapter(localDBAdapter);
 
@@ -70,11 +72,7 @@ public class MainActivity extends AppCompatActivity {
         kanjiDatabase = KanjiDatabase.getInstance(this.getApplicationContext());
         kanjiDao = kanjiDatabase.kanjiDao();
         kanjiRepository = new KanjiRepository(kanjiDao);
-
         loadKanjis();
-
-
-        localDBAdapter.setKanjis(localKanjiList);
 
 
     }
@@ -127,8 +125,8 @@ public class MainActivity extends AppCompatActivity {
         for (String kanji : kanjilvl1) {
             kanjiDb = new KanjiDb(kanji);
             kanjiDb.setNivel("1");
-            System.out.println(kanjiDb.toString());
             kanjiRepository.insert(kanjiDb);
+
         }
 
         for (String kanji : kanjilvl2) {
@@ -161,6 +159,14 @@ public class MainActivity extends AppCompatActivity {
             kanjiRepository.insert(kanjiDb);
         }
 
+
+        for (int i = 1; i <= 6; i++) {
+            System.out.println("*************** NIVEL: " + i + " ******************************");
+            System.out.println(kanjiRepository.getKanjisByLevel(i));
+        }
+
+
+        localDBAdapter.setKanjis(kanjiRepository.getAllKanjis());
 
     }
 }

@@ -12,26 +12,28 @@ public class KanjiRepository {
     }
 
 
-    public List<KanjiDb> getAllKanjis(){
+    public List<KanjiDb> getAllKanjis() {
         return kanjiDao.getAllKanjis();
     }
 
-    public void insert(KanjiDb kanji){
+    public void insert(KanjiDb kanji) {
         kanjiDao.insert(kanji);
     }
 
-    public void update(KanjiDb kanji){
+    public void update(KanjiDb kanji) {
         kanjiDao.update(kanji);
     }
 
-    public void delete(KanjiDb kanji){
+    public void delete(KanjiDb kanji) {
         kanjiDao.delete(kanji);
     }
 
-    public String [] getKanjiNames(){
+    public String[] getKanjiNames() {
         return kanjiDao.getKanjiNames();
     }
 
-
+    public List<KanjiDb> getKanjisByLevel(int level) {
+        return kanjiDao.getKanjisByLevel(level);
+    }
 
 }
