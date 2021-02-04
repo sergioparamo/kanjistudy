@@ -9,44 +9,24 @@
     android:background="@color/colorBlue"
     >
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewMain"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
 
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:visibility="visible"
-
-
-
-
-
-        app:layout_constraintBottom_toTopOf="@+id/next_level_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.523"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/currentLevelTextViewMain"
-        app:layout_constraintVertical_bias="1.0"
-        tools:listitem="@layout/kanji_list" />
 
     <TextView
-        android:id="@+id/currentLevelTextViewMain"
+        android:id="@+id/subTitleTextViewMain"
         android:textColor="@color/colorWhite"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:gravity="center"
-        android:hint="Level 1"
+        android:hint="Let's study Japanese!"
         android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/titleTextViewMain" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/titleTextViewMain"
         style="@style/textStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,31 +41,54 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023" />
 
-    <Button
-        android:id="@+id/previous_level_button"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/kanjiActivityTextViewMain"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="Previous level"
+        android:background="@color/colorAccent"
+        android:gravity="center"
+        android:text="Study Kanjis"
+        android:textSize="30dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/recyclerViewMain"
-        app:layout_constraintHorizontal_bias="0.269"
-        app:layout_constraintStart_toStartOf="@+id/recyclerViewMain"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerViewMain"
-        app:layout_constraintVertical_bias="0.0"
-       />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subTitleTextViewMain"
+        app:layout_constraintVertical_bias="0.110000014" />
 
-    <Button
-        android:id="@+id/next_level_button"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/hiraganaActivityTextViewMain"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Next level"
+        android:background="@color/colorAccent"
+        android:gravity="center"
+        android:text="Study Hiragana"
+        android:textSize="30dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/recyclerViewMain"
-        app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintRight_toRightOf="@id/next_level_button"
-        app:layout_constraintStart_toStartOf="@+id/recyclerViewMain" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kanjiActivityTextViewMain"
+        app:layout_constraintVertical_bias="0.110000014" />
+
+    <TextView
+        android:id="@+id/kanaActivityTextViewMain"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:gravity="center"
+        android:text="Study Kana"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hiraganaActivityTextViewMain"
+        app:layout_constraintVertical_bias="0.110000014" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

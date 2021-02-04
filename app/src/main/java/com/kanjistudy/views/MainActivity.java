@@ -1,185 +1,92 @@
 package com.kanjistudy.views;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.kanjistudy.R;
-import com.kanjistudy.api.ApiKanji;
-import com.kanjistudy.controllers.LocalDBAdapter;
 import com.kanjistudy.controllers.ToastsConfig;
 import com.kanjistudy.database.KanjiDao;
 import com.kanjistudy.database.KanjiDatabase;
 import com.kanjistudy.database.KanjiRepository;
-import com.kanjistudy.models.ApiDataset;
-import com.kanjistudy.models.Kanji;
 import com.kanjistudy.models.KanjiDb;
 
 import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
 
-    private RecyclerView recyclerViewMain;
-    private LocalDBAdapter localDBAdapter;
     private List<KanjiDb> localKanjiList;
-    private List<Kanji> kanjiList;
     private Retrofit retrofit;
     private HttpLoggingInterceptor interceptor;
     private OkHttpClient.Builder httpClientBuilder;
-    private Button lastLevel, nextLevel;
-
-    private String kanji;
-    public TextView currentLevelTextView;
-
 
     //LOCAL DB VARIABLES
     static KanjiDatabase kanjiDatabase;
     static KanjiDao kanjiDao;
     static KanjiRepository kanjiRepository;
-    public static int levelIndex = 1;
 
-    //ToastsConfig toastsConfig = new ToastsConfig();
-
-
+    ToastsConfig toastsConfig = new ToastsConfig();
+    TextView kanjiTextView, kanaTextView, hiraganaTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        lastLevel = findViewById(R.id.previous_level_button);
-        nextLevel = findViewById(R.id.next_level_button);
-        currentLevelTextView = findViewById(R.id.currentLevelTextViewMain);
-        currentLevelTextView.setText("Level " + levelIndex);
-
-        if (levelIndex == 1){
-            lastLevel.setVisibility(View.INVISIBLE);
-        }else if (levelIndex == 6){
-            nextLevel.setVisibility(View.INVISIBLE);
-        }
-
-
-
+        kanjiTextView = findViewById(R.id.kanjiActivityTextViewMain);
+        kanaTextView = findViewById(R.id.kanaActivityTextViewMain);
+        hiraganaTextView = findViewById(R.id.hiraganaActivityTextViewMain);
 
         //toastsConfig.showToastByDuration(getApplicationContext(), 2, Integer.toString(levelIndex));
 
-        localDBAdapter = new LocalDBAdapter(localKanjiList);
+        //To insert the data just once when the app starts
+        if (kanjiRepository == null) {
 
-        recyclerViewMain = findViewById(R.id.recyclerViewMain);
-        recyclerViewMain.setAdapter(localDBAdapter);
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerViewMain.setLayoutManager(layoutManager);
-
-        //callApi("https://kanjiapi.dev/v1/kanji/grade-1");
-
-        kanjiDatabase = KanjiDatabase.getInstance(this.getApplicationContext());
-        kanjiDao = kanjiDatabase.kanjiDao();
-        kanjiRepository = new KanjiRepository(kanjiDao);
-        loadKanjis();
+            kanjiDatabase = KanjiDatabase.getInstance(this.getApplicationContext());
+            kanjiDao = kanjiDatabase.kanjiDao();
+            kanjiRepository = new KanjiRepository(kanjiDao);
+            loadKanjis();
+            localKanjiList = kanjiRepository.getAllKanjis();
+        }
 
 
-        localKanjiList = kanjiRepository.getKanjisByLevel(levelIndex);
-        localDBAdapter.setKanjis(localKanjiList);
-
-        nextLevel.setOnClickListener(new View.OnClickListener() {
+        kanjiTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                levelIndex++;
-                //toastsConfig.showToastByDuration(getApplicationContext(), 2, Integer.toString(levelIndex));
-
-                if (levelIndex == 6) {
-                    nextLevel.setVisibility(View.INVISIBLE);
-                } else {
-                    //Making visible the previous level button
-                    lastLevel.setVisibility(View.VISIBLE);
-                    //Loading the previous kanji dataset
-
-                }
-                localKanjiList = kanjiRepository.getKanjisByLevel(levelIndex);
-                localDBAdapter.setKanjis(localKanjiList);
-
-                currentLevelTextView.setText("Level " + levelIndex);
-
+                Intent fromMainToKanjiOptionsActivity = new Intent(getApplicationContext(), KanjiOptionsActivity.class);
+                startActivity(fromMainToKanjiOptionsActivity);
             }
         });
 
-        lastLevel.setOnClickListener(new View.OnClickListener() {
+        hiraganaTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                toastsConfig.showToastByDuration(getApplicationContext(), 3, "Coming soon...");
+            }
+        });
 
-                levelIndex--;
-                //toastsConfig.showToastByDuration(getApplicationContext(), 2, Integer.toString(levelIndex));
 
-                if (levelIndex == 1) {
-                    lastLevel.setVisibility(View.INVISIBLE);
-                }else{
-                    //Making visible the next level button
-                    nextLevel.setVisibility(View.VISIBLE);
-                    //Loading the next kanji dataset
-                }
-
-                localKanjiList = kanjiRepository.getKanjisByLevel(levelIndex);
-                localDBAdapter.setKanjis(localKanjiList);
-                currentLevelTextView.setText("Level " + levelIndex);
+        kanaTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toastsConfig.showToastByDuration(getApplicationContext(), 3, "Coming soon...");
             }
         });
 
 
     }
-
-    private void callApi(String url) {
-
-        interceptor = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
-        httpClientBuilder = new OkHttpClient.Builder().addInterceptor(interceptor);
-
-        retrofit = new Retrofit.Builder().baseUrl("https://kanjiapi.dev/v1/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(httpClientBuilder.build())
-                .build();
-
-        ApiKanji client = retrofit.create(ApiKanji.class);
-        Call<ApiDataset> call;
-
-        call = client.getKanji(url);
-
-        call.enqueue(new Callback<ApiDataset>() {
-            @Override
-            public void onResponse(Call<ApiDataset> call, Response<ApiDataset> response) {
-
-                kanjiList = response.body().getKanjiList();
-
-                localDBAdapter.setKanjis(localKanjiList);
-            }
-
-            @Override
-            public void onFailure(Call<ApiDataset> call, Throwable t) {
-                Log.d("error tag", "Error: " + t.getMessage());
-            }
-        });
-
-    }
-
 
     public void loadKanjis() {
 
+        //Kanjis divided by levels
         String[] kanjilvl1 = {"一", "右", "雨", "円", "王", "音", "下", "火", "花", "貝", "学", "気", "休", "玉", "金", "九", "空", "月", "犬", "見", "五", "口", "校", "左", "三", "山", "四", "子", "糸", "字", "耳", "七", "車", "手", "十", "出", "女", "小", "上", "森", "人", "水", "正", "生", "青", "石", "赤", "先", "千", "川", "早", "草", "足", "村", "大", "男", "竹", "中", "虫", "町", "天", "田", "土", "二", "日", "入", "年", "白", "八", "百", "文", "本", "名", "木", "目", "夕", "立", "力", "林", "六"};
         String[] kanjilvl2 = {"引", "羽", "雲", "園", "遠", "黄", "何", "夏", "家", "科", "歌", "画", "会", "回", "海", "絵", "外", "角", "楽", "活", "間", "丸", "岩", "顔", "帰", "汽", "記", "弓", "牛", "魚", "京", "強", "教", "近", "兄", "形", "計", "元", "原", "言", "古", "戸", "午", "後", "語", "交", "光", "公", "工", "広", "考", "行", "高", "合", "国", "黒", "今", "才", "細", "作", "算", "姉", "市", "思", "止", "紙", "寺", "時", "自", "室", "社", "弱", "首", "秋", "週", "春", "書", "少", "場", "色", "食", "心", "新", "親", "図", "数", "星", "晴", "声", "西", "切", "雪", "線", "船", "前", "組", "走", "多", "太", "体", "台", "谷", "知", "地", "池", "茶", "昼", "朝", "長", "鳥", "直", "通", "弟", "店", "点", "電", "冬", "刀", "東", "当", "答", "頭", "同", "道", "読", "内", "南", "肉", "馬", "買", "売", "麦", "半", "番", "父", "風", "分", "聞", "米", "歩", "母", "方", "北", "妹", "毎", "万", "明", "鳴", "毛", "門", "夜", "野", "矢", "友", "曜", "用", "来", "理", "里", "話"};
         String[] kanjilvl3 = {"悪", "安", "暗", "委", "意", "医", "育", "員", "飲", "院", "運", "泳", "駅", "央", "横", "屋", "温", "化", "荷", "界", "開", "階", "寒", "感", "漢", "館", "岸", "期", "起", "客", "宮", "急", "球", "究", "級", "去", "橋", "業", "局", "曲", "銀", "区", "苦", "具", "君", "係", "軽", "決", "血", "研", "県", "庫", "湖", "向", "幸", "港", "号", "根", "祭", "坂", "皿", "仕", "使", "始", "指", "死", "詩", "歯", "事", "持", "次", "式", "実", "写", "者", "主", "取", "守", "酒", "受", "州", "拾", "終", "習", "集", "住", "重", "宿", "所", "暑", "助", "勝", "商", "昭", "消", "章", "乗", "植", "深", "申", "真", "神", "身", "進", "世", "整", "昔", "全", "想", "相", "送", "息", "速", "族", "他", "打", "対", "待", "代", "第", "題", "炭", "短", "談", "着", "柱", "注", "丁", "帳", "調", "追", "定", "庭", "笛", "鉄", "転", "登", "都", "度", "島", "投", "湯", "等", "豆", "動", "童", "農", "波", "配", "倍", "箱", "畑", "発", "反", "板", "悲", "皮", "美", "鼻", "筆", "氷", "表", "病", "秒", "品", "負", "部", "服", "福", "物", "平", "返", "勉", "放", "味", "命", "面", "問", "役", "薬", "油", "有", "由", "遊", "予", "様", "洋", "羊", "葉", "陽", "落", "流", "旅", "両", "緑", "礼", "列", "練", "路", "和"};
