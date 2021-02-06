@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <item
+        android:id="@+id/list_button"
+        android:icon="@mipmap/list_view_icon"
+        android:visible="true"
+        app:showAsAction="ifRoom"
+        android:title="TODO" />
+
+    <item
+        android:id="@+id/grid_button"
+        android:icon="@mipmap/grid_view_icon"
+        android:visible="false"
+        app:showAsAction="ifRoom" />
+
+</menu>

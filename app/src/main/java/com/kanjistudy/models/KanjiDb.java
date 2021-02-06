@@ -11,15 +11,15 @@ public class KanjiDb {
         return "KanjiDb{" +
                 "kanjiId=" + kanjiId +
                 ", kanji='" + kanji + '\'' +
-                ", nivel='" + nivel + '\'' +
+                ", nivel='" + level + '\'' +
                 '}';
     }
 
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "question_id")
+    @ColumnInfo(name = "kanji_id")
     private int kanjiId;
     private String kanji;
-    private String nivel;
+    private String level;
 
     public KanjiDb(String kanji) {
         this.kanji = kanji;
@@ -42,11 +42,11 @@ public class KanjiDb {
         this.kanji = kanji;
     }
 
-    public String getNivel() {
-        return nivel;
+    public String getLevel() {
+        return level;
     }
 
-    public void setNivel(String nivel) {
-        this.nivel = nivel;
+    public void setLevel(String level) {
+        this.level = level;
     }
 }

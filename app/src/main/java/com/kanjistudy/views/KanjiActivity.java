@@ -11,11 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.kanjistudy.R;
-import com.kanjistudy.controllers.LocalDBAdapter;
-import com.kanjistudy.database.KanjiDao;
-import com.kanjistudy.database.KanjiDatabase;
-import com.kanjistudy.database.KanjiRepository;
-import com.kanjistudy.models.Kanji;
+import com.kanjistudy.controllers.KanjiAdapter;
 import com.kanjistudy.models.KanjiDb;
 
 import java.util.List;
@@ -27,7 +23,7 @@ import retrofit2.Retrofit;
 public class KanjiActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewMain;
-    private LocalDBAdapter localDBAdapter;
+    private KanjiAdapter kanjiAdapter;
     private List<KanjiDb> localKanjiList;
     private Retrofit retrofit;
     private HttpLoggingInterceptor interceptor;
@@ -67,10 +63,10 @@ public class KanjiActivity extends AppCompatActivity {
 
         //toastsConfig.showToastByDuration(getApplicationContext(), 2, Integer.toString(levelIndex));
 
-        localDBAdapter = new LocalDBAdapter(localKanjiList);
+        kanjiAdapter = new KanjiAdapter(localKanjiList);
 
         recyclerViewMain = findViewById(R.id.recyclerViewMain);
-        recyclerViewMain.setAdapter(localDBAdapter);
+        recyclerViewMain.setAdapter(kanjiAdapter);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerViewMain.setLayoutManager(layoutManager);
@@ -84,7 +80,7 @@ public class KanjiActivity extends AppCompatActivity {
 
 
         localKanjiList = MainActivity.kanjiRepository.getKanjisByLevel(levelIndex);
-        localDBAdapter.setKanjis(localKanjiList);
+        kanjiAdapter.setKanjis(localKanjiList);
 
         nextLevel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,7 +98,7 @@ public class KanjiActivity extends AppCompatActivity {
 
                 }
                 localKanjiList = MainActivity.kanjiRepository.getKanjisByLevel(levelIndex);
-                localDBAdapter.setKanjis(localKanjiList);
+                kanjiAdapter.setKanjis(localKanjiList);
 
                 currentLevelTextView.setText("Level " + levelIndex);
 
@@ -125,7 +121,7 @@ public class KanjiActivity extends AppCompatActivity {
                 }
 
                 localKanjiList = MainActivity.kanjiRepository.getKanjisByLevel(levelIndex);
-                localDBAdapter.setKanjis(localKanjiList);
+                kanjiAdapter.setKanjis(localKanjiList);
                 currentLevelTextView.setText("Level " + levelIndex);
             }
         });

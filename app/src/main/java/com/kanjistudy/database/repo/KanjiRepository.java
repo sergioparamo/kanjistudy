@@ -1,10 +1,12 @@
-package com.kanjistudy.database;
+package com.kanjistudy.database.repo;
 
+import com.kanjistudy.database.dao.KanjiDao;
 import com.kanjistudy.models.KanjiDb;
 
 import java.util.List;
 
 public class KanjiRepository {
+
     KanjiDao kanjiDao;
 
     public KanjiRepository(KanjiDao kanjiDao) {

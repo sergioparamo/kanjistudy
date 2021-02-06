@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.kanjistudy.R;
 
-public class KanjiOptionsActivity extends AppCompatActivity {
+public class KanjiMenuActivity extends AppCompatActivity {
 
     TextView level1, level2, level3, level4, level5, level6;
 

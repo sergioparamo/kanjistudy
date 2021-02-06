@@ -9,9 +9,12 @@ import android.widget.TextView;
 
 import com.kanjistudy.R;
 import com.kanjistudy.controllers.ToastsConfig;
-import com.kanjistudy.database.KanjiDao;
-import com.kanjistudy.database.KanjiDatabase;
-import com.kanjistudy.database.KanjiRepository;
+import com.kanjistudy.database.Database;
+import com.kanjistudy.database.dao.KanaDao;
+import com.kanjistudy.database.dao.KanjiDao;
+import com.kanjistudy.database.repo.HiraganaRepository;
+import com.kanjistudy.database.repo.KanjiRepository;
+import com.kanjistudy.models.Kana;
 import com.kanjistudy.models.KanjiDb;
 
 import java.util.List;
@@ -23,15 +26,18 @@ import retrofit2.Retrofit;
 public class MainActivity extends AppCompatActivity {
 
 
-    private List<KanjiDb> localKanjiList;
+    private List<KanjiDb> kanjiList;
+    private List<Kana> kanaList;
     private Retrofit retrofit;
     private HttpLoggingInterceptor interceptor;
     private OkHttpClient.Builder httpClientBuilder;
 
     //LOCAL DB VARIABLES
-    static KanjiDatabase kanjiDatabase;
+    static Database database;
     static KanjiDao kanjiDao;
     static KanjiRepository kanjiRepository;
+    static KanaDao kanaDao;
+    static HiraganaRepository kanaRepo;
 
     ToastsConfig toastsConfig = new ToastsConfig();
     TextView kanjiTextView, kanaTextView, hiraganaTextView;
@@ -50,18 +56,26 @@ public class MainActivity extends AppCompatActivity {
         //To insert the data just once when the app starts
         if (kanjiRepository == null) {
 
-            kanjiDatabase = KanjiDatabase.getInstance(this.getApplicationContext());
-            kanjiDao = kanjiDatabase.kanjiDao();
+            database = Database.getInstance(this.getApplicationContext());
+            kanjiDao = database.kanjiDao();
             kanjiRepository = new KanjiRepository(kanjiDao);
-            loadKanjis();
-            localKanjiList = kanjiRepository.getAllKanjis();
+
+            kanaDao = database.kanaDao();
+            kanaRepo = new HiraganaRepository(kanaDao);
+
+
+            loadData();
+
+            kanjiList = kanjiRepository.getAllKanjis();
+            kanaList = kanaRepo.getAllKanas();
+
         }
 
 
         kanjiTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent fromMainToKanjiOptionsActivity = new Intent(getApplicationContext(), KanjiOptionsActivity.class);
+                Intent fromMainToKanjiOptionsActivity = new Intent(getApplicationContext(), KanjiMenuActivity.class);
                 startActivity(fromMainToKanjiOptionsActivity);
             }
         });
@@ -69,7 +83,10 @@ public class MainActivity extends AppCompatActivity {
         hiraganaTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toastsConfig.showToastByDuration(getApplicationContext(), 3, "Coming soon...");
+
+                Intent fromMainToHiraganaActivity = new Intent(getApplicationContext(), KanaActivity.class);
+                fromMainToHiraganaActivity.putExtra("type", "hiragana");
+                startActivity(fromMainToHiraganaActivity);
             }
         });
 
@@ -77,11 +94,19 @@ public class MainActivity extends AppCompatActivity {
         kanaTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toastsConfig.showToastByDuration(getApplicationContext(), 3, "Coming soon...");
+
+                Intent fromMainToKatakanaActivity = new Intent(getApplicationContext(), KanaActivity.class);
+                fromMainToKatakanaActivity.putExtra("type", "katakana");
+                startActivity(fromMainToKatakanaActivity);
             }
         });
 
 
+    }
+
+    private void loadData() {
+        loadKanjis();
+        loadKana();
     }
 
     public void loadKanjis() {
@@ -99,40 +124,180 @@ public class MainActivity extends AppCompatActivity {
 
         for (String kanji : kanjilvl1) {
             kanjiDb = new KanjiDb(kanji);
-            kanjiDb.setNivel("1");
+            kanjiDb.setLevel("1");
             kanjiRepository.insert(kanjiDb);
 
         }
 
         for (String kanji : kanjilvl2) {
             kanjiDb = new KanjiDb(kanji);
-            kanjiDb.setNivel("2");
+            kanjiDb.setLevel("2");
             kanjiRepository.insert(kanjiDb);
         }
 
         for (String kanji : kanjilvl3) {
             kanjiDb = new KanjiDb(kanji);
-            kanjiDb.setNivel("3");
+            kanjiDb.setLevel("3");
             kanjiRepository.insert(kanjiDb);
         }
 
         for (String kanji : kanjilvl4) {
             kanjiDb = new KanjiDb(kanji);
-            kanjiDb.setNivel("4");
+            kanjiDb.setLevel("4");
             kanjiRepository.insert(kanjiDb);
         }
 
         for (String kanji : kanjilvl5) {
             kanjiDb = new KanjiDb(kanji);
-            kanjiDb.setNivel("5");
+            kanjiDb.setLevel("5");
             kanjiRepository.insert(kanjiDb);
         }
 
         for (String kanji : kanjilvl6) {
             kanjiDb = new KanjiDb(kanji);
-            kanjiDb.setNivel("6");
+            kanjiDb.setLevel("6");
             kanjiRepository.insert(kanjiDb);
         }
 
     }
+
+
+    private void loadKana() {
+
+        Kana[] kanaArray = {
+
+                new Kana("あ", "ア", "a", "a", null, "gojūon"),
+                new Kana("い", "イ", "i", "i", null, "gojūon"),
+                new Kana("う", "ウ", "u", "u", null, "gojūon"),
+                new Kana("え", "エ", "e", "e", null, "gojūon"),
+                new Kana("お", "オ", "o", "o", null, "gojūon"),
+                new Kana("か", "カ", "ka", "a", "k", "gojūon"),
+                new Kana("き", "キ", "ki", "i", "k", "gojūon"),
+                new Kana("く", "ク", "ku", "u", "k", "gojūon"),
+                new Kana("け", "ケ", "ke", "e", "k", "gojūon"),
+                new Kana("こ", "コ", "ko", "o", "k", "gojūon"),
+                new Kana("さ", "サ", "sa", "a", "s", "gojūon"),
+                new Kana("し", "シ", "si", "i", "s", "gojūon"),
+                new Kana("す", "ス", "su", "u", "s", "gojūon"),
+                new Kana("せ", "セ", "se", "e", "s", "gojūon"),
+                new Kana("そ", "ソ", "so", "o", "s", "gojūon"),
+                new Kana("か", "カ", "ta", "a", "t", "gojūon"),
+                new Kana("き", "キ", "chi", "i", "t", "gojūon"),
+                new Kana("く", "ク", "tsu", "u", "t", "gojūon"),
+                new Kana("け", "ケ", "te", "e", "t", "gojūon"),
+                new Kana("こ", "コ", "to", "o", "t", "gojūon"),
+                new Kana("な", "ナ", "na", "a", "n", "gojūon"),
+                new Kana("に", "ニ", "ni", "i", "n", "gojūon"),
+                new Kana("ぬ", "ヌ", "nu", "u", "n", "gojūon"),
+                new Kana("ね", "ネ", "ne", "e", "n", "gojūon"),
+                new Kana("の", "ノ", "no", "o", "n", "gojūon"),
+                new Kana("は", "ハ", "ha", "a", "h", "gojūon"),
+                new Kana("ひ", "ヒ", "hi", "i", "h", "gojūon"),
+                new Kana("ふ", "フ", "fu", "u", "h", "gojūon"),
+                new Kana("へ", "ヘ", "he", "e", "h", "gojūon"),
+                new Kana("ほ", "ホ", "ho", "o", "h", "gojūon"),
+                new Kana("ま", "マ", "ma", "a", "m", "gojūon"),
+                new Kana("み", "ミ", "mi", "i", "m", "gojūon"),
+                new Kana("む", "ム", "mu", "u", "m", "gojūon"),
+                new Kana("め", "メ", "me", "e", "m", "gojūon"),
+                new Kana("も", "モ", "mo", "o", "m", "gojūon"),
+                new Kana("や", "ヤ", "ya", "a", "y", "gojūon"),
+                new Kana("ゆ", "ユ", "yu", "u", "y", "gojūon"),
+                new Kana("よ", "ヨ", "yo", "o", "y", "gojūon"),
+                new Kana("ら", "ラ", "ra", "a", "r", "gojūon"),
+                new Kana("り", "リ", "ri", "i", "r", "gojūon"),
+                new Kana("る", "ル", "ru", "u", "r", "gojūon"),
+                new Kana("れ", "レ", "re", "e", "r", "gojūon"),
+                new Kana("ろ", "ロ", "ro", "o", "r", "gojūon"),
+                new Kana("わ", "ワ", "wa", "a", "w", "gojūon"),
+                //new Kana("ゐ ", "ヰ", "wi", "i", "w", "gojūon"),
+                //new Kana("ゑ", "ヱ", "we", "e", "w", "gojūon"),
+                new Kana("を", "ヲ", "wu", "u", "w", "gojūon"),
+
+                //n
+                new Kana("ん", "ッ", "ku", null, "n", "gojūon"),
+
+
+                //yóon
+                new Kana("きゃ", "キャ", "kya", "a", "k", "yōon"),
+                new Kana("きゅ", "キュ", "kyu", "u", "k", "yōon"),
+                new Kana("きょ", "キョ", "kyo", "o", "k", "yōon"),
+                new Kana("しゃ", "シャ", "sha", "a", "s", "yōon"),
+                new Kana("しゅ", "シュ", "shi", "u", "s", "yōon"),
+                new Kana("しょ", "ショ", "sho", "o", "s", "yōon"),
+                new Kana("ちゃ", "チャ", "cha", "a", "c", "yōon"),
+                new Kana("ちゅ", "チュ", "chi", "u", "c", "yōon"),
+                new Kana("ちょ", "チョ", "cho", "o", "c", "yōon"),
+                new Kana("にゃ", "ニャ", "nya", "a", "n", "yōon"),
+                new Kana("にゅ", "ニュ", "nyu", "u", "n", "yōon"),
+                new Kana("にょ", "ニョ", "nyo", "o", "n", "yōon"),
+                new Kana("ひゃ", "ヒャ", "hya", "a", "h", "yōon"),
+                new Kana("ひゅ", "ヒュ", "hyu", "u", "h", "yōon"),
+                new Kana("ひょ", "ヒョ", "hyo", "o", "h", "yōon"),
+                new Kana("みゃ", "ミャ", "mya", "a", "m", "yōon"),
+                new Kana("みゅ", "ミュ", "myi", "u", "m", "yōon"),
+                new Kana("みょ", "ミョ", "myo", "o", "m", "yōon"),
+                new Kana("りゃ", "リャ", "ka", "ya", "r", "yōon"),
+                new Kana("りゅ", "リュ", "ki", "yu", "r", "yōon"),
+                new Kana("りょ", "リョ", "ku", "yo", "r", "yōon"),
+
+
+                //new Kana("っ", "ー", "nya", "ya", "n", "yōon"),
+                //new Kana("ゝ", "ヽ", "nyi", "yu", "n", "yōon"),
+                //new Kana("ゞ", "ヾ", "nyu", "yo", "n", "yōon"),
+
+
+                //Diacritics (gojūon with (han)dakuten)
+                new Kana("か", "ガ", "ga", "a", "g", "gojūon with (han)dakuten"),
+                new Kana("き", "ギ", "gi", "i", "g", "gojūon with (han)dakuten"),
+                new Kana("く", "グ", "gu", "u", "g", "gojūon with (han)dakuten"),
+                new Kana("け", "ゲ", "ge", "e", "g", "gojūon with (han)dakuten"),
+                new Kana("こ", "ゴ", "go", "o", "g", "gojūon with (han)dakuten"),
+                new Kana("ざ", "ザ", "za", "a", "z", "gojūon with (han)dakuten"),
+                new Kana("じ", "ジ", "ji", "i", "z", "gojūon with (han)dakuten"),
+                new Kana("ず", "ズ", "zu", "u", "z", "gojūon with (han)dakuten"),
+                new Kana("ぜ", "ゼ", "ze", "e", "z", "gojūon with (han)dakuten"),
+                new Kana("ぞ", "ゾ", "zo", "o", "z", "gojūon with (han)dakuten"),
+                new Kana("だ", "ダ", "da", "a", "d", "gojūon with (han)dakuten"),
+                new Kana("ぢ", "ヂ", "ji", "i", "d", "gojūon with (han)dakuten"),
+                new Kana("づ", "ヅ", "zu", "u", "d", "gojūon with (han)dakuten"),
+                new Kana("で", "デ", "de", "e", "d", "gojūon with (han)dakuten"),
+                new Kana("ど", "ド", "do", "o", "d", "gojūon with (han)dakuten"),
+                new Kana("ば", "バ", "ba", "a", "b", "gojūon with (han)dakuten"),
+                new Kana("び", "ビ", "bi", "i", "b", "gojūon with (han)dakuten"),
+                new Kana("ぶ", "ブ", "bu", "u", "b", "gojūon with (han)dakuten"),
+                new Kana("べ", "ベ", "be", "e", "b", "gojūon with (han)dakuten"),
+                new Kana("ぼ", "ボ", "bo", "o", "b", "gojūon with (han)dakuten"),
+                new Kana("ぱ", "パ", "pa", "a", "p", "gojūon with (han)dakuten"),
+                new Kana("ぴ", "ピ", "pi", "i", "p", "gojūon with (han)dakuten"),
+                new Kana("ぷ", "プ", "pu", "u", "p", "gojūon with (han)dakuten"),
+                new Kana("ぺ", "ペ", "pe", "e", "p", "gojūon with (han)dakuten"),
+                new Kana("ぽ", "ポ", "po", "o", "p", "gojūon with (han)dakuten"),
+
+                //Digraphs with diacritics (yōon with (han)dakuten)
+                new Kana("ぎゃ", "ギャ", "gya", "a", "g", "yōon with (han)dakuten"),
+                new Kana("ぎゅ", "ギュ", "gyu", "u", "g", "yōon with (han)dakuten"),
+                new Kana("ぎょ", "ギョ", "gyo", "o", "g", "yōon with (han)dakuten"),
+                new Kana("じゃ", "ジャ", "ja", "a", "z", "yōon with (han)dakuten"),
+                new Kana("じゅ", "ジュ", "ju", "u", "z", "yōon with (han)dakuten"),
+                new Kana("じょ", "ジョ", "jo", "o", "z", "yōon with (han)dakuten"),
+                new Kana("ぢゃ ", "ヂャ", "ja", "a", "d", "yōon with (han)dakuten"),
+                new Kana("ぢゅ", "ヂュ", "ju", "u", "d", "yōon with (han)dakuten"),
+                new Kana("ぢょ", "ヂョ", "jo", "o", "d", "yōon with (han)dakuten"),
+                new Kana("びゃ", "ビャ", "bya", "a", "b", "yōon with (han)dakuten"),
+                new Kana("びゅ", "ビュ", "byu", "u", "b", "yōon with (han)dakuten"),
+                new Kana("びょ", "ビョ", "byo", "o", "b", "yōon with (han)dakuten"),
+                new Kana("ぴゃ", "ピャ", "pya", "a", "p", "yōon with (han)dakuten"),
+                new Kana("ぴゅ", "ピュ", "pyu", "u", "p", "yōon with (han)dakuten"),
+                new Kana("ぴょ", "ピョ", "pyo", "o", "p", "yōon with (han)dakuten"),
+
+
+        };
+
+        for (Kana kana : kanaArray) {
+            kanaRepo.insert(kana);
+        }
+
+    }
+
 }

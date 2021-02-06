@@ -1,4 +1,4 @@
-package com.kanjistudy.database;
+package com.kanjistudy.database.dao;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -17,18 +17,18 @@ public interface KanjiDao {
     List<KanjiDb> getAllKanjis();
 
     @Insert
-    void insert(KanjiDb a);
+    void insert(KanjiDb kanji);
 
     @Update
-    void update(KanjiDb a);
+    void update(KanjiDb kanji);
 
     @Delete
-    void delete(KanjiDb a);
+    void delete(KanjiDb kanji);
 
     @Query("SELECT kanji FROM Kanji ")
     String[] getKanjiNames();
 
-    @Query("SELECT * FROM Kanji where nivel = :nivel")
-    List<KanjiDb> getKanjisByLevel(int nivel);
+    @Query("SELECT * FROM Kanji where level = :level")
+    List<KanjiDb> getKanjisByLevel(int level);
 
 }

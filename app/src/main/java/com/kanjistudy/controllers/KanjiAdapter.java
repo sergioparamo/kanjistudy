@@ -9,17 +9,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.kanjistudy.R;
-import com.kanjistudy.models.Kanji;
 import com.kanjistudy.models.KanjiDb;
 
 import java.util.List;
 
-public class LocalDBAdapter extends RecyclerView.Adapter<LocalDBAdapter.Holder> {
+public class KanjiAdapter extends RecyclerView.Adapter<KanjiAdapter.Holder> {
 
     static List<KanjiDb> kanjiList;
 
-    public LocalDBAdapter(List<KanjiDb> kanjiList) {
-        LocalDBAdapter.kanjiList = kanjiList;
+    public KanjiAdapter(List<KanjiDb> kanjiList) {
+        KanjiAdapter.kanjiList = kanjiList;
     }
 
     @NonNull
@@ -43,7 +42,7 @@ public class LocalDBAdapter extends RecyclerView.Adapter<LocalDBAdapter.Holder> 
     public void setKanjis(List<KanjiDb> kanjiList) {
 
         //Setting the list when retrieving the data from the API
-        LocalDBAdapter.kanjiList = kanjiList;
+        KanjiAdapter.kanjiList = kanjiList;
         notifyDataSetChanged();
     }
 
