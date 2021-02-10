@@ -12,7 +12,7 @@ import com.kanjistudy.R;
 
 public class KanjiMenuActivity extends AppCompatActivity {
 
-    TextView level1, level2, level3, level4, level5, level6;
+    TextView level1, level2, level3, level4, level5, level6, level7, allKanjis;
 
 
     @Override
@@ -26,6 +26,8 @@ public class KanjiMenuActivity extends AppCompatActivity {
         level4 = findViewById(R.id.kanjiLevelFourSelectOptionsTextView);
         level5 = findViewById(R.id.kanjiLevelFiveSelectOptionsTextView);
         level6 = findViewById(R.id.kanjiLevelSixSelectOptionsTextView);
+        level7 = findViewById(R.id.kanjiLevelSevenSelectOptionsTextView);
+        allKanjis = findViewById(R.id.allKanjiSelectOptionsTextView);
 
 
         level1.setOnClickListener(new View.OnClickListener() {
@@ -91,6 +93,28 @@ public class KanjiMenuActivity extends AppCompatActivity {
                 Intent fromKanjiOptionsToKanjiListLevel6 = new Intent(getApplicationContext(), KanjiActivity.class);
                 fromKanjiOptionsToKanjiListLevel6.putExtra("level", level);
                 startActivity(fromKanjiOptionsToKanjiListLevel6);
+            }
+        });
+
+        level7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Pasar a la otra con un bundle
+                int level = 7;
+                Intent fromKanjiOptionsToKanjiListLevel7 = new Intent(getApplicationContext(), KanjiActivity.class);
+                fromKanjiOptionsToKanjiListLevel7.putExtra("level", level);
+                startActivity(fromKanjiOptionsToKanjiListLevel7);
+            }
+        });
+
+        allKanjis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Pasar a la otra con un bundle
+                int level = 8;
+                Intent fromKanjiOptionsToAllKanjis = new Intent(getApplicationContext(), KanjiActivity.class);
+                fromKanjiOptionsToAllKanjis.putExtra("level", level);
+                startActivity(fromKanjiOptionsToAllKanjis);
             }
         });
 

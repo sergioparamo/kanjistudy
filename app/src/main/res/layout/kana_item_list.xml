@@ -10,12 +10,11 @@
 
     <TextView
         android:id="@+id/hiragana_id"
+        style="@style/ItemsStyle"
         android:layout_width="131dp"
         android:layout_height="70dp"
         android:layout_gravity="center"
-        android:hint="Kana"
-        android:textSize="50dp"
-        android:textStyle="bold"
+        android:hint="Hiragana"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,12 +23,12 @@
 
     <TextView
         android:id="@+id/katakana_id"
+
+        style="@style/ItemsStyle"
         android:layout_width="131dp"
         android:layout_height="69dp"
         android:layout_gravity="center_vertical"
-        android:hint="Romaji"
-        android:textSize="50dp"
-        android:textStyle="bold"
+        android:hint="Katakana"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
