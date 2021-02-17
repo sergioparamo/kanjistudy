@@ -52,16 +52,6 @@ public class KanjiAdapter extends RecyclerView.Adapter<KanjiAdapter.Holder> {
         public Holder(@NonNull View itemView) {
             super(itemView);
 
-            //Hacer otra activity para desplegar el kanji y sus significados
-            /*itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), MoviesActivity.class);
-                    intent.putExtra("moviesIn", kanjiList.get(getAdapterPosition()).getMoviesIn());
-                    v.getContext().startActivity(intent);
-                }
-            });*/
-
             textViewNameValue = itemView.findViewById(R.id.characterValueTextView);
 
         }

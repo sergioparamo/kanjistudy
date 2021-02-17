@@ -183,6 +183,7 @@ public class MainActivity extends FragmentActivity {
 
 
         try {
+
             Scanner sc = new Scanner(new FileReader("D:\\apps\\KanjiStudy\\app\\src\\main\\java\\com\\kanjistudy\\allkanji.csv"));
 
 
@@ -221,11 +222,11 @@ public class MainActivity extends FragmentActivity {
                 new Kana("す", "ス", "su", "u", "s", "gojūon"),
                 new Kana("せ", "セ", "se", "e", "s", "gojūon"),
                 new Kana("そ", "ソ", "so", "o", "s", "gojūon"),
-                new Kana("か", "カ", "ta", "a", "t", "gojūon"),
-                new Kana("き", "キ", "chi", "i", "t", "gojūon"),
-                new Kana("く", "ク", "tsu", "u", "t", "gojūon"),
-                new Kana("け", "ケ", "te", "e", "t", "gojūon"),
-                new Kana("こ", "コ", "to", "o", "t", "gojūon"),
+                new Kana("た", "タ", "ta", "a", "t", "gojūon"),
+                new Kana("ち", "チ", "chi", "i", "t", "gojūon"),
+                new Kana("つ", "ツ", "tsu", "u", "t", "gojūon"),
+                new Kana("て", "テ", "te", "e", "t", "gojūon"),
+                new Kana("と", "ト", "to", "o", "t", "gojūon"),
                 new Kana("な", "ナ", "na", "a", "n", "gojūon"),
                 new Kana("に", "ニ", "ni", "i", "n", "gojūon"),
                 new Kana("ぬ", "ヌ", "nu", "u", "n", "gojūon"),
@@ -252,10 +253,10 @@ public class MainActivity extends FragmentActivity {
                 new Kana("わ", "ワ", "wa", "a", "w", "gojūon"),
                 //new Kana("ゐ ", "ヰ", "wi", "i", "w", "gojūon"),
                 //new Kana("ゑ", "ヱ", "we", "e", "w", "gojūon"),
-                new Kana("を", "ヲ", "wu", "u", "w", "gojūon"),
+                new Kana("を", "ヲ", "wo", "u", "w", "gojūon"),
 
                 //n
-                new Kana("ん", "ッ", "ku", null, "n", "gojūon"),
+                new Kana("ん", "ッ", "n", null, "n", "gojūon"),
 
 
                 //yóon
@@ -263,7 +264,7 @@ public class MainActivity extends FragmentActivity {
                 new Kana("きゅ", "キュ", "kyu", "u", "k", "yōon"),
                 new Kana("きょ", "キョ", "kyo", "o", "k", "yōon"),
                 new Kana("しゃ", "シャ", "sha", "a", "s", "yōon"),
-                new Kana("しゅ", "シュ", "shi", "u", "s", "yōon"),
+                new Kana("しゅ", "シュ", "shu", "u", "s", "yōon"),
                 new Kana("しょ", "ショ", "sho", "o", "s", "yōon"),
                 new Kana("ちゃ", "チャ", "cha", "a", "c", "yōon"),
                 new Kana("ちゅ", "チュ", "chi", "u", "c", "yōon"),
@@ -277,9 +278,9 @@ public class MainActivity extends FragmentActivity {
                 new Kana("みゃ", "ミャ", "mya", "a", "m", "yōon"),
                 new Kana("みゅ", "ミュ", "myi", "u", "m", "yōon"),
                 new Kana("みょ", "ミョ", "myo", "o", "m", "yōon"),
-                new Kana("りゃ", "リャ", "ka", "ya", "r", "yōon"),
-                new Kana("りゅ", "リュ", "ki", "yu", "r", "yōon"),
-                new Kana("りょ", "リョ", "ku", "yo", "r", "yōon"),
+                new Kana("りゃ", "リャ", "rya", "ya", "r", "yōon"),
+                new Kana("りゅ", "リュ", "ryu", "yu", "r", "yōon"),
+                new Kana("りょ", "リョ", "ryo", "yo", "r", "yōon"),
 
 
                 //new Kana("っ", "ー", "nya", "ya", "n", "yōon"),
@@ -288,11 +289,11 @@ public class MainActivity extends FragmentActivity {
 
 
                 //Diacritics (gojūon with (han)dakuten)
-                new Kana("か", "ガ", "ga", "a", "g", "gojūon with (han)dakuten"),
-                new Kana("き", "ギ", "gi", "i", "g", "gojūon with (han)dakuten"),
-                new Kana("く", "グ", "gu", "u", "g", "gojūon with (han)dakuten"),
-                new Kana("け", "ゲ", "ge", "e", "g", "gojūon with (han)dakuten"),
-                new Kana("こ", "ゴ", "go", "o", "g", "gojūon with (han)dakuten"),
+                new Kana("が", "ガ", "ga", "a", "g", "gojūon with (han)dakuten"),
+                new Kana("ぎ", "ギ", "gi", "i", "g", "gojūon with (han)dakuten"),
+                new Kana("ぐ", "グ", "gu", "u", "g", "gojūon with (han)dakuten"),
+                new Kana("げ", "ゲ", "ge", "e", "g", "gojūon with (han)dakuten"),
+                new Kana("ご", "ゴ", "go", "o", "g", "gojūon with (han)dakuten"),
                 new Kana("ざ", "ザ", "za", "a", "z", "gojūon with (han)dakuten"),
                 new Kana("じ", "ジ", "ji", "i", "z", "gojūon with (han)dakuten"),
                 new Kana("ず", "ズ", "zu", "u", "z", "gojūon with (han)dakuten"),
