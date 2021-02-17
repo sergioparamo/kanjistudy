@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 
 import com.kanjistudy.R;
 import com.kanjistudy.controllers.KanaAdapter;
@@ -20,7 +21,7 @@ import org.w3c.dom.Text;
 import java.util.List;
 
 
-public class KanaActivity extends AppCompatActivity {
+public class KanaActivity extends FragmentActivity {
 
     public static List<Kana> kanaList;
 

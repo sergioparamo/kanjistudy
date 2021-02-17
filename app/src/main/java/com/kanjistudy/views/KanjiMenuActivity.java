@@ -7,10 +7,11 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 
 import com.kanjistudy.R;
 
-public class KanjiMenuActivity extends AppCompatActivity {
+public class KanjiMenuActivity extends FragmentActivity {
 
     TextView level1, level2, level3, level4, level5, level6, level7, allKanjis;
 
