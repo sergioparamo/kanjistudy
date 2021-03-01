@@ -1,7 +1,6 @@
 package com.kanjistudy.views;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
+
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
@@ -19,26 +18,20 @@ import com.kanjistudy.database.repo.KanjiRepository;
 import com.kanjistudy.models.Kana;
 import com.kanjistudy.models.KanjiDb;
 
-import java.io.File;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.Arrays;
-import java.util.HashMap;
+
 import java.util.List;
 import java.util.Scanner;
 
-import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.Retrofit;
 
 public class MainActivity extends FragmentActivity {
 
 
     private List<KanjiDb> kanjiList;
     private List<Kana> kanaList;
-    private Retrofit retrofit;
-    private HttpLoggingInterceptor interceptor;
-    private OkHttpClient.Builder httpClientBuilder;
+
 
     //LOCAL DB VARIABLES
     static Database database;

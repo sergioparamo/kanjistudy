@@ -17,18 +17,12 @@ import com.kanjistudy.models.KanjiDb;
 
 import java.util.List;
 
-import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.Retrofit;
-
 public class KanjiActivity extends FragmentActivity {
 
     private RecyclerView recyclerViewMain;
     private KanjiAdapter kanjiAdapter;
     private List<KanjiDb> localKanjiList;
-    private Retrofit retrofit;
-    private HttpLoggingInterceptor interceptor;
-    private OkHttpClient.Builder httpClientBuilder;
+
     private Button lastLevel, nextLevel;
 
     private String kanji;
