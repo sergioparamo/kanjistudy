@@ -169,33 +169,6 @@ public class MainActivity extends FragmentActivity {
 
     }
 
-    private String[] loadDataFromCsv(String file) {
-
-
-        StringBuilder kanjis = new StringBuilder();
-
-
-        try {
-
-            Scanner sc = new Scanner(new FileReader("D:\\apps\\KanjiStudy\\app\\src\\main\\java\\com\\kanjistudy\\allkanji.csv"));
-
-
-            while (sc.hasNext()) {
-                System.out.print(sc.next());
-                //kanjis = sc.next().split(",");
-                kanjis.append(sc);
-            }
-            sc.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        return kanjis.toString().split(",");
-
-
-    }
-
-
     private void loadKana() {
 
         Kana[] kanaArray = {
