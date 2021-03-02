@@ -9,17 +9,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 
 import com.kanjistudy.R;
 import com.kanjistudy.controllers.KanaAdapter;
 import com.kanjistudy.models.Kana;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
-
 
 public class KanaActivity extends FragmentActivity {
 
@@ -51,27 +47,22 @@ public class KanaActivity extends FragmentActivity {
 
         Bundle bundle = getIntent().getExtras();
 
-        if (bundle != null){
+        if (bundle != null) {
             type = bundle.getString("type");
             System.out.println("******************************** " + type);
-
-
+            
         }
 
         kanaList = MainActivity.kanaRepo.getAllKanas();
 
-
-        kanaAdapter = new KanaAdapter(this,R.layout.kana_item_list, kanaList, type);
+        kanaAdapter = new KanaAdapter(this, R.layout.kana_item_list, kanaList, type);
         listView.setAdapter(kanaAdapter);
 
         registerForContextMenu(listView);
 
-
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
 
 
             }
