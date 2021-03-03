@@ -5,11 +5,11 @@ import com.kanjistudy.models.Kana;
 
 import java.util.List;
 
-public class HiraganaRepository {
+public class KanaRepository {
 
     KanaDao kanaDao;
 
-    public HiraganaRepository(KanaDao kanaDao) {
+    public KanaRepository(KanaDao kanaDao) {
         this.kanaDao = kanaDao;
     }
 

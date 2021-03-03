@@ -1,4 +1,4 @@
-package com.kanjistudy.views;
+package com.kanjistudy.views.vocabularyViews;
 
 import android.os.Bundle;
 import android.view.View;
@@ -13,9 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.kanjistudy.R;
 import com.kanjistudy.controllers.KanjiAdapter;
+import com.kanjistudy.database.resources.Data;
 import com.kanjistudy.models.KanjiDb;
+import com.kanjistudy.views.MainActivity;
+import com.kanjistudy.views.loginProcess.LandingActivity;
 
 import java.util.List;
+
 public class KanjiActivity extends FragmentActivity {
 
     private RecyclerView recyclerViewMain;
@@ -67,9 +71,9 @@ public class KanjiActivity extends FragmentActivity {
         //callApi("https://kanjiapi.dev/v1/kanji/grade-1");
 
         if (levelIndex == 8) {
-            localKanjiList = MainActivity.kanjiRepository.getKanjisByLevel(8);
+            localKanjiList = Data.kanjiRepository.getKanjisByLevel(8);
         } else {
-            localKanjiList = MainActivity.kanjiRepository.getKanjisByLevel(levelIndex);
+            localKanjiList = Data.kanjiRepository.getKanjisByLevel(levelIndex);
         }
 
         kanjiAdapter.setKanjis(localKanjiList);
@@ -88,7 +92,7 @@ public class KanjiActivity extends FragmentActivity {
                     lastLevel.setVisibility(View.VISIBLE);
                 }
                 //Loading the previous kanji dataset
-                localKanjiList = MainActivity.kanjiRepository.getKanjisByLevel(levelIndex);
+                localKanjiList = Data.kanjiRepository.getKanjisByLevel(levelIndex);
                 kanjiAdapter.setKanjis(localKanjiList);
 
                 currentLevelTextView.setText("Level " + levelIndex);
@@ -111,7 +115,7 @@ public class KanjiActivity extends FragmentActivity {
                 }
 
                 //Loading the next kanji dataset
-                localKanjiList = MainActivity.kanjiRepository.getKanjisByLevel(levelIndex);
+                localKanjiList = Data.kanjiRepository.getKanjisByLevel(levelIndex);
                 kanjiAdapter.setKanjis(localKanjiList);
                 currentLevelTextView.setText("Level " + levelIndex);
             }

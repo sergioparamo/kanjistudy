@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
 import com.kanjistudy.R;
+import com.kanjistudy.views.vocabularyViews.KanjiActivity;
 
 public class KanjiMenuActivity extends FragmentActivity {
 

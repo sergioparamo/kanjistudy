@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">Kanji Study</string>
+    <string name="title">Kanji Study</string>
+
+
+    <string name="password_less_8">The password must contain 8 digits</string>
+    <string name="bad_credentials">Wrong credentials, please try again!</string>
+    <string name="required_field">Required field!</string>
+
+    <string name="register_title">Register</string>
+    <string name="username">Username</string>
+    <string name="login_text">Login</string>
+    <string name="welcome_text">Welcome to the app!</string>
+    <string name="gender_input_text">Gender pronoun</string>
+    <string name="register_button_text">Register</string>
+    <string name="login_button_text">Login</string>
+    <string name="registrationDialog">You have been registered!</string>
+    <string name="dialogTitle">Thank you</string>
+    <string name="password">Enter password</string>
+    <string name="rpassword">Repeat password</string>
+    <string name="email">Email</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="birthdate">Birthdate</string>
+    <string name="genderselection">Gender</string>
+    <string name="checkbox_conditions"><![CDATA[Accept terms & conditions]]></string>
+    <string name="forgot_text">Forgot password?</string>
+    <string name="dateTitle">"Please select birth date:"</string>
+    <string name="passwords_no_match">The passwords doesn\'t match!</string>
+    <string name="empty">Cannot leave this field empty</string>
+    <string name="gender_Text">gender</string>
 </resources>

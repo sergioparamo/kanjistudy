@@ -28,10 +28,10 @@
     </activity>
     <activity
         android:id="@+id/kanaActivity"
-        android:name="com.kanjistudy.views.KanaActivity"
+        android:name="com.kanjistudy.views.vocabularyViews.KanaActivity"
         android:label="KanaActivity" />
     <activity
         android:id="@+id/kanjiActivity"
-        android:name="com.kanjistudy.views.KanjiActivity"
+        android:name="com.kanjistudy.views.vocabularyViews.KanjiActivity"
         android:label="KanjiActivity" />
 </navigation>

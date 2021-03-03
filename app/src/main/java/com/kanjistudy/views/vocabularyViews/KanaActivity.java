@@ -1,4 +1,4 @@
-package com.kanjistudy.views;
+package com.kanjistudy.views.vocabularyViews;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -13,7 +13,11 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.kanjistudy.R;
 import com.kanjistudy.controllers.KanaAdapter;
+import com.kanjistudy.controllers.ToastsConfig;
+import com.kanjistudy.database.resources.Data;
 import com.kanjistudy.models.Kana;
+import com.kanjistudy.views.MainActivity;
+import com.kanjistudy.views.loginProcess.LandingActivity;
 
 import java.util.List;
 
@@ -50,10 +54,10 @@ public class KanaActivity extends FragmentActivity {
         if (bundle != null) {
             type = bundle.getString("type");
             System.out.println("******************************** " + type);
-            
+
         }
 
-        kanaList = MainActivity.kanaRepo.getAllKanas();
+        kanaList = Data.kanaRepository.getAllKanas();
 
         kanaAdapter = new KanaAdapter(this, R.layout.kana_item_list, kanaList, type);
         listView.setAdapter(kanaAdapter);
@@ -63,6 +67,9 @@ public class KanaActivity extends FragmentActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                ToastsConfig toastsConfig = new ToastsConfig();
+                toastsConfig.showToastByDuration(getApplicationContext(), 2, "HOLA");
 
 
             }
