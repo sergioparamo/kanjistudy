@@ -13,7 +13,7 @@ import com.kanjistudy.views.vocabularyViews.KanjiActivity;
 
 public class KanjiMenuActivity extends FragmentActivity {
 
-    TextView level1, level2, level3, level4, level5, level6, level7, allKanjis;
+    TextView level1, level2, level3, level4, level5, level6, level7;
 
 
     @Override
@@ -28,7 +28,7 @@ public class KanjiMenuActivity extends FragmentActivity {
         level5 = findViewById(R.id.kanjiLevelFiveSelectOptionsTextView);
         level6 = findViewById(R.id.kanjiLevelSixSelectOptionsTextView);
         level7 = findViewById(R.id.kanjiLevelSevenSelectOptionsTextView);
-        allKanjis = findViewById(R.id.allKanjiSelectOptionsTextView);
+
 
 
         level1.setOnClickListener(new View.OnClickListener() {
@@ -108,16 +108,7 @@ public class KanjiMenuActivity extends FragmentActivity {
             }
         });
 
-        allKanjis.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Pasar a la otra con un bundle
-                int level = 8;
-                Intent fromKanjiOptionsToAllKanjis = new Intent(getApplicationContext(), KanjiActivity.class);
-                fromKanjiOptionsToAllKanjis.putExtra("level", level);
-                startActivity(fromKanjiOptionsToAllKanjis);
-            }
-        });
+
 
 
     }

@@ -114,7 +114,7 @@ public class KanaAdapter extends BaseAdapter {
         }
 
         mediaPlayer.start();
-        toastsConfig.showToastByDuration(context.getApplicationContext(), 2, "Pronunciation of " + kana + "!!");
+        toastsConfig.showToastByDuration(context.getApplicationContext(), 1, "Pronunciation of " + kana + "!!");
 
     }
 }
