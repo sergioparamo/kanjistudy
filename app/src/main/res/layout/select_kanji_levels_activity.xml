@@ -8,6 +8,28 @@
     android:background="@color/colorBlue"
     android:gravity="center">
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/topAppBar"
+        style="@style/Widget.MaterialComponents.Toolbar.Primary"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/kana_menu"
+        app:navigationIcon="@drawable/ic_baseline_menu_24">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/textStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foregroundGravity="center"
+            android:src="@drawable/twitter_logo_blue"
+            android:text="Kanji Study"
+            android:textAlignment="center" />
+    </com.google.android.material.appbar.MaterialToolbar>
+
 
     <TextView
 
@@ -15,13 +37,14 @@
         style="@style/textStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose Kanji Level"
+        android:text="Choose Level"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.060000002" />
+        app:layout_constraintTop_toBottomOf="@+id/topAppBar"
+        app:layout_constraintVertical_bias="0.052" />
 
     <TextView
         android:id="@+id/kanjiLevelOneSelectOptionsTextView"
@@ -122,8 +145,6 @@
 
 
         app:layout_constraintTop_toBottomOf="@+id/kanjiLevelSixSelectOptionsTextView" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,9 +5,10 @@ import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
 import com.kanjistudy.R;
@@ -15,12 +16,12 @@ import com.kanjistudy.models.Kana;
 
 import java.util.List;
 
-public class KanaAdapter extends BaseAdapter {
+public class KanaAdapter extends RecyclerView.Adapter<KanaAdapter.Holder> {
 
-    private Context context;
-    private int layout;
-    private static List<Kana> kanaList;
-    private String type;
+    public Context context;
+    public int layout;
+    public static List<Kana> kanaList;
+    public String type;
 
     MediaPlayer mediaPlayer;
 
@@ -31,15 +32,36 @@ public class KanaAdapter extends BaseAdapter {
         this.type = type;
     }
 
-
+    @NonNull
     @Override
-    public int getCount() {
-        return this.kanaList.size();
+    public KanaAdapter.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.kana_item_list, parent, false);
+        return new Holder(v);
     }
 
     @Override
-    public Object getItem(int position) {
-        return this.kanaList.get(position);
+    public void onBindViewHolder(@NonNull Holder holder, int position) {
+        Kana kana = kanaList.get(position);
+
+        if (type.equals("hiragana")) {
+            holder.kanaId.setText(kana.getHiragana());
+        } else {
+            holder.kanaId.setText(kana.getKatakana());
+        }
+
+        holder.buttonSound.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playSound(kana.getPronunciationId(), kana.getRomaji());
+            }
+        });
+
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return kanaList.size();
     }
 
     @Override
@@ -47,58 +69,26 @@ public class KanaAdapter extends BaseAdapter {
         return position;
     }
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder;
-
-        if (convertView == null) {
-
-            LayoutInflater inflater = LayoutInflater.from(this.context);
-            convertView = inflater.inflate(this.layout, null);
-
-            viewHolder = new ViewHolder();
-            viewHolder.kanaTextView = convertView.findViewById(com.kanjistudy.R.id.kana_textview_id);
-            viewHolder.kanaSound = convertView.findViewById(R.id.kana_sound_id);
-
-            convertView.setTag(viewHolder);
-
-        } else {
-            viewHolder = (ViewHolder) convertView.getTag();
-        }
-
-        Kana currentKana = (Kana) getItem(position);
-
-        if (type.equals("hiragana")) {
-
-            viewHolder.kanaTextView.setText(currentKana.getHiragana());
-        } else {
-            viewHolder.kanaTextView.setText(currentKana.getKatakana());
-        }
-
-        viewHolder.kanaSound.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                playSound(currentKana.getPronunciationId(),currentKana.getRomaji());
-            }
-        });
-
-
-
-
-
-        return convertView;
-    }
-
-    static class ViewHolder {
-        private TextView kanaTextView;
-        private MaterialButton kanaSound;
-    }
-
 
     public void setKanas(List<Kana> kanaList) {
         //Setting the list when retrieving the data from the Database
         KanaAdapter.kanaList = kanaList;
         notifyDataSetChanged();
+    }
+
+    public static class Holder extends RecyclerView.ViewHolder {
+
+        TextView kanaId;
+        MaterialButton buttonSound;
+
+        public Holder(@NonNull View itemView) {
+            super(itemView);
+
+            kanaId = itemView.findViewById(R.id.kana_textview_id);
+            buttonSound = itemView.findViewById(R.id.kana_sound_id);
+
+        }
+
     }
 
     private void playSound(int soundId, String kana) {
