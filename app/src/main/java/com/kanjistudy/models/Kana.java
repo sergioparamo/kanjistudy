@@ -14,14 +14,28 @@ public class Kana {
     String katakana;
     String romaji;
 
+    public int getPronunciationId() {
+        return pronunciationId;
+    }
 
-    public Kana(String hiragana, String katakana, String romaji, String vowel, String consonant, String type) {
+    int pronunciationId;
+
+
+    //According to the vowel and consonant
+    String vowel;
+    String consonant;
+
+    //We divide the hiraganas between 4 types. Monographs (gojūon), Digraphs (yōon), Diacritics (gojūon with (han)dakuten) and Digraphs with diacritics (yōon with (han)dakuten).
+    String type;
+
+    public Kana(String hiragana, String katakana, String romaji, String vowel, String consonant, String type, int pronunciationId) {
         this.hiragana = hiragana;
         this.katakana = katakana;
         this.romaji = romaji;
         this.vowel = vowel;
         this.consonant = consonant;
         this.type = type;
+        this.pronunciationId = pronunciationId;
     }
 
     public String getRomaji() {
@@ -31,18 +45,6 @@ public class Kana {
     public void setRomaji(String romaji) {
         this.romaji = romaji;
     }
-
-    //According to the vowel and consonant
-    String vowel;
-    String consonant;
-
-    //We divide the hiraganas between 4 types. Monographs (gojūon), Digraphs (yōon), Diacritics (gojūon with (han)dakuten) and Digraphs with diacritics (yōon with (han)dakuten).
-    String type;
-
-    //The pronunciation stored in an mp3 file
-    //TODO GET ALL SOUNDS FOR KANAS
-    //MediaStore.Audio.Media sound;
-
 
     public int getKanaId() {
         return kanaId;

@@ -1,6 +1,7 @@
 package com.kanjistudy.views.vocabularyViews;
 
 import android.annotation.SuppressLint;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,13 +12,12 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
+import com.google.android.material.button.MaterialButton;
 import com.kanjistudy.R;
 import com.kanjistudy.controllers.KanaAdapter;
 import com.kanjistudy.controllers.ToastsConfig;
 import com.kanjistudy.database.resources.Data;
 import com.kanjistudy.models.Kana;
-import com.kanjistudy.views.MainActivity;
-import com.kanjistudy.views.loginProcess.LandingActivity;
 
 import java.util.List;
 
@@ -30,10 +30,11 @@ public class KanaActivity extends FragmentActivity {
     private MenuItem listButton;*/
 
     private ListView listView;
+    //TODO add grid view
     private GridView gridView;
 
-    public TextView hiraganaTextView;
-    public TextView katakanaTextView;
+    public TextView kanaTextView;
+    public MaterialButton soundButton;
 
     @SuppressLint("StaticFieldLeak")
     public static KanaAdapter kanaAdapter;
@@ -46,8 +47,8 @@ public class KanaActivity extends FragmentActivity {
 
         //At the moment only list view will be loaded
         listView = findViewById(R.id.kana_listview_id);
-        hiraganaTextView = findViewById(R.id.hiragana_id);
-        katakanaTextView = findViewById(R.id.katakana_id);
+        kanaTextView = findViewById(R.id.kana_textview_id);
+        soundButton = findViewById(R.id.kana_sound_id);
 
         Bundle bundle = getIntent().getExtras();
 
@@ -77,4 +78,5 @@ public class KanaActivity extends FragmentActivity {
 
 
     }
+
 }
