@@ -1,5 +1,7 @@
-package com.kanjistudy.views.loginProcess;
+package com.kanjistudy.views;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
@@ -7,31 +9,43 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.kanjistudy.R;
 import com.kanjistudy.controllers.ToastsConfig;
-import com.kanjistudy.database.Database;
-import com.kanjistudy.database.dao.KanaDao;
-import com.kanjistudy.database.dao.KanjiDao;
-import com.kanjistudy.database.repo.KanaRepository;
-import com.kanjistudy.database.repo.KanjiRepository;
 import com.kanjistudy.database.resources.Data;
-import com.kanjistudy.views.KanjiMenuActivity;
 import com.kanjistudy.views.vocabularyViews.KanaActivity;
 
 public class LandingActivity extends FragmentActivity {
 
 
+    DrawerLayout drawerLayout;
+    MaterialToolbar toolbar;
+
     ToastsConfig toastsConfig = new ToastsConfig();
     TextView kanjiTextView, kanaTextView, hiraganaTextView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.drawer_activity);
+
 
         kanjiTextView = findViewById(R.id.kanjiActivityTextViewMain);
         kanaTextView = findViewById(R.id.kanaActivityTextViewMain);
         hiraganaTextView = findViewById(R.id.hiraganaActivityTextViewMain);
+
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        toolbar = findViewById(R.id.topAppBarMain);
+
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
+                this,
+                drawerLayout,
+                toolbar,
+                R.string.openNavDrawer,
+                R.string.closeNavDrawer
+        );
+
 
         Data.loadData(getApplicationContext());
 
@@ -67,6 +81,5 @@ public class LandingActivity extends FragmentActivity {
 
 
     }
-
 
 }

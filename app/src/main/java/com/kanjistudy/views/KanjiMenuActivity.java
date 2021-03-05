@@ -6,20 +6,26 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentActivity;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.kanjistudy.R;
 import com.kanjistudy.views.vocabularyViews.KanjiActivity;
 
 public class KanjiMenuActivity extends FragmentActivity {
 
+    DrawerLayout drawerLayout;
+    MaterialToolbar toolbar;
     TextView level1, level2, level3, level4, level5, level6, level7;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.select_kanji_levels_activity);
+        setContentView(R.layout.drawer_kanjioptions_activity);
+
 
         level1 = findViewById(R.id.kanjiLevelOneSelectOptionsTextView);
         level2 = findViewById(R.id.kanjiLevelTwoSelectOptionsTextView);
@@ -29,6 +35,20 @@ public class KanjiMenuActivity extends FragmentActivity {
         level6 = findViewById(R.id.kanjiLevelSixSelectOptionsTextView);
         level7 = findViewById(R.id.kanjiLevelSevenSelectOptionsTextView);
 
+
+
+
+
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_kanji_menu_layout);
+        toolbar = findViewById(R.id.topAppBarKanjiMenu);
+
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
+                this,
+                drawerLayout,
+                toolbar,
+                R.string.openNavDrawer,
+                R.string.closeNavDrawer
+        );
 
 
         level1.setOnClickListener(new View.OnClickListener() {

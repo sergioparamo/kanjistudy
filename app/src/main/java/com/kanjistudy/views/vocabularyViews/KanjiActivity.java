@@ -6,17 +6,17 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.kanjistudy.R;
 import com.kanjistudy.controllers.KanjiAdapter;
 import com.kanjistudy.database.resources.Data;
 import com.kanjistudy.models.KanjiDb;
-import com.kanjistudy.views.MainActivity;
-import com.kanjistudy.views.loginProcess.LandingActivity;
 
 import java.util.List;
 
@@ -33,11 +33,25 @@ public class KanjiActivity extends FragmentActivity {
 
     public static int levelIndex;
 
+    DrawerLayout drawerLayout;
+    MaterialToolbar toolbar;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.kanji_activity);
+        setContentView(R.layout.drawer_kanji_activity);
+
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawerkanji_layout);
+        toolbar = findViewById(R.id.topAppBarKanji);
+
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
+                this,
+                drawerLayout,
+                toolbar,
+                R.string.openNavDrawer,
+                R.string.closeNavDrawer
+        );
 
         Bundle bundle = getIntent().getExtras();
 

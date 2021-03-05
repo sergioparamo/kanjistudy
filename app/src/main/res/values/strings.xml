@@ -29,4 +29,12 @@
     <string name="passwords_no_match">The passwords doesn\'t match!</string>
     <string name="empty">Cannot leave this field empty</string>
     <string name="gender_Text">gender</string>
+    <string name="home">Home</string>
+    <string name="kanji">Kanji</string>
+    <string name="hiragana">Hiragana</string>
+    <string name="katakana">Katakana</string>
+    <string name="profile">Profile</string>
+    <string name="logout">Log out</string>
+    <string name="openNavDrawer">Open Drawer</string>
+    <string name="closeNavDrawer">Close Drawer</string>
 </resources>

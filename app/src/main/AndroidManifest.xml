@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".views.MainActivity"
+            android:name=".views.loginProcess.MainActivity"
             android:theme="@style/AppTheme.Launcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,7 @@
         <activity android:name=".views.vocabularyViews.KanjiActivity" />
         <activity android:name=".views.vocabularyViews.KanaActivity" />
 
-        <activity android:name=".views.loginProcess.LandingActivity" />
+        <activity android:name=".views.LandingActivity" />
         <activity android:name=".views.loginProcess.LoginActivity" />
         <activity android:name=".views.loginProcess.RegisterActivity" />
     </application>

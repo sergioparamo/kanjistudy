@@ -1,4 +1,4 @@
-package com.kanjistudy.views;
+package com.kanjistudy.views.loginProcess;
 
 import androidx.appcompat.app.AppCompatActivity;
 

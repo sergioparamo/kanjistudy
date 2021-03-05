@@ -6,10 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBlue"
-    android:gravity="center">
+    android:gravity="center"
+
+    app:menu="@menu/navigation_drawer">
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/topAppBar"
+        android:id="@+id/topAppBarKanjiMenu"
         style="@style/Widget.MaterialComponents.Toolbar.Primary"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -37,13 +39,14 @@
         style="@style/textStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose Level"
+        android:layout_marginBottom="612dp"
 
+        android:text="Choose Level"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topAppBar"
+        app:layout_constraintTop_toBottomOf="@+id/topAppBarMain"
         app:layout_constraintVertical_bias="0.052" />
 
     <TextView
@@ -140,11 +143,14 @@
         android:gravity="center"
         android:text="Level 7"
 
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+
+
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-
-
-        app:layout_constraintTop_toBottomOf="@+id/kanjiLevelSixSelectOptionsTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/kanjiLevelSixSelectOptionsTextView"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
