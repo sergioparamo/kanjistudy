@@ -1,10 +1,13 @@
 package com.kanjistudy.views.vocabularyViews;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -13,10 +16,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kanjistudy.R;
 import com.kanjistudy.controllers.KanjiAdapter;
 import com.kanjistudy.database.resources.Data;
 import com.kanjistudy.models.KanjiDb;
+import com.kanjistudy.views.KanjiMenuActivity;
+import com.kanjistudy.views.LandingActivity;
 
 import java.util.List;
 
@@ -36,11 +42,44 @@ public class KanjiActivity extends FragmentActivity {
     DrawerLayout drawerLayout;
     MaterialToolbar toolbar;
 
+    BottomNavigationView bottomNavigationView;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.drawer_kanji_activity);
+
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation_kanji);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()) {
+
+                    case R.id.bottom_bar_home:
+                        Intent fromKanjiToLandingIntentBottom = new Intent(KanjiActivity.this, LandingActivity.class);
+                        startActivity(fromKanjiToLandingIntentBottom);
+                        break;
+                    case R.id.bottom_bar_kanji:
+                        Intent fromKanjiToKanjiMenuIntentBottom = new Intent(KanjiActivity.this, KanjiMenuActivity.class);
+                        startActivity(fromKanjiToKanjiMenuIntentBottom);
+                        break;
+                    case R.id.bottom_bar_hiragana:
+                        Intent fromKanjiToHiraganaIntentBottom = new Intent(KanjiActivity.this, KanaActivity.class);
+                        fromKanjiToHiraganaIntentBottom.putExtra("type", "hiragana");
+                        startActivity(fromKanjiToHiraganaIntentBottom);
+                        break;
+                    case R.id.bottom_bar_katakana:
+                        Intent fromKanjiToKatakanaIntentBottom = new Intent(KanjiActivity.this, KanaActivity.class);
+                        fromKanjiToKatakanaIntentBottom.putExtra("type", "katakana");
+                        startActivity(fromKanjiToKatakanaIntentBottom);
+                        break;
+                }
+
+                return false;
+            }
+        });
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerkanji_layout);
         toolbar = findViewById(R.id.topAppBarKanji);

@@ -2,16 +2,20 @@ package com.kanjistudy.views;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kanjistudy.R;
+import com.kanjistudy.views.vocabularyViews.KanaActivity;
 import com.kanjistudy.views.vocabularyViews.KanjiActivity;
 
 public class KanjiMenuActivity extends FragmentActivity {
@@ -20,11 +24,40 @@ public class KanjiMenuActivity extends FragmentActivity {
     MaterialToolbar toolbar;
     TextView level1, level2, level3, level4, level5, level6, level7;
 
+    BottomNavigationView bottomNavigationView;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.drawer_kanjioptions_activity);
+
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation_kanji_menu);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()) {
+
+                    case R.id.bottom_bar_home:
+                        Intent fromKanjiMenuToLandingIntentBottom = new Intent(KanjiMenuActivity.this, LandingActivity.class);
+                        startActivity(fromKanjiMenuToLandingIntentBottom);
+                        break;
+                    case R.id.bottom_bar_hiragana:
+                        Intent fromKanjiMenuToHiraganaIntentBottom = new Intent(KanjiMenuActivity.this, KanaActivity.class);
+                        fromKanjiMenuToHiraganaIntentBottom.putExtra("type", "hiragana");
+                        startActivity(fromKanjiMenuToHiraganaIntentBottom);
+                        break;
+                    case R.id.bottom_bar_katakana:
+                        Intent fromKanjiMenuToKatakanaIntentBottom = new Intent(KanjiMenuActivity.this, KanaActivity.class);
+                        fromKanjiMenuToKatakanaIntentBottom.putExtra("type", "katakana");
+                        startActivity(fromKanjiMenuToKatakanaIntentBottom);
+                        break;
+                }
+
+                return false;
+            }
+        });
 
 
         level1 = findViewById(R.id.kanjiLevelOneSelectOptionsTextView);

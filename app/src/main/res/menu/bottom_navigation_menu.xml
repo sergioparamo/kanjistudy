@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/page_1"
+        android:id="@+id/bottom_bar_home"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_home_24"
         android:title="@string/home" />
 
     <item
-        android:id="@+id/page_2"
+        android:id="@+id/bottom_bar_kanji"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_search_24"
         android:title="@string/kanji" />
 
     <item
-        android:id="@+id/page_3"
+        android:id="@+id/bottom_bar_hiragana"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_notifications_24"
         android:title="@string/hiragana"/>
 
     <item
-        android:id="@+id/page_4"
+        android:id="@+id/bottom_bar_katakana"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_email_24"
         android:title="@string/katakana"/>
