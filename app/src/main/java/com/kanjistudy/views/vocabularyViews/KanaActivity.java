@@ -112,12 +112,11 @@ public class KanaActivity extends FragmentActivity {
 
         }
 
-        if (type.equals("hiragana")){
+        if (type.equals("hiragana")) {
             kanaTypeDescriptionTextView.setText("Hiragana Dictionary");
-        }else {
+        } else {
             kanaTypeDescriptionTextView.setText("Katakana Dictionary");
         }
-
 
 
         kanaList = Data.kanaRepository.getAllKanas();

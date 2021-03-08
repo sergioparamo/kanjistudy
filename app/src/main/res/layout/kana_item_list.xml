@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
-    android:layout_width="300dp"
+    android:layout_width="250dp"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
 
@@ -36,7 +36,7 @@
         tools:ignore="RtlCompat" />
 
     <TextView
-        android:id="@+id/kana_romaji_id"
+        android:id="@+id/meaning_id"
         style="@style/ItemsStyle"
         android:layout_width="150dp"
         android:layout_height="70dp"

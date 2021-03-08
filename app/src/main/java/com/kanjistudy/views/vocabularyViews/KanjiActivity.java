@@ -20,7 +20,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kanjistudy.R;
 import com.kanjistudy.controllers.KanjiAdapter;
 import com.kanjistudy.database.resources.Data;
-import com.kanjistudy.models.KanjiDb;
+import com.kanjistudy.models.Kanji;
 import com.kanjistudy.views.KanjiMenuActivity;
 import com.kanjistudy.views.LandingActivity;
 
@@ -30,7 +30,7 @@ public class KanjiActivity extends FragmentActivity {
 
     private RecyclerView recyclerViewMain;
     private KanjiAdapter kanjiAdapter;
-    private List<KanjiDb> localKanjiList;
+    private List<Kanji> localKanjiList;
 
     private Button lastLevel, nextLevel;
     ActionBarDrawerToggle toggle;
@@ -114,8 +114,6 @@ public class KanjiActivity extends FragmentActivity {
         }
 
 
-        //toastsConfig.showToastByDuration(getApplicationContext(), 2, Integer.toString(levelIndex));
-
         kanjiAdapter = new KanjiAdapter(localKanjiList);
 
         recyclerViewMain = findViewById(R.id.recyclerViewMain);
@@ -124,7 +122,6 @@ public class KanjiActivity extends FragmentActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerViewMain.setLayoutManager(layoutManager);
 
-        //callApi("https://kanjiapi.dev/v1/kanji/grade-1");
 
         if (levelIndex == 8) {
             localKanjiList = Data.kanjiRepository.getKanjisByLevel(8);

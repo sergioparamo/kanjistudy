@@ -1,7 +1,7 @@
 package com.kanjistudy.database.repo;
 
 import com.kanjistudy.database.dao.KanjiDao;
-import com.kanjistudy.models.KanjiDb;
+import com.kanjistudy.models.Kanji;
 
 import java.util.List;
 
@@ -14,19 +14,19 @@ public class KanjiRepository {
     }
 
 
-    public List<KanjiDb> getAllKanjis() {
+    public List<Kanji> getAllKanjis() {
         return kanjiDao.getAllKanjis();
     }
 
-    public void insert(KanjiDb kanji) {
+    public void insert(Kanji kanji) {
         kanjiDao.insert(kanji);
     }
 
-    public void update(KanjiDb kanji) {
+    public void update(Kanji kanji) {
         kanjiDao.update(kanji);
     }
 
-    public void delete(KanjiDb kanji) {
+    public void delete(Kanji kanji) {
         kanjiDao.delete(kanji);
     }
 
@@ -34,7 +34,7 @@ public class KanjiRepository {
         return kanjiDao.getKanjiNames();
     }
 
-    public List<KanjiDb> getKanjisByLevel(int level) {
+    public List<Kanji> getKanjisByLevel(int level) {
         return kanjiDao.getKanjisByLevel(level);
     }
 

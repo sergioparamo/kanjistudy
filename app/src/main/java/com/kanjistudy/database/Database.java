@@ -8,9 +8,9 @@ import androidx.room.RoomDatabase;
 import com.kanjistudy.database.dao.KanaDao;
 import com.kanjistudy.database.dao.KanjiDao;
 import com.kanjistudy.models.Kana;
-import com.kanjistudy.models.KanjiDb;
+import com.kanjistudy.models.Kanji;
 
-@androidx.room.Database(entities = {KanjiDb.class, Kana.class}, version = 1)
+@androidx.room.Database(entities = {Kanji.class, Kana.class}, version = 1)
 public abstract class Database extends RoomDatabase {
 
     public static Database INSTANCE;

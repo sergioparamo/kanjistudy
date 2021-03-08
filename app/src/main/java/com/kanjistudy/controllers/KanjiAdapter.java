@@ -9,15 +9,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.kanjistudy.R;
-import com.kanjistudy.models.KanjiDb;
+import com.kanjistudy.models.Kanji;
 
 import java.util.List;
 
 public class KanjiAdapter extends RecyclerView.Adapter<KanjiAdapter.Holder> {
 
-    static List<KanjiDb> kanjiList;
+    static List<Kanji> kanjiList;
 
-    public KanjiAdapter(List<KanjiDb> kanjiList) {
+    public KanjiAdapter(List<Kanji> kanjiList) {
         KanjiAdapter.kanjiList = kanjiList;
     }
 
@@ -30,7 +30,7 @@ public class KanjiAdapter extends RecyclerView.Adapter<KanjiAdapter.Holder> {
 
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int position) {
-        KanjiDb kanji = kanjiList.get(position);
+        Kanji kanji = kanjiList.get(position);
         holder.textViewNameValue.setText(kanji.getKanji());
     }
 
@@ -39,14 +39,14 @@ public class KanjiAdapter extends RecyclerView.Adapter<KanjiAdapter.Holder> {
         return kanjiList.size();
     }
 
-    public void setKanjis(List<KanjiDb> kanjiList) {
+    public void setKanjis(List<Kanji> kanjiList) {
 
         //Setting the list when retrieving the data from the API
         KanjiAdapter.kanjiList = kanjiList;
         notifyDataSetChanged();
     }
 
-    public static class Holder extends RecyclerView.ViewHolder{
+    public static class Holder extends RecyclerView.ViewHolder {
         TextView textViewNameValue;
 
         public Holder(@NonNull View itemView) {

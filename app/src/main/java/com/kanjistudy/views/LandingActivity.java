@@ -22,7 +22,7 @@ import com.kanjistudy.controllers.ToastsConfig;
 import com.kanjistudy.database.resources.Data;
 import com.kanjistudy.views.vocabularyViews.KanaActivity;
 
-public class LandingActivity extends FragmentActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class LandingActivity extends FragmentActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
     DrawerLayout drawerLayout;
@@ -80,8 +80,6 @@ public class LandingActivity extends FragmentActivity implements NavigationView.
         });
 
 
-
-
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         toolbar = findViewById(R.id.topAppBarMain);
 
@@ -127,8 +125,6 @@ public class LandingActivity extends FragmentActivity implements NavigationView.
                 return true;
             }
         });*/
-
-
 
 
         kanjiTextView.setOnClickListener(new View.OnClickListener() {
