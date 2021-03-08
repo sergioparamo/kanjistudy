@@ -7,6 +7,12 @@
     android:layout_width="300dp"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
+    android:paddingLeft="20dp"
+    android:background="@drawable/back"
+    android:layout_marginTop="10dp"
+
+
+
 
 
     >
@@ -17,30 +23,50 @@
         android:layout_width="150dp"
         android:layout_height="70dp"
         android:layout_gravity="left"
-        android:textAlignment="center"
-        android:background="@color/colorBlue"
         android:hint="Kana"
         android:paddingTop="15dp"
+        android:textAlignment="center"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="RtlCompat" />
+
+    <TextView
+        android:id="@+id/kana_romaji_id"
+        style="@style/ItemsStyle"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_gravity="left"
+        android:hint="Romaji"
+        android:paddingTop="15dp"
+        android:textAlignment="center"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/kana_textview_id"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="RtlCompat" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/kana_sound_id"
-        style="@style/ItemsStyle"
-        android:layout_width="150dp"
-        android:layout_height="70dp"
-        android:background="@color/colorBlue"
-        android:text="Sound"
+
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:background="@mipmap/speaker"
+
+
 
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintHorizontal_bias="0.46"
         app:layout_constraintStart_toEndOf="@id/kana_textview_id"
         app:layout_constraintTop_toTopOf="parent" />
 

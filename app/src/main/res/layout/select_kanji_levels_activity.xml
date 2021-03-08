@@ -10,16 +10,20 @@
 
     app:menu="@menu/navigation_drawer">
 
+
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/topAppBarKanjiMenu"
         style="@style/Widget.MaterialComponents.Toolbar.Primary"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@+id/titleSectionSelectOptionsTextView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/kana_menu"
+        app:layout_constraintVertical_bias="0.0"
+        app:menu="@menu/navigation_drawer"
         app:navigationIcon="@drawable/ic_baseline_menu_24">
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -32,8 +36,7 @@
             android:textAlignment="center" />
     </com.google.android.material.appbar.MaterialToolbar>
 
-
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
 
         android:id="@+id/titleSectionSelectOptionsTextView"
         style="@style/textStyle"
@@ -46,31 +49,34 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topAppBarMain"
+
         app:layout_constraintVertical_bias="0.052" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
+        android:background="@drawable/layout_border"
         android:id="@+id/kanjiLevelOneSelectOptionsTextView"
         style="@style/ItemsStyle"
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:layout_marginTop="24dp"
         android:gravity="center"
-        android:text="Level 1"
+        android:text="LEVEL 1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
 
 
         app:layout_constraintTop_toBottomOf="@+id/titleSectionSelectOptionsTextView" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
+        android:background="@drawable/layout_border"
         android:id="@+id/kanjiLevelTwoSelectOptionsTextView"
         style="@style/ItemsStyle"
         android:layout_width="300dp"
         android:layout_height="60dp"
+        android:paddingTop="10dp"
 
         android:gravity="center_horizontal"
-        android:text="Level 2"
+        android:text="LEVEL 2"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,26 +84,28 @@
 
         app:layout_constraintTop_toBottomOf="@+id/kanjiLevelOneSelectOptionsTextView" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
+        android:background="@drawable/layout_border"
         android:id="@+id/kanjiLevelThreeSelectOptionsTextView"
         style="@style/ItemsStyle"
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:gravity="center"
-        android:text="Level 3"
+        android:text="LEVEL 3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
 
 
         app:layout_constraintTop_toBottomOf="@+id/kanjiLevelTwoSelectOptionsTextView" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
+        android:background="@drawable/layout_border"
         android:id="@+id/kanjiLevelFourSelectOptionsTextView"
         style="@style/ItemsStyle"
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:gravity="center"
-        android:text="Level 4"
+        android:text="LEVEL 4"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -105,13 +113,14 @@
 
         app:layout_constraintTop_toBottomOf="@+id/kanjiLevelThreeSelectOptionsTextView" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
+        android:background="@drawable/layout_border"
         android:id="@+id/kanjiLevelFiveSelectOptionsTextView"
         style="@style/ItemsStyle"
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:gravity="center"
-        android:text="Level 5"
+        android:text="LEVEL 5"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -119,14 +128,15 @@
 
         app:layout_constraintTop_toBottomOf="@+id/kanjiLevelFourSelectOptionsTextView" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
+        android:background="@drawable/layout_border"
         android:id="@+id/kanjiLevelSixSelectOptionsTextView"
         style="@style/ItemsStyle"
         android:layout_width="300dp"
 
         android:layout_height="60dp"
         android:gravity="center"
-        android:text="Level 6"
+        android:text="LEVEL 6"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -134,14 +144,15 @@
 
         app:layout_constraintTop_toBottomOf="@+id/kanjiLevelFiveSelectOptionsTextView" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
+        android:background="@drawable/layout_border"
         android:id="@+id/kanjiLevelSevenSelectOptionsTextView"
         style="@style/ItemsStyle"
         android:layout_width="300dp"
 
         android:layout_height="60dp"
         android:gravity="center"
-        android:text="Level 7"
+        android:text="LEVEL 7"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -151,6 +162,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/kanjiLevelSixSelectOptionsTextView"
         app:layout_constraintVertical_bias="0.0" />
+
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation_kanji_menu"
@@ -163,6 +176,8 @@
         app:layout_constraintTop_toBottomOf="parent"
         android:layout_marginBottom="100dp"
         app:menu="@menu/bottom_navigation_menu" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

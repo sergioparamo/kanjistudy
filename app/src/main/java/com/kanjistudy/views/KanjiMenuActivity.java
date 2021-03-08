@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 import com.kanjistudy.R;
 import com.kanjistudy.views.vocabularyViews.KanaActivity;
 import com.kanjistudy.views.vocabularyViews.KanjiActivity;
@@ -25,6 +26,7 @@ public class KanjiMenuActivity extends FragmentActivity {
     TextView level1, level2, level3, level4, level5, level6, level7;
 
     BottomNavigationView bottomNavigationView;
+    NavigationView navigationView;
 
 
     @Override
@@ -69,9 +71,6 @@ public class KanjiMenuActivity extends FragmentActivity {
         level7 = findViewById(R.id.kanjiLevelSevenSelectOptionsTextView);
 
 
-
-
-
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_kanji_menu_layout);
         toolbar = findViewById(R.id.topAppBarKanjiMenu);
 
@@ -82,6 +81,39 @@ public class KanjiMenuActivity extends FragmentActivity {
                 R.string.openNavDrawer,
                 R.string.closeNavDrawer
         );
+
+        navigationView = (NavigationView) findViewById(R.id.nav_view_kanjimenu);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()) {
+                    case R.id.homenavdraw:
+                        Intent fromKanjiMenuToLandingIntentNavDraw = new Intent(KanjiMenuActivity.this, LandingActivity.class);
+                        startActivity(fromKanjiMenuToLandingIntentNavDraw);
+                        break;
+                    case R.id.kanjinavdraw:
+                        Intent fromKanjiMenuToKanjiToKanjiMenuIntentNavDraw = new Intent(KanjiMenuActivity.this, KanjiMenuActivity.class);
+                        startActivity(fromKanjiMenuToKanjiToKanjiMenuIntentNavDraw);
+                        break;
+                    case R.id.hiragananavdraw:
+                        Intent fromKanjiMenuToHiraganaIntentNavDraw = new Intent(KanjiMenuActivity.this, KanaActivity.class);
+                        fromKanjiMenuToHiraganaIntentNavDraw.putExtra("type", "hiragana");
+                        startActivity(fromKanjiMenuToHiraganaIntentNavDraw);
+                        break;
+                    case R.id.katakananavdraw:
+                        Intent fromKanjiMenuToKatakanaIntentNavDraw = new Intent(KanjiMenuActivity.this, KanaActivity.class);
+                        fromKanjiMenuToKatakanaIntentNavDraw.putExtra("type", "katakana");
+                        startActivity(fromKanjiMenuToKatakanaIntentNavDraw);
+                        break;
+                    case R.id.logoutnavdraw:
+                        break;
+                }
+
+
+                return false;
+            }
+        });
 
 
         level1.setOnClickListener(new View.OnClickListener() {
@@ -160,8 +192,6 @@ public class KanjiMenuActivity extends FragmentActivity {
                 startActivity(fromKanjiOptionsToKanjiListLevel7);
             }
         });
-
-
 
 
     }

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/profilenavdraw"
+            android:id="@+id/homenavdraw"
             android:icon="@drawable/ic_baseline_people_24"
-            android:title="@string/profile" />
+            android:title="@string/home" />
         <item
             android:id="@+id/kanjinavdraw"
             android:icon="@drawable/ic_baseline_people_24"
@@ -21,7 +22,7 @@
 
         <item android:title="">
             <menu>
-                <item android:title="@string/logout" />
+                <item android:id="@+id/logoutnavdraw" android:title="@string/logout" />
             </menu>
         </item>
     </group>

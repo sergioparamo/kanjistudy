@@ -49,6 +49,8 @@ public class KanaAdapter extends RecyclerView.Adapter<KanaAdapter.Holder> {
             holder.kanaId.setText(kana.getKatakana());
         }
 
+        holder.romajiId.setText(kana.getRomaji());
+
         holder.buttonSound.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,12 +81,14 @@ public class KanaAdapter extends RecyclerView.Adapter<KanaAdapter.Holder> {
     public static class Holder extends RecyclerView.ViewHolder {
 
         TextView kanaId;
+        TextView romajiId;
         MaterialButton buttonSound;
 
         public Holder(@NonNull View itemView) {
             super(itemView);
 
             kanaId = itemView.findViewById(R.id.kana_textview_id);
+            romajiId = itemView.findViewById(R.id.kana_romaji_id);
             buttonSound = itemView.findViewById(R.id.kana_sound_id);
 
         }

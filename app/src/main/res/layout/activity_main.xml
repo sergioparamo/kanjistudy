@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/kana_menu"
+        app:menu="@menu/navigation_drawer"
         app:navigationIcon="@drawable/ic_baseline_menu_24">
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -52,7 +52,7 @@
 
     <TextView
         android:id="@+id/kanjiActivityTextViewMain"
-        style="@style/ItemsStyle"
+        style="@style/ItemsStyleBorder"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -68,7 +68,7 @@
 
     <TextView
         android:id="@+id/hiraganaActivityTextViewMain"
-        style="@style/ItemsStyle"
+        style="@style/ItemsStyleBorder"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -83,7 +83,7 @@
     <!--Bottom Navigation View-->
     <TextView
         android:id="@+id/kanaActivityTextViewMain"
-        style="@style/ItemsStyle"
+        style="@style/ItemsStyleBorder"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"

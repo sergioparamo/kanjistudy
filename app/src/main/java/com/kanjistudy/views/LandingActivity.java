@@ -2,29 +2,37 @@ package com.kanjistudy.views;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 import com.kanjistudy.R;
 import com.kanjistudy.controllers.ToastsConfig;
 import com.kanjistudy.database.resources.Data;
 import com.kanjistudy.views.vocabularyViews.KanaActivity;
 
-public class LandingActivity extends FragmentActivity {
+public class LandingActivity extends FragmentActivity implements NavigationView.OnNavigationItemSelectedListener{
 
 
     DrawerLayout drawerLayout;
     MaterialToolbar toolbar;
 
+
+    ActionBarDrawerToggle toggle;
+
     BottomNavigationView bottomNavigationView;
+    NavigationView navigationView;
 
     ToastsConfig toastsConfig = new ToastsConfig();
     TextView kanjiTextView, kanaTextView, hiraganaTextView;
@@ -34,8 +42,17 @@ public class LandingActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.drawer_activity);
+        Data.loadData(getApplicationContext());
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation_main);
+        kanjiTextView = findViewById(R.id.kanjiActivityTextViewMain);
+        kanaTextView = findViewById(R.id.kanaActivityTextViewMain);
+        hiraganaTextView = findViewById(R.id.hiraganaActivityTextViewMain);
+
+        //navigationView = (NavigationView) findViewById(R.id.nav_view_main);
+        setNavigationViewListener();
+
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -62,14 +79,13 @@ public class LandingActivity extends FragmentActivity {
             }
         });
 
-        kanjiTextView = findViewById(R.id.kanjiActivityTextViewMain);
-        kanaTextView = findViewById(R.id.kanaActivityTextViewMain);
-        hiraganaTextView = findViewById(R.id.hiraganaActivityTextViewMain);
+
+
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         toolbar = findViewById(R.id.topAppBarMain);
 
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
+        toggle = new ActionBarDrawerToggle(
                 this,
                 drawerLayout,
                 toolbar,
@@ -77,8 +93,42 @@ public class LandingActivity extends FragmentActivity {
                 R.string.closeNavDrawer
         );
 
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
 
-        Data.loadData(getApplicationContext());
+        /*navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()) {
+                    case R.id.homenavdraw:
+                        Intent fromLandingToHomeNavDraw = new Intent(LandingActivity.this, LandingActivity.class);
+                        startActivity(fromLandingToHomeNavDraw);
+                        break;
+                    case R.id.kanjinavdraw:
+                        Intent fromLandingToKanjiMenuIntentNavDraw = new Intent(LandingActivity.this, KanjiMenuActivity.class);
+                        startActivity(fromLandingToKanjiMenuIntentNavDraw);
+                        break;
+                    case R.id.hiragananavdraw:
+                        Intent fromLandingToHiraganaIntentNavDraw = new Intent(LandingActivity.this, KanaActivity.class);
+                        fromLandingToHiraganaIntentNavDraw.putExtra("type", "hiragana");
+                        startActivity(fromLandingToHiraganaIntentNavDraw);
+                        break;
+                    case R.id.katakananavdraw:
+                        Intent fromLandingToKatakanaIntentNavDraw = new Intent(LandingActivity.this, KanaActivity.class);
+                        fromLandingToKatakanaIntentNavDraw.putExtra("type", "katakana");
+                        startActivity(fromLandingToKatakanaIntentNavDraw);
+                        break;
+                    case R.id.logoutnavdraw:
+                        break;
+                }
+
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });*/
+
+
 
 
         kanjiTextView.setOnClickListener(new View.OnClickListener() {
@@ -113,4 +163,35 @@ public class LandingActivity extends FragmentActivity {
 
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.homenavdraw:
+                Intent fromLandingToHomeNavDraw = new Intent(LandingActivity.this, LandingActivity.class);
+                startActivity(fromLandingToHomeNavDraw);
+                break;
+            case R.id.kanjinavdraw:
+                Intent fromLandingToKanjiMenuIntentNavDraw = new Intent(LandingActivity.this, KanjiMenuActivity.class);
+                startActivity(fromLandingToKanjiMenuIntentNavDraw);
+                break;
+            case R.id.hiragananavdraw:
+                Intent fromLandingToHiraganaIntentNavDraw = new Intent(LandingActivity.this, KanaActivity.class);
+                fromLandingToHiraganaIntentNavDraw.putExtra("type", "hiragana");
+                startActivity(fromLandingToHiraganaIntentNavDraw);
+                break;
+            case R.id.katakananavdraw:
+                Intent fromLandingToKatakanaIntentNavDraw = new Intent(LandingActivity.this, KanaActivity.class);
+                fromLandingToKatakanaIntentNavDraw.putExtra("type", "katakana");
+                startActivity(fromLandingToKatakanaIntentNavDraw);
+                break;
+            case R.id.logoutnavdraw:
+                break;
+        }
+        return true;
+    }
+
+    private void setNavigationViewListener() {
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_main);
+        navigationView.setNavigationItemSelectedListener(this);
+    }
 }
