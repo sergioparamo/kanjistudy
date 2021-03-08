@@ -3,6 +3,7 @@ package com.kanjistudy.views.loginProcess;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +16,7 @@ import com.kanjistudy.views.LandingActivity;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    MaterialButton loginButton, registerButton;
+    Button loginButton, registerButton;
     TextInputEditText username, password;
     TextInputLayout usernameInput, passwordInput;
 

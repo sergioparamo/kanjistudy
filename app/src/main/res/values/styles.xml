@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorBlack</item>
+        <item name="colorPrimary">@color/colorWhite</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
@@ -14,6 +14,7 @@
         <item name="android:textSize">36sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/colorWhite</item>
+        <item name="background">@color/colorBlack</item>
     </style>
 
     <style name="ItemsStyle">
@@ -23,6 +24,19 @@
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
         <item name="android:textColor">@color/colorWhite</item>
+        <item name="background">@color/colorBlack</item>
+
+    </style>
+
+    <style name="ButtonStyle">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textStyle">bold</item>
+
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="color">@color/colorBlack</item>
+
 
     </style>
 
@@ -34,6 +48,7 @@
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
         <item name="android:textColor">@color/colorWhite</item>
+
 
     </style>
 

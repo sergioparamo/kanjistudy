@@ -5,14 +5,15 @@
     android:layout_marginStart="110dp"
     android:layout_marginLeft="20dp"
     android:layout_marginRight="10dp"
-    android:background="@color/colorAccent"
     android:gravity="center"
+    android:layout_marginTop="10dp"
     android:paddingLeft="10dp"
-    android:paddingTop="5dp">
+    android:paddingTop="5dp"
+    android:background="@drawable/back">
 
     <TextView
         android:id="@+id/characterValueTextView"
-        style="@style/ItemsStyleBorder"
+        style="@style/ItemsStyle"
         android:layout_width="100dp"
         android:layout_height="60dp"
         android:layout_marginRight="20dp"

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,7 +23,7 @@ import com.kanjistudy.R;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
-    MaterialButton loginButton, registerButton;
+    Button loginButton, registerButton;
     MaterialCheckBox checkBox;
 
     TextInputLayout usernameInput, passwordInput, repeatInput, emailInput, nameInput, surnameInput, birthdateInput, genderInput;

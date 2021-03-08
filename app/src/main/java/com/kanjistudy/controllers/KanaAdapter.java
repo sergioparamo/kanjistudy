@@ -45,8 +45,10 @@ public class KanaAdapter extends RecyclerView.Adapter<KanaAdapter.Holder> {
 
         if (type.equals("hiragana")) {
             holder.kanaId.setText(kana.getHiragana());
+
         } else {
             holder.kanaId.setText(kana.getKatakana());
+
         }
 
         holder.romajiId.setText(kana.getRomaji());
@@ -82,6 +84,7 @@ public class KanaAdapter extends RecyclerView.Adapter<KanaAdapter.Holder> {
 
         TextView kanaId;
         TextView romajiId;
+
         MaterialButton buttonSound;
 
         public Holder(@NonNull View itemView) {

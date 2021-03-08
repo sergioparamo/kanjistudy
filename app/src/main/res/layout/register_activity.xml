@@ -251,9 +251,9 @@
                 android:text="@string/checkbox_conditions"
                 android:textStyle="bold" />
 
-            <com.google.android.material.button.MaterialButton
+            <Button
                 android:id="@+id/register_button_register"
-                style="@style/ItemsStyle"
+                style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -263,10 +263,10 @@
                 android:layout_marginBottom="5dp"
                 android:text="@string/register_button_text" />
 
-            <com.google.android.material.button.MaterialButton
+            <Button
 
                 android:id="@+id/login_button_register"
-                style="@style/ItemsStyle"
+                style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -275,8 +275,8 @@
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="5dp"
                 android:text="@string/login_button_text"
-                android:textColor="#fff"
-                app:strokeWidth="2dp" />
+
+                />
 
 
         </LinearLayout>

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,7 +25,7 @@ public class KanjiMenuActivity extends FragmentActivity {
     DrawerLayout drawerLayout;
     MaterialToolbar toolbar;
     TextView level1, level2, level3, level4, level5, level6, level7;
-
+    ActionBarDrawerToggle toggle;
     BottomNavigationView bottomNavigationView;
     NavigationView navigationView;
 
@@ -73,14 +74,16 @@ public class KanjiMenuActivity extends FragmentActivity {
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_kanji_menu_layout);
         toolbar = findViewById(R.id.topAppBarKanjiMenu);
-
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
+        toggle = new ActionBarDrawerToggle(
                 this,
                 drawerLayout,
                 toolbar,
                 R.string.openNavDrawer,
                 R.string.closeNavDrawer
         );
+
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
 
         navigationView = (NavigationView) findViewById(R.id.nav_view_kanjimenu);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {

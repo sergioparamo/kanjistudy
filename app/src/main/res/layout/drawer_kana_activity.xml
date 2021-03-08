@@ -17,7 +17,7 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view_kana"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:menu="@menu/navigation_drawer"
         android:layout_gravity="start"

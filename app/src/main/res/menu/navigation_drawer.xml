@@ -4,19 +4,19 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/homenavdraw"
-            android:icon="@drawable/ic_baseline_people_24"
+            android:icon="@drawable/ic_baseline_home_24"
             android:title="@string/home" />
         <item
             android:id="@+id/kanjinavdraw"
-            android:icon="@drawable/ic_baseline_people_24"
+            android:icon="@drawable/kanji"
             android:title="@string/kanji" />
         <item
             android:id="@+id/hiragananavdraw"
-            android:icon="@drawable/ic_baseline_people_24"
+            android:icon="@drawable/hiragana"
             android:title="@string/hiragana" />
         <item
             android:id="@+id/katakananavdraw"
-            android:icon="@drawable/ic_baseline_people_24"
+            android:icon="@drawable/katakana"
             android:title="@string/katakana" />
 
 

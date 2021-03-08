@@ -33,7 +33,7 @@ public class KanjiActivity extends FragmentActivity {
     private List<KanjiDb> localKanjiList;
 
     private Button lastLevel, nextLevel;
-
+    ActionBarDrawerToggle toggle;
 
     public TextView currentLevelTextView;
 
@@ -84,13 +84,16 @@ public class KanjiActivity extends FragmentActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerkanji_layout);
         toolbar = findViewById(R.id.topAppBarKanji);
 
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
+        toggle = new ActionBarDrawerToggle(
                 this,
                 drawerLayout,
                 toolbar,
                 R.string.openNavDrawer,
                 R.string.closeNavDrawer
         );
+
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
 
         Bundle bundle = getIntent().getExtras();
 

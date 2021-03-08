@@ -24,6 +24,8 @@ import com.kanjistudy.models.Kana;
 import com.kanjistudy.views.KanjiMenuActivity;
 import com.kanjistudy.views.LandingActivity;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 public class KanaActivity extends FragmentActivity {
@@ -33,6 +35,7 @@ public class KanaActivity extends FragmentActivity {
     private RecyclerView recyclerView;
 
     public TextView kanaTextView;
+    public TextView kanaTypeDescriptionTextView;
     public MaterialButton soundButton;
 
     @SuppressLint("StaticFieldLeak")
@@ -41,6 +44,7 @@ public class KanaActivity extends FragmentActivity {
 
     DrawerLayout drawerLayout;
     MaterialToolbar toolbar;
+    ActionBarDrawerToggle toggle;
 
     BottomNavigationView bottomNavigationView;
 
@@ -83,7 +87,7 @@ public class KanaActivity extends FragmentActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerkana_layout);
         toolbar = findViewById(R.id.topAppBarKana);
 
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
+        toggle = new ActionBarDrawerToggle(
                 this,
                 drawerLayout,
                 toolbar,
@@ -91,9 +95,13 @@ public class KanaActivity extends FragmentActivity {
                 R.string.closeNavDrawer
         );
 
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
 
         recyclerView = findViewById(R.id.recyclerKana);
         kanaTextView = findViewById(R.id.kana_textview_id);
+        kanaTypeDescriptionTextView = findViewById(R.id.kanaTitleDescriptionTypeId);
         soundButton = findViewById(R.id.kana_sound_id);
 
         Bundle bundle = getIntent().getExtras();
@@ -103,6 +111,14 @@ public class KanaActivity extends FragmentActivity {
             System.out.println("******************************** " + type);
 
         }
+
+        if (type.equals("hiragana")){
+            kanaTypeDescriptionTextView.setText("Hiragana Dictionary");
+        }else {
+            kanaTypeDescriptionTextView.setText("Katakana Dictionary");
+        }
+
+
 
         kanaList = Data.kanaRepository.getAllKanas();
 
