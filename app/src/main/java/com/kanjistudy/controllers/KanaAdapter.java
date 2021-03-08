@@ -91,7 +91,7 @@ public class KanaAdapter extends RecyclerView.Adapter<KanaAdapter.Holder> {
             super(itemView);
 
             kanaId = itemView.findViewById(R.id.kana_textview_id);
-            romajiId = itemView.findViewById(R.id.meaning_id);
+            romajiId = itemView.findViewById(R.id.kanji_meaning_id);
             buttonSound = itemView.findViewById(R.id.kana_sound_id);
 
         }

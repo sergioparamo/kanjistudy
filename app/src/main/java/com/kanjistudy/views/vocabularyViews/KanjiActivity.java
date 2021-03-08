@@ -114,7 +114,7 @@ public class KanjiActivity extends FragmentActivity {
         }
 
 
-        kanjiAdapter = new KanjiAdapter(localKanjiList);
+        kanjiAdapter = new KanjiAdapter(this,localKanjiList);
 
         recyclerViewMain = findViewById(R.id.recyclerViewMain);
         recyclerViewMain.setAdapter(kanjiAdapter);

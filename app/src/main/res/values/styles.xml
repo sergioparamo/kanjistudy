@@ -18,7 +18,7 @@
     </style>
 
     <style name="ItemsStyle">
-        <item name="android:textSize">30dp</item>
+        <item name="android:textSize">35dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:foreground">@drawable/custom_ripple_effect</item>
         <item name="android:clickable">true</item>

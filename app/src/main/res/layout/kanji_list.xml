@@ -21,10 +21,10 @@
         android:id="@+id/characterValueTextView"
         style="@style/ItemsStyle"
         android:layout_width="150dp"
-        android:layout_height="70dp"
+        android:layout_height="50dp"
         android:layout_gravity="left"
         android:hint="Kanji"
-        android:paddingTop="15dp"
+        android:paddingTop="5dp"
         android:textAlignment="center"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,13 +36,13 @@
         tools:ignore="RtlCompat" />
 
     <TextView
-        android:id="@+id/meaning_id"
+        android:id="@+id/kanji_meaning_id"
         style="@style/ItemsStyle"
         android:layout_width="150dp"
-        android:layout_height="70dp"
+        android:layout_height="50dp"
         android:layout_gravity="left"
         android:hint="Meaning"
-        android:paddingTop="15dp"
+        android:paddingTop="5dp"
         android:textAlignment="center"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -54,8 +54,27 @@
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="RtlCompat" />
 
+    <TextView
+        android:id="@+id/kanji_romaji_id"
+        style="@style/ItemsStyle"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_gravity="left"
+        android:hint="Pronunciation"
+        android:paddingTop="2dp"
+        android:textAlignment="center"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/kanji_meaning_id"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="RtlCompat" />
+
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/kanji_sound_id"
+        android:id="@+id/kanji_button_sound_id"
 
 
         android:layout_width="60dp"
