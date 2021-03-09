@@ -23,4 +23,10 @@
         android:enabled="true"
         android:icon="@drawable/katakana"
         android:title="@string/katakana"/>
+
+    <item
+        android:id="@+id/bottom_bar_quiz"
+        android:enabled="true"
+        android:icon="@drawable/blackquizicon"
+        android:title="@string/quiz"/>
 </menu>

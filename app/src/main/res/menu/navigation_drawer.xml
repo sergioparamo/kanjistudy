@@ -19,6 +19,11 @@
             android:icon="@drawable/katakana"
             android:title="@string/katakana" />
 
+        <item
+            android:id="@+id/quiznavdraw"
+            android:icon="@drawable/blackquizicon"
+            android:title="@string/quiz" />
+
 
         <item android:title="">
             <menu>
