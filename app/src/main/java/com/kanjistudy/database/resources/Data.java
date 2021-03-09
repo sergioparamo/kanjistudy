@@ -63,18 +63,32 @@ public class Data {
 
     }
 
-    public static boolean checkLoginUser(String username, String password) {
+    public static boolean checkUserName(String username) {
 
-        boolean isUser = false;
+        boolean usernameExists = false;
 
 
-        if (userRepository.getUserByUsername(username) != null && userRepository.getUserByPassword(password) != null) {
-            isUser = true;
+        if (userRepository.getUserByUsername(username) != null) {
+            usernameExists = true;
         }
 
-        return isUser;
+        return usernameExists;
 
     }
+
+    public static boolean checkPassword(String username, String password) {
+
+        boolean correctPassword = false;
+
+
+        if (userRepository.getPasswordByUsername(username).equals(password)) {
+            correctPassword = true;
+        }
+
+        return correctPassword;
+
+    }
+
 
     public static void loadUser(User userToInsert) {
         userRepository.insert(userToInsert);

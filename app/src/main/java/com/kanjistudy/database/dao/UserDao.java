@@ -36,8 +36,8 @@ public interface UserDao {
     @Query("SELECT * FROM User where userName = :username")
     User getUserByUsername(String username);
 
-    @Query("SELECT * FROM User where password = :password ")
-    User getUserByPassword( String password);
+    @Query("SELECT password FROM User where userName = :username ")
+    String getPasswordByUsername(String username);
 
     @Query("SELECT * FROM User where userMail = :usermail")
     User getUserByMail(String usermail);

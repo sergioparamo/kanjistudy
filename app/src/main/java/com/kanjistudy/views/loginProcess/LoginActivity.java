@@ -8,7 +8,6 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.kanjistudy.R;
@@ -60,14 +59,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 password.setError(textInput);
             } else {
 
-                boolean isUserOnDB = Data.checkLoginUser(username.getText().toString(),password.getText().toString());
+                boolean isUserOnDB = Data.checkUserName(username.getText().toString());
 
-                if (isUserOnDB){
-                    Data.setCurrentUser(username.getText().toString());
-                    Intent intent = new Intent(getApplicationContext(), LandingActivity.class);
-                    startActivity(intent);
-                }else{
-                    toastsConfig.showToastByDuration(getApplicationContext(),2,"Invalid credentials, please try again");
+                if (isUserOnDB) {
+                    boolean isPasswordCorrect = Data.checkPassword(username.getText().toString(), password.getText().toString());
+                    if (isPasswordCorrect) {
+                        Data.setCurrentUser(username.getText().toString());
+                        Intent intent = new Intent(getApplicationContext(), LandingActivity.class);
+                        startActivity(intent);
+                    } else {
+                        toastsConfig.showToastByDuration(getApplicationContext(), 2, "Invalid password, please try again");
+                    }
+                } else {
+                    toastsConfig.showToastByDuration(getApplicationContext(), 2, "Invalid username, please try again");
                 }
 
             }

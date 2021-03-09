@@ -84,7 +84,6 @@ public class LandingActivity extends FragmentActivity implements NavigationView.
         toolbar = findViewById(R.id.topAppBarMain);
 
 
-
         toggle = new ActionBarDrawerToggle(
                 this,
                 drawerLayout,
