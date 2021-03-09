@@ -2,16 +2,13 @@ package com.kanjistudy.views;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.google.android.material.appbar.MaterialToolbar;
@@ -42,7 +39,7 @@ public class LandingActivity extends FragmentActivity implements NavigationView.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.drawer_activity);
-        Data.loadData(getApplicationContext());
+
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation_main);
         kanjiTextView = findViewById(R.id.kanjiActivityTextViewMain);

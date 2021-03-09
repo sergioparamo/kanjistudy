@@ -13,7 +13,7 @@ import java.util.List;
 @Dao
 public interface UserDao {
 
-    @Query("SELECT * FROM Kanji")
+    @Query("SELECT * FROM User")
     List<User> getAllUsers();
 
     @Insert
@@ -25,11 +25,20 @@ public interface UserDao {
     @Delete
     void delete(User user);
 
-    @Query("SELECT name FROM User ")
+    @Query("SELECT name FROM User")
     String[] getUserNames();
 
     @Query("SELECT * FROM User where user_id = :userId")
     User getUserById(int userId);
 
 
+    //To check users
+    @Query("SELECT * FROM User where userName = :username")
+    User getUserByUsername(String username);
+
+    @Query("SELECT * FROM User where password = :password ")
+    User getUserByPassword( String password);
+
+    @Query("SELECT * FROM User where userMail = :usermail")
+    User getUserByMail(String usermail);
 }

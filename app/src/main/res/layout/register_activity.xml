@@ -191,32 +191,6 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/birthdateInput"
-                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginBottom="5dp"
-                android:hint="@string/birthdate"
-                android:textColorHint="#fff"
-                app:endIconMode="clear_text"
-                app:errorEnabled="true"
-                app:hintTextAppearance="?attr/textAppearanceOverline"
-                app:hintTextColor="#fff">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/birthdateEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#4000"
-                    android:inputType="date"
-                    android:textColor="#fff" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/genderInput"
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
                 android:layout_width="match_parent"

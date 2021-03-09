@@ -6,26 +6,31 @@ import androidx.room.PrimaryKey;
 import androidx.room.RoomDatabase;
 
 @Entity(tableName = "User")
-public abstract class User extends RoomDatabase {
+public class User {
 
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "user_id")
-    private int userId;
-    private String userName;
-    private String password;
-    private String userMail;
-    private String name;
-    private String surname;
-    private String gender;
+     @PrimaryKey(autoGenerate = true)
+     @ColumnInfo(name = "user_id")
+     int userId;
+     String userName;
+     String password;
+     String userMail;
+     String name;
+     String surname;
+     String gender;
 
-    public User(int userId, String userName, String password, String userMail, String name, String surname, String gender) {
-        this.userId = userId;
+
+
+    public User(String userName, String password, String userMail, String name, String surname, String gender) {
+
         this.userName = userName;
         this.password = password;
         this.userMail = userMail;
         this.name = name;
         this.surname = surname;
         this.gender = gender;
+    }
+
+    public User() {
     }
 
     public int getUserId() {

@@ -12,7 +12,6 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
@@ -20,6 +19,9 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.kanjistudy.R;
+import com.kanjistudy.controllers.ToastsConfig;
+import com.kanjistudy.database.resources.Data;
+import com.kanjistudy.models.User;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -28,11 +30,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     TextInputLayout usernameInput, passwordInput, repeatInput, emailInput, nameInput, surnameInput, birthdateInput, genderInput;
 
-    TextInputEditText usernameEditText, passwordEditText, repeatEditText, emailEditText, nameEditText, surnameEditText, birthdateEditText;
+    TextInputEditText usernameEditText, passwordEditText, repeatEditText, emailEditText, nameEditText, surnameEditText;
 
     private String[] genders = {"Male", "Female", "Others"};
 
     private AutoCompleteTextView genderDropDown;
+
+    static ToastsConfig toastsConfig = new ToastsConfig();
 
 
     @Override
@@ -49,7 +53,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         emailInput = findViewById(R.id.emailInput);
         nameInput = findViewById(R.id.nameInput);
         surnameInput = findViewById(R.id.surnameInput);
-        birthdateInput = findViewById(R.id.birthdateInput);
+
         genderInput = findViewById(R.id.genderInput);
         usernameEditText = findViewById(R.id.usernameEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
@@ -57,14 +61,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         emailEditText = findViewById(R.id.emailEditText);
         nameEditText = findViewById(R.id.nameEditText);
         surnameEditText = findViewById(R.id.surnameEditText);
-        birthdateEditText = findViewById(R.id.birthdateEditText);
+
         checkBox = findViewById(R.id.acceptCheckBox);
         genderDropDown = findViewById(R.id.genderAutoComplete);
         checkBox.setOnClickListener(this);
         registerButton.setOnClickListener(this);
         loginButton.setOnClickListener(this);
-        birthdateEditText.setOnClickListener(this);
-        birthdateEditText.setKeyListener(null);
+
 
         ArrayAdapter<String> genderListAdapter = new ArrayAdapter<String>(RegisterActivity.this, R.layout.gender_items_list, genders);
         genderDropDown.setAdapter(genderListAdapter);
@@ -75,7 +78,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         emailEditText.addTextChangedListener(new AppListener(this, emailInput));
         nameEditText.addTextChangedListener(new AppListener(this, nameInput));
         surnameEditText.addTextChangedListener(new AppListener(this, surnameInput));
-        birthdateEditText.addTextChangedListener(new AppListener(this, birthdateInput));
+
         genderDropDown.addTextChangedListener(new AppListener(this, genderInput));
 
 
@@ -98,25 +101,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
 
-    // **** DATE PICKER *****
-    public void datePicker(String input) {
-        MaterialDatePicker.Builder<Long> builder = MaterialDatePicker.Builder.datePicker();
-        builder.setTitleText(input);
-        final MaterialDatePicker<Long> picker = builder.build();
-        picker.show(getSupportFragmentManager(), picker.toString());
-
-        if (picker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener<Long>() {
-            @Override
-            public void onPositiveButtonClick(Long selection) {
-
-                birthdateEditText.setText(String.valueOf(picker.getHeaderText()));
-            }
-        })) ;
-
-
-    }
-
-
     @Override
     public void onClick(View v) {
 
@@ -130,12 +114,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             case R.id.acceptCheckBox:
                 checkBox.setTextColor(getResources().getColor(R.color.colorPrimary));
                 break;
-            case R.id.birthdateEditText:
-                textInput = getString(R.string.dateTitle);
-                datePicker(textInput);
-                break;
             case R.id.register_button_register:
-                if (usernameEditText.getText().toString().isEmpty() || passwordEditText.getText().length() < 8 || surnameEditText.getText().toString().isEmpty() || birthdateEditText.getText().toString().isEmpty() ||
+                if (usernameEditText.getText().toString().isEmpty() || passwordEditText.getText().length() < 8 || surnameEditText.getText().toString().isEmpty() ||
                         !passwordEditText.getText().toString().equals(repeatEditText.getText().toString()) || emailEditText.getText().toString().isEmpty()
                         || nameEditText.getText().toString().isEmpty() || genderDropDown.getText().toString().isEmpty() || !checkBox.isChecked()) {
 
@@ -171,10 +151,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                         textInput = getString(R.string.empty);
                         surnameInput.setError(textInput);
                     }
-                    if (birthdateEditText.getText().toString().isEmpty()) {
-                        textInput = getString(R.string.empty);
-                        birthdateInput.setError(textInput);
-                    }
                     if (genderDropDown.getText().toString().isEmpty()) {
                         textInput = getString(R.string.empty);
                         nameInput.setError(textInput);
@@ -184,7 +160,23 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                         checkBox.setError(textInput);
                     }
                 } else {
-                    showDialog();
+
+                    User intentUser = new User(usernameEditText.getText().toString(),
+                            passwordEditText.getText().toString(),
+                            emailEditText.getText().toString(),
+                            nameEditText.getText().toString()
+                            , surnameEditText.getText().toString(),
+                            genderDropDown.getText().toString());
+
+                    boolean isAvailable = Data.checkRegisterUser(intentUser);
+
+                    if (isAvailable) {
+                        Data.loadUser(intentUser);
+                        showDialog();
+                    } else {
+                        toastsConfig.showToastByDuration(getApplicationContext(), 2, "The user already exists, please try again! :)");
+                    }
+
                 }
                 break;
 

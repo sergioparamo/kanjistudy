@@ -10,6 +10,7 @@ import android.view.View;
 import com.google.android.material.button.MaterialButton;
 import com.kanjistudy.R;
 
+import com.kanjistudy.database.resources.Data;
 import com.kanjistudy.views.loginProcess.LoginActivity;
 import com.kanjistudy.views.loginProcess.RegisterActivity;
 
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.landing_activity);
+        Data.dbInit(getApplicationContext());
 
         loginButton = findViewById(R.id.login_button_main);
         registerButton = findViewById(R.id.register_button_main);

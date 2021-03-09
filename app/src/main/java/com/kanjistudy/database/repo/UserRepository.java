@@ -1,7 +1,6 @@
 package com.kanjistudy.database.repo;
 
 import com.kanjistudy.database.dao.UserDao;
-import com.kanjistudy.models.Kanji;
 import com.kanjistudy.models.User;
 
 import java.util.List;
@@ -15,7 +14,7 @@ public class UserRepository {
     }
 
 
-    public List<User> getAllKanjis() {
+    public List<User> getAllUsers() {
         return userDao.getAllUsers();
     }
 
@@ -37,6 +36,18 @@ public class UserRepository {
 
     public User getUserById(int level) {
         return userDao.getUserById(level);
+    }
+
+    public User getUserByUsername(String username) {
+        return userDao.getUserByUsername(username);
+    }
+
+    public User getUserByPassword(String password) {
+        return userDao.getUserByPassword(password);
+    }
+
+    public User getUserByMail(String mail) {
+        return userDao.getUserByMail(mail);
     }
 
 

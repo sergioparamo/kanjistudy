@@ -12,6 +12,8 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.kanjistudy.R;
+import com.kanjistudy.controllers.ToastsConfig;
+import com.kanjistudy.database.resources.Data;
 import com.kanjistudy.views.LandingActivity;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
@@ -19,6 +21,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     Button loginButton, registerButton;
     TextInputEditText username, password;
     TextInputLayout usernameInput, passwordInput;
+    static ToastsConfig toastsConfig = new ToastsConfig();
 
 
     @Override
@@ -56,8 +59,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 textInput = getString(R.string.password_less_8);
                 password.setError(textInput);
             } else {
-                Intent intent = new Intent(getApplicationContext(), LandingActivity.class);
-                startActivity(intent);
+
+                boolean isUserOnDB = Data.checkLoginUser(username.getText().toString(),password.getText().toString());
+
+                if (isUserOnDB){
+                    Data.setCurrentUser(username.getText().toString());
+                    Intent intent = new Intent(getApplicationContext(), LandingActivity.class);
+                    startActivity(intent);
+                }else{
+                    toastsConfig.showToastByDuration(getApplicationContext(),2,"Invalid credentials, please try again");
+                }
+
             }
 
         } else if (v.getId() == R.id.register_button_login) {
