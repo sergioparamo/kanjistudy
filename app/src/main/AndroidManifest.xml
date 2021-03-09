@@ -21,10 +21,11 @@
         <activity android:name=".views.KanjiMenuActivity" />
         <activity android:name=".views.vocabularyViews.KanjiActivity" />
         <activity android:name=".views.vocabularyViews.KanaActivity" />
-
+        <activity android:name=".views.HeaderDrawer" />
         <activity android:name=".views.LandingActivity" />
         <activity android:name=".views.loginProcess.LoginActivity" />
         <activity android:name=".views.loginProcess.RegisterActivity" />
+        <activity android:name=".views.quiz.QuizMenu" />
     </application>
 
 </manifest>

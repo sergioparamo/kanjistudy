@@ -17,6 +17,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.kanjistudy.R;
 import com.kanjistudy.controllers.ToastsConfig;
 import com.kanjistudy.database.resources.Data;
+import com.kanjistudy.views.quiz.QuizMenu;
 import com.kanjistudy.views.vocabularyViews.KanaActivity;
 
 public class LandingActivity extends FragmentActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -72,6 +73,10 @@ public class LandingActivity extends FragmentActivity implements NavigationView.
                         Intent fromLandingToKatakanaIntentBottom = new Intent(LandingActivity.this, KanaActivity.class);
                         fromLandingToKatakanaIntentBottom.putExtra("type", "katakana");
                         startActivity(fromLandingToKatakanaIntentBottom);
+                        break;
+                    case R.id.bottom_bar_quiz:
+                        Intent fromLandingToQuizMenuIntentBottom = new Intent(LandingActivity.this, QuizMenu.class);
+                        startActivity(fromLandingToQuizMenuIntentBottom);
                         break;
                 }
 

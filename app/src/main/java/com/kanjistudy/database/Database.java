@@ -12,7 +12,7 @@ import com.kanjistudy.models.Kana;
 import com.kanjistudy.models.Kanji;
 import com.kanjistudy.models.User;
 
-@androidx.room.Database(entities = {Kanji.class, Kana.class, User.class}, version = 1)
+@androidx.room.Database(entities = {Kanji.class, Kana.class, User.class}, version = 2)
 public abstract class Database extends RoomDatabase {
 
     public static Database INSTANCE;

@@ -23,6 +23,7 @@ import com.kanjistudy.database.resources.Data;
 import com.kanjistudy.models.Kanji;
 import com.kanjistudy.views.KanjiMenuActivity;
 import com.kanjistudy.views.LandingActivity;
+import com.kanjistudy.views.quiz.QuizMenu;
 
 import java.util.List;
 
@@ -74,6 +75,10 @@ public class KanjiActivity extends FragmentActivity {
                         Intent fromKanjiToKatakanaIntentBottom = new Intent(KanjiActivity.this, KanaActivity.class);
                         fromKanjiToKatakanaIntentBottom.putExtra("type", "katakana");
                         startActivity(fromKanjiToKatakanaIntentBottom);
+                        break;
+                    case R.id.bottom_bar_quiz:
+                        Intent fromKanjiToQuizMenuIntentBottom = new Intent(KanjiActivity.this, QuizMenu.class);
+                        startActivity(fromKanjiToQuizMenuIntentBottom);
                         break;
                 }
 

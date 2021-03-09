@@ -11,7 +11,7 @@
     >
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/topAppBarMain"
+        android:id="@+id/topAppBarQuizMenu"
 
         style="@style/Widget.MaterialComponents.Toolbar.Primary"
         android:layout_width="match_parent"
@@ -32,14 +32,14 @@
 
 
     <TextView
-        android:id="@+id/welcomeTextViewMain"
+        android:id="@+id/subtitleTextViewQuizMenu"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="80dp"
         android:layout_marginLeft="100dp"
         android:gravity="center"
-        android:hint="ようこそ user!"
+        android:text="Choose a Quiz!"
         android:textAlignment="center"
 
         android:textColor="@color/colorWhite"
@@ -50,53 +50,47 @@
         />
 
     <TextView
-        android:id="@+id/kanjiActivityTextViewMain"
+        android:id="@+id/kanjiQuizTextView"
         style="@style/ItemsStyleBorder"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-
-
-        android:layout_marginTop="150dp"
-
-        android:layout_alignStart="@id/welcomeTextViewMain"
+        android:layout_marginTop="200dp"
+        android:layout_alignStart="@id/subtitleTextViewQuizMenu"
         android:gravity="center"
-        android:text="Study      Kanjis"
-
+        android:text="Kanji\nQuiz"
         />
 
     <TextView
-        android:id="@+id/hiraganaActivityTextViewMain"
+        android:id="@+id/hiraganaQuizTextView"
         style="@style/ItemsStyleBorder"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="280dp"
-        android:layout_alignStart="@+id/kanjiActivityTextViewMain"
+        android:layout_marginTop="320dp"
+        android:layout_alignStart="@+id/kanjiQuizTextView"
         android:gravity="center"
-        android:text="Study Hiragana"
+        android:text="Hiragana\nQuiz"
         android:textSize="30dp" />
 
-    <!--Bottom Navigation View-->
     <TextView
-        android:id="@+id/kanaActivityTextViewMain"
-
+        android:id="@+id/katakanaQuizTextView"
         style="@style/ItemsStyleBorder"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="420dp"
-        android:layout_alignStart="@+id/hiraganaActivityTextViewMain"
+        android:layout_marginTop="430dp"
+        android:layout_alignStart="@+id/hiraganaQuizTextView"
         android:gravity="center"
-        android:text="Study Katakana"
-        android:textStyle="bold"
+        android:text="Hiragana\nQuiz"
+        android:textSize="30dp" />
 
-        />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation_main"
+        android:id="@+id/bottom_navigation_quiz_menu"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:background="@color/colorAccent"
         app:menu="@menu/bottom_navigation_menu" />
+
 
 
 

@@ -17,6 +17,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.kanjistudy.R;
+import com.kanjistudy.views.quiz.QuizMenu;
 import com.kanjistudy.views.vocabularyViews.KanaActivity;
 import com.kanjistudy.views.vocabularyViews.KanjiActivity;
 
@@ -55,6 +56,10 @@ public class KanjiMenuActivity extends FragmentActivity {
                         Intent fromKanjiMenuToKatakanaIntentBottom = new Intent(KanjiMenuActivity.this, KanaActivity.class);
                         fromKanjiMenuToKatakanaIntentBottom.putExtra("type", "katakana");
                         startActivity(fromKanjiMenuToKatakanaIntentBottom);
+                        break;
+                    case R.id.bottom_bar_quiz:
+                        Intent fromKanjiMenuToQuizMenuIntentBottom = new Intent(KanjiMenuActivity.this, QuizMenu.class);
+                        startActivity(fromKanjiMenuToQuizMenuIntentBottom);
                         break;
                 }
 
