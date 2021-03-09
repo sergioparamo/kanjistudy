@@ -50,19 +50,21 @@ public class Data {
 
     }
 
-    public static boolean checkRegisterUser(User user) {
+    //TRUE if exists
+    public static boolean checkUserMail(String mail) {
 
-        boolean isAvailable = true;
+        boolean emailExist = false;
 
 
-        if (userRepository.getUserByUsername(user.getUserName()) != null || userRepository.getUserByMail(user.getUserMail()) != null) {
-            isAvailable = false;
+        if (userRepository.getUserByMail(mail) != null) {
+            emailExist = true;
         }
 
-        return isAvailable;
+        return emailExist;
 
     }
 
+    //TRUE if exists
     public static boolean checkUserName(String username) {
 
         boolean usernameExists = false;

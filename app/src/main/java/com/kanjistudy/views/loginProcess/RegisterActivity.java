@@ -13,8 +13,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.checkbox.MaterialCheckBox;
-import com.google.android.material.datepicker.MaterialDatePicker;
-import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -168,14 +166,19 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                             , surnameEditText.getText().toString(),
                             genderDropDown.getText().toString());
 
-                    boolean isAvailable = Data.checkRegisterUser(intentUser);
-
-                    if (isAvailable) {
-                        Data.loadUser(intentUser);
-                        showDialog();
+                    boolean userExists = Data.checkUserName(intentUser.getUserName());
+                    if (!userExists) {
+                        boolean mailExists = Data.checkUserMail(intentUser.getUserMail());
+                        if (!mailExists) {
+                            Data.loadUser(intentUser);
+                            showDialog();
+                        } else {
+                            toastsConfig.showToastByDuration(getApplicationContext(), 2, "This email has already been used, please provide another one! :)");
+                        }
                     } else {
-                        toastsConfig.showToastByDuration(getApplicationContext(), 2, "The user already exists, please try again! :)");
+                        toastsConfig.showToastByDuration(getApplicationContext(), 2, "This username has already been used, please provide another one! :)");
                     }
+
 
                 }
                 break;
