@@ -10,6 +10,7 @@ import com.kanjistudy.database.repo.KanaRepository;
 import com.kanjistudy.database.repo.KanjiRepository;
 import com.kanjistudy.models.Kana;
 import com.kanjistudy.models.Kanji;
+import com.kanjistudy.models.User;
 
 public class Data {
 
@@ -19,6 +20,9 @@ public class Data {
     public static KanjiRepository kanjiRepository;
     public static KanaRepository kanaRepository;
     static KanaDao kanaDao;
+
+    //Static variables according to the user that is currently engaging with the app
+    public static User currentUser;
 
     public static void loadData(Context context) {
         database = Database.getInstance(context);
@@ -36,6 +40,9 @@ public class Data {
 
 
     }
+
+
+
 
     public static void loadKanjis() {
 
