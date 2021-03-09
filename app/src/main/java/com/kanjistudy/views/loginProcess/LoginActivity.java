@@ -68,10 +68,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         Intent intent = new Intent(getApplicationContext(), LandingActivity.class);
                         startActivity(intent);
                     } else {
-                        toastsConfig.showToastByDuration(getApplicationContext(), 2, "Invalid password, please try again");
+                        toastsConfig.showToastByDuration(getApplicationContext(), 2, "Wrong password, please try again");
                     }
                 } else {
-                    toastsConfig.showToastByDuration(getApplicationContext(), 2, "Invalid username, please try again");
+                    toastsConfig.showToastByDuration(getApplicationContext(), 2, "The username doesn't exist, please try again");
                 }
 
             }
