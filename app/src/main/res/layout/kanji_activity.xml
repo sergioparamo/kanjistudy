@@ -32,7 +32,7 @@
     </com.google.android.material.appbar.MaterialToolbar>
 
     <TextView
-        android:id="@+id/subTitleTextViewMain"
+        android:id="@+id/welcomeTextViewMain"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="110dp"

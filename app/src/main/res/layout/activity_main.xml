@@ -32,14 +32,15 @@
 
 
     <TextView
-        android:id="@+id/subTitleTextViewMain"
-        android:layout_width="wrap_content"
+        android:id="@+id/welcomeTextViewMain"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="80dp"
         android:layout_marginLeft="100dp"
         android:gravity="center"
-        android:hint="Let's study Japanese!"
+        android:hint="ようこそ user!"
+        android:textAlignment="center"
 
         android:textColor="@color/colorWhite"
         android:textSize="25dp"
@@ -57,7 +58,7 @@
 
         android:layout_marginTop="150dp"
 
-        android:layout_alignStart="@id/subTitleTextViewMain"
+        android:layout_alignStart="@id/welcomeTextViewMain"
         android:gravity="center"
         android:text="Study      Kanjis"
 
@@ -89,7 +90,6 @@
 
         />
 
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation_main"
         android:layout_width="match_parent"
@@ -97,6 +97,9 @@
         android:layout_alignParentBottom="true"
         android:background="@color/colorAccent"
         app:menu="@menu/bottom_navigation_menu" />
+
+
+
 
 
 

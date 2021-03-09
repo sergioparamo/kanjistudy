@@ -32,7 +32,7 @@ public class LandingActivity extends FragmentActivity implements NavigationView.
     NavigationView navigationView;
 
     ToastsConfig toastsConfig = new ToastsConfig();
-    TextView kanjiTextView, kanaTextView, hiraganaTextView;
+    TextView kanjiTextView, kanaTextView, hiraganaTextView, welcomeTextView;
 
 
     @Override
@@ -45,6 +45,9 @@ public class LandingActivity extends FragmentActivity implements NavigationView.
         kanjiTextView = findViewById(R.id.kanjiActivityTextViewMain);
         kanaTextView = findViewById(R.id.kanaActivityTextViewMain);
         hiraganaTextView = findViewById(R.id.hiraganaActivityTextViewMain);
+        welcomeTextView = findViewById(R.id.welcomeTextViewMain);
+
+        welcomeTextView.setText("ようこそ " + Data.currentUser.getName() + "!");
 
         //navigationView = (NavigationView) findViewById(R.id.nav_view_main);
         setNavigationViewListener();
@@ -79,6 +82,8 @@ public class LandingActivity extends FragmentActivity implements NavigationView.
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         toolbar = findViewById(R.id.topAppBarMain);
+
+
 
         toggle = new ActionBarDrawerToggle(
                 this,

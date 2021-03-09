@@ -104,7 +104,7 @@ public class KanjiActivity extends FragmentActivity {
 
         lastLevel = findViewById(R.id.previous_level_button);
         nextLevel = findViewById(R.id.next_level_button);
-        currentLevelTextView = findViewById(R.id.subTitleTextViewMain);
+        currentLevelTextView = findViewById(R.id.welcomeTextViewMain);
         currentLevelTextView.setText("Level " + levelIndex);
 
         if (levelIndex == 1) {
