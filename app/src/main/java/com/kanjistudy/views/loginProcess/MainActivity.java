@@ -1,50 +1,217 @@
 package com.kanjistudy.views.loginProcess;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentActivity;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
-import com.google.android.material.button.MaterialButton;
+import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 import com.kanjistudy.R;
 
+import com.kanjistudy.controllers.ToastsConfig;
 import com.kanjistudy.database.resources.Data;
-import com.kanjistudy.views.loginProcess.LoginActivity;
-import com.kanjistudy.views.loginProcess.RegisterActivity;
+import com.kanjistudy.views.KanjiMenuActivity;
+import com.kanjistudy.views.quiz.QuizMenu;
+import com.kanjistudy.views.vocabularyViews.KanaActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends FragmentActivity implements NavigationView.OnNavigationItemSelectedListener {
+    DrawerLayout drawerLayout;
+    MaterialToolbar toolbar;
 
-    MaterialButton loginButton, registerButton;
+
+    ActionBarDrawerToggle toggle;
+
+    BottomNavigationView bottomNavigationView;
+    NavigationView navigationView;
+    String username;
+
+    ToastsConfig toastsConfig = new ToastsConfig();
+    TextView kanjiTextView, kanaTextView, hiraganaTextView, welcomeTextView;
+
+    private static final String PREF_LOGIN = "LOGIN_PREF";
+    private static final String KEY_CREDENTIALS = "LOGIN_CREDENTIALS";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.landing_activity);
-        Data.dbInit(getApplicationContext());
-
-        loginButton = findViewById(R.id.login_button_main);
-        registerButton = findViewById(R.id.register_button_main);
+        setContentView(R.layout.drawer_activity);
 
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyLogin.txt", Context.MODE_PRIVATE);
+        Boolean loginCheck = sharedPreferences.getBoolean("FirstLogin", false);
+        username = sharedPreferences.getString("username", null);
+
+        if (!loginCheck) {
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
+        } else {
+            Data.loadData(getApplicationContext());
+        }
+
+
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation_main);
+        kanjiTextView = findViewById(R.id.kanjiActivityTextViewMain);
+        kanaTextView = findViewById(R.id.kanaActivityTextViewMain);
+        hiraganaTextView = findViewById(R.id.hiraganaActivityTextViewMain);
+        welcomeTextView = findViewById(R.id.welcomeTextViewMain);
+
+        welcomeTextView.setText("ようこそ " + username + "!");
+
+
+        setNavigationViewListener();
+
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()) {
+
+                    case R.id.bottom_bar_kanji:
+                        Intent fromLandingToKanjiMenuIntentBottom = new Intent(MainActivity.this, KanjiMenuActivity.class);
+                        startActivity(fromLandingToKanjiMenuIntentBottom);
+                        break;
+                    case R.id.bottom_bar_hiragana:
+                        Intent fromLandingToHiraganaIntentBottom = new Intent(MainActivity.this, KanaActivity.class);
+                        fromLandingToHiraganaIntentBottom.putExtra("type", "hiragana");
+                        startActivity(fromLandingToHiraganaIntentBottom);
+                        break;
+                    case R.id.bottom_bar_katakana:
+                        Intent fromLandingToKatakanaIntentBottom = new Intent(MainActivity.this, KanaActivity.class);
+                        fromLandingToKatakanaIntentBottom.putExtra("type", "katakana");
+                        startActivity(fromLandingToKatakanaIntentBottom);
+                        break;
+                    case R.id.bottom_bar_quiz:
+                        Intent fromLandingToQuizMenuIntentBottom = new Intent(MainActivity.this, QuizMenu.class);
+                        startActivity(fromLandingToQuizMenuIntentBottom);
+                        break;
+                }
+
+                return false;
             }
         });
 
 
-        registerButton.setOnClickListener(new View.OnClickListener() {
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        toolbar = findViewById(R.id.topAppBarMain);
+
+
+        toggle = new ActionBarDrawerToggle(
+                this,
+                drawerLayout,
+                toolbar,
+                R.string.openNavDrawer,
+                R.string.closeNavDrawer
+        );
+
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        /*navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()) {
+                    case R.id.homenavdraw:
+                        Intent fromLandingToHomeNavDraw = new Intent(LandingActivity.this, LandingActivity.class);
+                        startActivity(fromLandingToHomeNavDraw);
+                        break;
+                    case R.id.kanjinavdraw:
+                        Intent fromLandingToKanjiMenuIntentNavDraw = new Intent(LandingActivity.this, KanjiMenuActivity.class);
+                        startActivity(fromLandingToKanjiMenuIntentNavDraw);
+                        break;
+                    case R.id.hiragananavdraw:
+                        Intent fromLandingToHiraganaIntentNavDraw = new Intent(LandingActivity.this, KanaActivity.class);
+                        fromLandingToHiraganaIntentNavDraw.putExtra("type", "hiragana");
+                        startActivity(fromLandingToHiraganaIntentNavDraw);
+                        break;
+                    case R.id.katakananavdraw:
+                        Intent fromLandingToKatakanaIntentNavDraw = new Intent(LandingActivity.this, KanaActivity.class);
+                        fromLandingToKatakanaIntentNavDraw.putExtra("type", "katakana");
+                        startActivity(fromLandingToKatakanaIntentNavDraw);
+                        break;
+                    case R.id.logoutnavdraw:
+                        break;
+                }
+
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });*/
+
+
+        kanjiTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
-                startActivity(intent);
+                Intent fromMainToKanjiOptionsActivity = new Intent(getApplicationContext(), KanjiMenuActivity.class);
+                startActivity(fromMainToKanjiOptionsActivity);
+            }
+        });
+
+        hiraganaTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent fromMainToHiraganaActivity = new Intent(getApplicationContext(), KanaActivity.class);
+                fromMainToHiraganaActivity.putExtra("type", "hiragana");
+                startActivity(fromMainToHiraganaActivity);
             }
         });
 
 
+        kanaTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent fromMainToKatakanaActivity = new Intent(getApplicationContext(), KanaActivity.class);
+                fromMainToKatakanaActivity.putExtra("type", "katakana");
+                startActivity(fromMainToKatakanaActivity);
+            }
+        });
+
+
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.homenavdraw:
+                Intent fromLandingToHomeNavDraw = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(fromLandingToHomeNavDraw);
+                break;
+            case R.id.kanjinavdraw:
+                Intent fromLandingToKanjiMenuIntentNavDraw = new Intent(MainActivity.this, KanjiMenuActivity.class);
+                startActivity(fromLandingToKanjiMenuIntentNavDraw);
+                break;
+            case R.id.hiragananavdraw:
+                Intent fromLandingToHiraganaIntentNavDraw = new Intent(MainActivity.this, KanaActivity.class);
+                fromLandingToHiraganaIntentNavDraw.putExtra("type", "hiragana");
+                startActivity(fromLandingToHiraganaIntentNavDraw);
+                break;
+            case R.id.katakananavdraw:
+                Intent fromLandingToKatakanaIntentNavDraw = new Intent(MainActivity.this, KanaActivity.class);
+                fromLandingToKatakanaIntentNavDraw.putExtra("type", "katakana");
+                startActivity(fromLandingToKatakanaIntentNavDraw);
+                break;
+            case R.id.logoutnavdraw:
+                break;
+        }
+        return true;
+    }
+
+    private void setNavigationViewListener() {
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_main);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 }

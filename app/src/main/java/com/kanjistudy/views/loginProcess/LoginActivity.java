@@ -1,6 +1,8 @@
 package com.kanjistudy.views.loginProcess;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +15,6 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.kanjistudy.R;
 import com.kanjistudy.controllers.ToastsConfig;
 import com.kanjistudy.database.resources.Data;
-import com.kanjistudy.views.LandingActivity;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -22,11 +23,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     TextInputLayout usernameInput, passwordInput;
     static ToastsConfig toastsConfig = new ToastsConfig();
 
+    public static final String PREF_LOGIN = "LOGIN_PREF";
+    public static final String KEY_CREDENTIALS = "LOGIN_CREDENTIALS";
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
+
+        if (Data.userRepository == null){
+            toastsConfig.showToastByDuration(getApplicationContext(),3,"CREATED USER REPO!!!");
+            Data.createUserRepo(getApplicationContext());
+        }else {
+            toastsConfig.showToastByDuration(getApplicationContext(),3,"NOT CREATED USER REPO!!!");
+        }
 
 
         loginButton = findViewById(R.id.login_button_login);
@@ -64,14 +75,30 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if (isUserOnDB) {
                     boolean isPasswordCorrect = Data.checkPassword(username.getText().toString(), password.getText().toString());
                     if (isPasswordCorrect) {
-                        Data.setCurrentUser(username.getText().toString());
-                        Intent intent = new Intent(getApplicationContext(), LandingActivity.class);
+
+                        SharedPreferences sharedPreferences = getSharedPreferences("MyLogin.txt", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putBoolean("FirstLogin", true);
+
+                        editor.putString("username", username.getText().toString());
+
+                        editor.commit();
+
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
+
+
                     } else {
                         toastsConfig.showToastByDuration(getApplicationContext(), 2, "Wrong password, please try again");
+                        SharedPreferences.Editor editor = getSharedPreferences(PREF_LOGIN, MODE_PRIVATE).edit();
+                        editor.clear();
+                        editor.commit();
                     }
                 } else {
                     toastsConfig.showToastByDuration(getApplicationContext(), 2, "The username doesn't exist, please try again");
+                    SharedPreferences.Editor editor = getSharedPreferences(PREF_LOGIN, MODE_PRIVATE).edit();
+                    editor.clear();
+                    editor.commit();
                 }
 
             }

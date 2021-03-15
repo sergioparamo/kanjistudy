@@ -17,6 +17,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.kanjistudy.R;
+import com.kanjistudy.views.loginProcess.MainActivity;
 import com.kanjistudy.views.quiz.QuizMenu;
 import com.kanjistudy.views.vocabularyViews.KanaActivity;
 import com.kanjistudy.views.vocabularyViews.KanjiActivity;
@@ -44,7 +45,7 @@ public class KanjiMenuActivity extends FragmentActivity {
                 switch (item.getItemId()) {
 
                     case R.id.bottom_bar_home:
-                        Intent fromKanjiMenuToLandingIntentBottom = new Intent(KanjiMenuActivity.this, LandingActivity.class);
+                        Intent fromKanjiMenuToLandingIntentBottom = new Intent(KanjiMenuActivity.this, MainActivity.class);
                         startActivity(fromKanjiMenuToLandingIntentBottom);
                         break;
                     case R.id.bottom_bar_hiragana:
@@ -97,7 +98,7 @@ public class KanjiMenuActivity extends FragmentActivity {
 
                 switch (item.getItemId()) {
                     case R.id.homenavdraw:
-                        Intent fromKanjiMenuToLandingIntentNavDraw = new Intent(KanjiMenuActivity.this, LandingActivity.class);
+                        Intent fromKanjiMenuToLandingIntentNavDraw = new Intent(KanjiMenuActivity.this, MainActivity.class);
                         startActivity(fromKanjiMenuToLandingIntentNavDraw);
                         break;
                     case R.id.kanjinavdraw:

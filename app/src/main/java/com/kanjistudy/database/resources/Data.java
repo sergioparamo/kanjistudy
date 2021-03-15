@@ -14,6 +14,8 @@ import com.kanjistudy.models.Kana;
 import com.kanjistudy.models.Kanji;
 import com.kanjistudy.models.User;
 
+import static com.kanjistudy.views.quiz.KanjiQuizMultipleOptions.toastsConfig;
+
 public class Data {
 
     //LOCAL DB VARIABLES
@@ -27,12 +29,11 @@ public class Data {
     public static KanaRepository kanaRepository;
     public static UserRepository userRepository;
 
-
     //Static variables according to the user that is currently engaging with the app
     public static User currentUser;
 
-    //This only has to be called once
-    public static void dbInit(Context context) {
+
+    public static void loadData(Context context) {
         database = Database.getInstance(context);
         kanjiDao = database.kanjiDao();
         kanjiRepository = new KanjiRepository(kanjiDao);
@@ -43,12 +44,21 @@ public class Data {
 
         //To insert the data just once when the app starts
         if (kanjiRepository.getAllKanjis().isEmpty() && kanaRepository.getAllKanas().isEmpty()) {
+            toastsConfig.showToastByDuration(context, 3, "LOADING DATA!!!");
             loadKanjis();
             loadKana();
         }
 
+    }
+
+
+    public static void createUserRepo(Context context) {
+        database = Database.getInstance(context);
+        userDao = database.userDao();
+        userRepository = new UserRepository(userDao);
 
     }
+
 
     //TRUE if exists
     public static boolean checkUserMail(String mail) {

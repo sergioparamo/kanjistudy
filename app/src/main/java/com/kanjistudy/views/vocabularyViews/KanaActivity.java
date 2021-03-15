@@ -22,10 +22,8 @@ import com.kanjistudy.controllers.KanaAdapter;
 import com.kanjistudy.database.resources.Data;
 import com.kanjistudy.models.Kana;
 import com.kanjistudy.views.KanjiMenuActivity;
-import com.kanjistudy.views.LandingActivity;
+import com.kanjistudy.views.loginProcess.MainActivity;
 import com.kanjistudy.views.quiz.QuizMenu;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -62,7 +60,7 @@ public class KanaActivity extends FragmentActivity {
                 switch (item.getItemId()) {
 
                     case R.id.bottom_bar_home:
-                        Intent fromKanaToLandingIntentBottom = new Intent(KanaActivity.this, LandingActivity.class);
+                        Intent fromKanaToLandingIntentBottom = new Intent(KanaActivity.this, MainActivity.class);
                         startActivity(fromKanaToLandingIntentBottom);
                         break;
                     case R.id.bottom_bar_kanji:

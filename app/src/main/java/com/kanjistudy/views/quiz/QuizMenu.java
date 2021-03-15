@@ -2,14 +2,12 @@ package com.kanjistudy.views.quiz;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentActivity;
 
@@ -17,7 +15,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kanjistudy.R;
 import com.kanjistudy.views.KanjiMenuActivity;
-import com.kanjistudy.views.LandingActivity;
+import com.kanjistudy.views.loginProcess.MainActivity;
 import com.kanjistudy.views.vocabularyViews.KanaActivity;
 
 public class QuizMenu extends FragmentActivity {
@@ -44,7 +42,7 @@ public class QuizMenu extends FragmentActivity {
                 switch (item.getItemId()) {
 
                     case R.id.bottom_bar_home:
-                        Intent fromQuizMenuToLandingIntentBottom = new Intent(QuizMenu.this, LandingActivity.class);
+                        Intent fromQuizMenuToLandingIntentBottom = new Intent(QuizMenu.this, MainActivity.class);
                         startActivity(fromQuizMenuToLandingIntentBottom);
                         break;
                     case R.id.bottom_bar_kanji:

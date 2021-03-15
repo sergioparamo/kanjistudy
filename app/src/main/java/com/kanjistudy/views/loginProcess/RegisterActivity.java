@@ -90,7 +90,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         builder.setPositiveButton(R.string.login_text, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
                 //not needed i.putExtra("name", usernameEditText.getText().toString());
                 startActivity(i);
             }
