@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBlue"
+    android:orientation="vertical"
+    tools:context=".views.quiz.KanjiQuizMultipleOptions"
+
+    >
+
+    <TextView
+        android:id="@+id/questionTextView"
+
+        android:layout_width="350dp"
+        android:layout_height="220dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="30dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:text=""
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/simpleProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:background="@color/colorWhite"
+
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="330dp"
+        android:max="100"
+        android:orientation="horizontal"
+        android:progress="10" />
+
+    <TextView
+        android:id="@+id/progressText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="400dp"
+        android:layout_marginLeft="200dp"
+        android:orientation="horizontal"
+        android:text=""
+        android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/firstOptionButtonQuiz"
+        style="@style/ButtonStyle"
+        android:layout_width="170dp"
+        android:layout_height="60dp"
+        android:layout_gravity="left"
+        android:layout_marginTop="470dp"
+        android:layout_marginStart="20dp"
+
+        android:orientation="horizontal"
+        android:text="@string/trueAnswerButton"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/secondOptionButtonQuiz"
+        style="@style/ButtonStyle"
+        android:layout_width="170dp"
+        android:layout_height="60dp"
+        android:layout_gravity="left"
+        android:layout_marginTop="530dp"
+        android:layout_marginStart="20dp"
+
+        android:orientation="horizontal"
+        android:text="@string/falseAnswerButton"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/thirdOptionButtonQuiz"
+        style="@style/ButtonStyle"
+        android:layout_width="170dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="470dp"
+        android:layout_marginStart="200dp"
+
+        android:orientation="horizontal"
+        android:text="@string/trueAnswerButton"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/fourthOptionButtonQuiz"
+        style="@style/ButtonStyle"
+        android:layout_width="170dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="530dp"
+        android:layout_marginStart="200dp"
+        android:orientation="horizontal"
+        android:text="@string/falseAnswerButton"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
+
+</RelativeLayout>

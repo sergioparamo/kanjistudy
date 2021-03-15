@@ -38,4 +38,6 @@
     <string name="openNavDrawer">Open Drawer</string>
     <string name="closeNavDrawer">Close Drawer</string>
     <string name="quiz">Quiz</string>
+    <string name="trueAnswerButton">TRUE</string>
+    <string name="falseAnswerButton">FALSE</string>
 </resources>

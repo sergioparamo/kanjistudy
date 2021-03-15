@@ -303,4 +303,6 @@ public class Data {
         }
 
     }
+
+//    public static String getRandomKanji();
 }
