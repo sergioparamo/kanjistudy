@@ -9,7 +9,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
 
-    tools:context=".views.LandingActivity"
+    tools:context=".views.loginProcess.MainActivity"
     tools:openDrawer="start"
 
     >

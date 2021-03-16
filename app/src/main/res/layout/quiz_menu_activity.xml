@@ -7,7 +7,6 @@
     app:menu="@menu/navigation_drawer"
 
 
-
     >
 
     <com.google.android.material.appbar.MaterialToolbar
@@ -25,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:foregroundGravity="center"
-            android:src="@drawable/twitter_logo_blue"
+
             android:text="Kanji Study"
             android:textAlignment="center" />
     </com.google.android.material.appbar.MaterialToolbar>
@@ -36,8 +35,8 @@
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="80dp"
         android:layout_marginLeft="100dp"
+        android:layout_marginTop="80dp"
         android:gravity="center"
         android:text="Choose a Quiz!"
         android:textAlignment="center"
@@ -54,19 +53,18 @@
         style="@style/ItemsStyleBorder"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
         android:layout_alignStart="@id/subtitleTextViewQuizMenu"
+        android:layout_marginTop="150dp"
         android:gravity="center"
-        android:text="Kanji\nQuiz"
-        />
+        android:text="Kanji\nQuiz" />
 
     <TextView
         android:id="@+id/hiraganaQuizTextView"
         style="@style/ItemsStyleBorder"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="320dp"
         android:layout_alignStart="@+id/kanjiQuizTextView"
+        android:layout_marginTop="270dp"
         android:gravity="center"
         android:text="Hiragana\nQuiz"
         android:textSize="30dp" />
@@ -76,12 +74,11 @@
         style="@style/ItemsStyleBorder"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="430dp"
         android:layout_alignStart="@+id/hiraganaQuizTextView"
+        android:layout_marginTop="390dp"
         android:gravity="center"
         android:text="Hiragana\nQuiz"
         android:textSize="30dp" />
-
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation_quiz_menu"
@@ -90,10 +87,6 @@
         android:layout_alignParentBottom="true"
         android:background="@color/colorAccent"
         app:menu="@menu/bottom_navigation_menu" />
-
-
-
-
 
 
 </RelativeLayout>

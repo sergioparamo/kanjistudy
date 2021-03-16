@@ -22,18 +22,6 @@ public class KanjiRepository {
         kanjiDao.insert(kanji);
     }
 
-    public void update(Kanji kanji) {
-        kanjiDao.update(kanji);
-    }
-
-    public void delete(Kanji kanji) {
-        kanjiDao.delete(kanji);
-    }
-
-    public String[] getKanjiNames() {
-        return kanjiDao.getKanjiNames();
-    }
-
     public List<Kanji> getKanjisByLevel(int level) {
         return kanjiDao.getKanjisByLevel(level);
     }

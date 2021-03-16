@@ -21,29 +21,4 @@ public class KanaRepository {
         kanaDao.insert(kana);
     }
 
-    public void update(Kana kana) {
-        kanaDao.update(kana);
-    }
-
-    public void delete(Kana kana) {
-        kanaDao.delete(kana);
-    }
-
-    public String[] getHiraganaNames() {
-        return kanaDao.getHiraganaNames();
-    }
-
-    public String[] getKatakanaNames() {
-        return kanaDao.getKatakanaNames();
-    }
-
-    public List<Kana> getHiraganaByVowel(String vowel) {
-        return kanaDao.getHiraganaByVowel(vowel);
-    }
-
-    public List<Kana> getHiraganaByConsonant(String consonant) {
-        return kanaDao.getHiraganaByConsonant(consonant);
-    }
-
-
 }

@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.kanjistudy.R;
-import com.kanjistudy.controllers.ToastsConfig;
 import com.kanjistudy.database.resources.Data;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
@@ -21,7 +20,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     Button loginButton, registerButton;
     TextInputEditText username, password;
     TextInputLayout usernameInput, passwordInput;
-    static ToastsConfig toastsConfig = new ToastsConfig();
+
 
     public static final String PREF_LOGIN = "LOGIN_PREF";
     public static final String KEY_CREDENTIALS = "LOGIN_CREDENTIALS";
@@ -32,13 +31,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
 
-        if (Data.userRepository == null){
-            toastsConfig.showToastByDuration(getApplicationContext(),3,"CREATED USER REPO!!!");
+        if (Data.userRepository == null) {
             Data.createUserRepo(getApplicationContext());
-        }else {
-            toastsConfig.showToastByDuration(getApplicationContext(),3,"NOT CREATED USER REPO!!!");
         }
-
 
         loginButton = findViewById(R.id.login_button_login);
         loginButton.setOnClickListener(this);
@@ -89,13 +84,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
                     } else {
-                        toastsConfig.showToastByDuration(getApplicationContext(), 2, "Wrong password, please try again");
+                        passwordInput.setError(getString(R.string.wrong_password));
                         SharedPreferences.Editor editor = getSharedPreferences(PREF_LOGIN, MODE_PRIVATE).edit();
                         editor.clear();
                         editor.commit();
                     }
                 } else {
-                    toastsConfig.showToastByDuration(getApplicationContext(), 2, "The username doesn't exist, please try again");
+                    usernameInput.setError(getString(R.string.wrong_username));
                     SharedPreferences.Editor editor = getSharedPreferences(PREF_LOGIN, MODE_PRIVATE).edit();
                     editor.clear();
                     editor.commit();

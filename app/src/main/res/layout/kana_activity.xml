@@ -28,21 +28,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:foregroundGravity="center"
-            android:src="@drawable/twitter_logo_blue"
-            android:text="Kanji Study"
+
+            android:text="@string/title"
             android:textAlignment="center" />
     </com.google.android.material.appbar.MaterialToolbar>
 
     <com.google.android.material.textview.MaterialTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/ItemsStyle"
-
         android:id="@+id/kanaTitleDescriptionTypeId"
+        style="@style/ItemsStyle"
+        android:layout_width="wrap_content"
 
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="50dp"
         android:layout_marginTop="60dp"
-        android:layout_marginStart="70dp"
-        android:hint="Hiragana Dictionary "
+        android:hint="@string/hiragana_dictionary"
 
         />
 
@@ -63,7 +63,6 @@
 
         tools:listitem="@layout/kana_item_list" />
 
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation_kana"
         android:layout_width="match_parent"
@@ -71,8 +70,6 @@
         android:layout_alignParentBottom="true"
         android:background="@color/colorAccent"
         app:menu="@menu/bottom_navigation_menu" />
-
-
 
 
 </RelativeLayout>

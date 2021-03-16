@@ -56,10 +56,9 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/usernameEditText"
+                    style="@style/textInputEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#4000"
-                    android:textColor="#fff" />
+                    android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -81,10 +80,9 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/passwordEditText"
+                    style="@style/textInputEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#4000"
-                    android:textColor="#fff" />
+                    android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -107,11 +105,10 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/repeatEditText"
+                    style="@style/textInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#4000"
-                    android:inputType="textPassword"
-                    android:textColor="#fff" />
+                    android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -133,10 +130,9 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/emailEditText"
+                    style="@style/textInputEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#4000"
-                    android:textColor="#fff" />
+                    android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -159,10 +155,9 @@
                 <com.google.android.material.textfield.TextInputEditText
 
                     android:id="@+id/nameEditText"
+                    style="@style/textInputEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#4000"
-                    android:textColor="#fff" />
+                    android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -184,10 +179,9 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/surnameEditText"
+                    style="@style/textInputEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#4000"
-                    android:textColor="#fff" />
+                    android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout

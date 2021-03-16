@@ -13,29 +13,8 @@ public class UserRepository {
         this.userDao = userDao;
     }
 
-
-    public List<User> getAllUsers() {
-        return userDao.getAllUsers();
-    }
-
     public void insert(User user) {
         userDao.insert(user);
-    }
-
-    public void update(User user) {
-        userDao.update(user);
-    }
-
-    public void delete(User user) {
-        userDao.delete(user);
-    }
-
-    public String[] getUserNames() {
-        return userDao.getUserNames();
-    }
-
-    public User getUserById(int level) {
-        return userDao.getUserById(level);
     }
 
     public User getUserByUsername(String username) {

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
 
 
-    tools:context=".views.LandingActivity"
+    tools:context=".views.vocabularyViews.KanaActivity"
     android:id="@+id/drawerkana_layout"
 
     android:fitsSystemWindows="true"

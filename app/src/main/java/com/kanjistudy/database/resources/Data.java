@@ -14,7 +14,6 @@ import com.kanjistudy.models.Kana;
 import com.kanjistudy.models.Kanji;
 import com.kanjistudy.models.User;
 
-import static com.kanjistudy.views.quiz.QuizActivity.toastsConfig;
 
 public class Data {
 
@@ -29,10 +28,6 @@ public class Data {
     public static KanaRepository kanaRepository;
     public static UserRepository userRepository;
 
-    //Static variables according to the user that is currently engaging with the app
-    public static User currentUser;
-
-
     public static void loadData(Context context) {
         database = Database.getInstance(context);
         kanjiDao = database.kanjiDao();
@@ -44,7 +39,6 @@ public class Data {
 
         //To insert the data just once when the app starts
         if (kanjiRepository.getAllKanjis().isEmpty() && kanaRepository.getAllKanas().isEmpty()) {
-            toastsConfig.showToastByDuration(context, 3, "LOADING DATA!!!");
             loadKanjis();
             loadKana();
         }
@@ -106,9 +100,6 @@ public class Data {
         userRepository.insert(userToInsert);
     }
 
-    public static void setCurrentUser(String username) {
-        currentUser = userRepository.getUserByUsername(username);
-    }
 
 
     public static void loadKanjis() {
@@ -314,5 +305,4 @@ public class Data {
 
     }
 
-//    public static String getRandomKanji();
 }

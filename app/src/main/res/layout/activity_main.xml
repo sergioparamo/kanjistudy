@@ -18,15 +18,17 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorAccent"
         app:menu="@menu/navigation_drawer"
-        app:navigationIcon="@drawable/ic_baseline_menu_24">
+        app:navigationIcon="@drawable/ic_baseline_menu_24"
+
+        >
 
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/textStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:foregroundGravity="center"
-            android:src="@drawable/twitter_logo_blue"
-            android:text="Kanji Study"
+
+            android:text="@string/title"
             android:textAlignment="center" />
     </com.google.android.material.appbar.MaterialToolbar>
 
@@ -60,7 +62,7 @@
 
         android:layout_alignStart="@id/welcomeTextViewMain"
         android:gravity="center"
-        android:text="Study      Kanjis"
+        android:text="Study \nKanjis"
 
         />
 
@@ -72,7 +74,7 @@
         android:layout_marginTop="280dp"
         android:layout_alignStart="@+id/kanjiActivityTextViewMain"
         android:gravity="center"
-        android:text="Study Hiragana"
+        android:text="@string/study_hiragana"
         android:textSize="30dp" />
 
     <!--Bottom Navigation View-->
@@ -85,7 +87,7 @@
         android:layout_marginTop="420dp"
         android:layout_alignStart="@+id/hiraganaActivityTextViewMain"
         android:gravity="center"
-        android:text="Study Katakana"
+        android:text="@string/study_katakana"
         android:textStyle="bold"
 
         />
@@ -97,6 +99,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/colorAccent"
         app:menu="@menu/bottom_navigation_menu" />
+
 
 
 

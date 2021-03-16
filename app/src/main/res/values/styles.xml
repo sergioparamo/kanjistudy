@@ -56,6 +56,15 @@
         <item name="android:windowBackground">@drawable/launch_screen</item>
     </style>
 
+    <style name="textInputEditText">
+        <item name="android:background">#4000</item>
+        <item name="android:textColor">#FFF</item>
+    </style>
+
+    <style name="textInputLayoutStyle">
+        <item name="android:textColorHint">#fff</item>
+    </style>
+
 
 
 </resources>

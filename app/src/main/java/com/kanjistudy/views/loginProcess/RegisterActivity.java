@@ -17,7 +17,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.kanjistudy.R;
-import com.kanjistudy.controllers.ToastsConfig;
 import com.kanjistudy.database.resources.Data;
 import com.kanjistudy.models.User;
 
@@ -26,15 +25,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     Button loginButton, registerButton;
     MaterialCheckBox checkBox;
 
-    TextInputLayout usernameInput, passwordInput, repeatInput, emailInput, nameInput, surnameInput, birthdateInput, genderInput;
+    TextInputLayout usernameInput, passwordInput, repeatInput, emailInput, nameInput, surnameInput, genderInput;
 
     TextInputEditText usernameEditText, passwordEditText, repeatEditText, emailEditText, nameEditText, surnameEditText;
 
     private String[] genders = {"Male", "Female", "Others"};
 
     private AutoCompleteTextView genderDropDown;
-
-    static ToastsConfig toastsConfig = new ToastsConfig();
 
 
     @Override
@@ -173,10 +170,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                             Data.loadUser(intentUser);
                             showDialog();
                         } else {
-                            toastsConfig.showToastByDuration(getApplicationContext(), 2, "This email has already been used, please provide another one! :)");
+                            emailInput.setError(getString(R.string.email_exists_error));
                         }
                     } else {
-                        toastsConfig.showToastByDuration(getApplicationContext(), 2, "This username has already been used, please provide another one! :)");
+                        usernameInput.setError(getString(R.string.username_exists_error));
                     }
 
 

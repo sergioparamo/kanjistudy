@@ -8,16 +8,15 @@ import androidx.room.RoomDatabase;
 @Entity(tableName = "User")
 public class User {
 
-     @PrimaryKey(autoGenerate = true)
-     @ColumnInfo(name = "user_id")
-     int userId;
-     String userName;
-     String password;
-     String userMail;
-     String name;
-     String surname;
-     String gender;
-
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "user_id")
+    int userId;
+    String userName;
+    String password;
+    String userMail;
+    String name;
+    String surname;
+    String gender;
 
 
     public User(String userName, String password, String userMail, String name, String surname, String gender) {

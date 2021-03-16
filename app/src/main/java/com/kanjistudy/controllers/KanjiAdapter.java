@@ -83,8 +83,6 @@ public class KanjiAdapter extends RecyclerView.Adapter<KanjiAdapter.Holder> {
 
     private void playSound(int soundId, String kanji) {
 
-        ToastsConfig toastsConfig = new ToastsConfig();
-
         //Si un sonido ya se esta ejecutando lo paramos
         if (mediaPlayer != null) {
             mediaPlayer.stop();
@@ -94,7 +92,6 @@ public class KanjiAdapter extends RecyclerView.Adapter<KanjiAdapter.Holder> {
         }
 
         mediaPlayer.start();
-        toastsConfig.showToastByDuration(context.getApplicationContext(), 1, "Pronunciation of " + kanji + "!!");
 
     }
 }

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
 
 
-    tools:context=".views.LandingActivity"
+    tools:context=".views.vocabularyViews.KanjiActivity"
     android:id="@+id/drawerkanji_layout"
 
     android:fitsSystemWindows="true"

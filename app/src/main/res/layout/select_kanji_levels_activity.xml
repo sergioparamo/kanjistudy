@@ -25,7 +25,7 @@
             style="@style/textStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/twitter_logo_blue"
+
             android:text="Kanji Study"
             android:textAlignment="center" />
     </com.google.android.material.appbar.MaterialToolbar>

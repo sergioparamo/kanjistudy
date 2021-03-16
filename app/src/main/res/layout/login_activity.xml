@@ -55,8 +55,7 @@
             android:id="@+id/username_input_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#4000"
-            android:textColor="#FFF"
+            style="@style/textInputEditText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title_app" />
@@ -83,11 +82,12 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password_input_login"
+            style="@style/textInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#4000"
+
             android:inputType="textPassword"
-            android:textColor="#FFF"
+
             app:counterEnabled="true"
 
             />
@@ -113,33 +113,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
-        android:layout_marginBottom="8dp"
         android:text="@string/register_button_text"
-        app:layout_constraintBottom_toTopOf="@+id/materialTextView"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/materialTextView"
-        style="@style/ItemsStyle"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="10dp"
-        android:background="@color/colorYellow"
-        android:clickable="true"
-        android:focusable="true"
-        android:gravity="center"
-        android:text="@string/forgot_text"
-        android:textColor="@color/colorBlue"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

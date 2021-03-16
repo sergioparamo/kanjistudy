@@ -73,13 +73,6 @@ public class KanaAdapter extends RecyclerView.Adapter<KanaAdapter.Holder> {
         return position;
     }
 
-
-    public void setKanas(List<Kana> kanaList) {
-        //Setting the list when retrieving the data from the Database
-        KanaAdapter.kanaList = kanaList;
-        notifyDataSetChanged();
-    }
-
     public static class Holder extends RecyclerView.ViewHolder {
 
         TextView kanaId;
@@ -100,7 +93,6 @@ public class KanaAdapter extends RecyclerView.Adapter<KanaAdapter.Holder> {
 
     private void playSound(int soundId, String kana) {
 
-        ToastsConfig toastsConfig = new ToastsConfig();
 
         //Si un sonido ya se esta ejecutando lo paramos
         if (mediaPlayer != null) {
@@ -111,7 +103,7 @@ public class KanaAdapter extends RecyclerView.Adapter<KanaAdapter.Holder> {
         }
 
         mediaPlayer.start();
-        toastsConfig.showToastByDuration(context.getApplicationContext(), 1, "Pronunciation of " + kana + "!!");
+
 
     }
 }

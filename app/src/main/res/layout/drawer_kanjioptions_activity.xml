@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
 
 
-    tools:context=".views.LandingActivity"
+    tools:context=".views.KanjiMenuActivity"
     android:id="@+id/drawer_kanji_menu_layout"
 
     android:fitsSystemWindows="true"
