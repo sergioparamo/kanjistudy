@@ -29,7 +29,7 @@
     </style>
 
     <style name="ButtonStyle">
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">25dp</item>
         <item name="android:textStyle">bold</item>
 
         <item name="android:clickable">true</item>

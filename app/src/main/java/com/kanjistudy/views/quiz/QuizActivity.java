@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -20,7 +19,7 @@ import com.kanjistudy.controllers.ToastsConfig;
 import com.kanjistudy.database.resources.Data;
 import com.kanjistudy.models.QuizViewModel;
 
-public class KanjiQuizMultipleOptions extends AppCompatActivity {
+public class QuizActivity extends AppCompatActivity {
 
     private TextView questionTextView;
     private ProgressBar mainProgressBar;
@@ -52,7 +51,7 @@ public class KanjiQuizMultipleOptions extends AppCompatActivity {
         fourthOption = findViewById(R.id.fourthOptionButtonQuiz);
 
 
-        refreshScreen();
+        //refreshScreen();
 
 
     }
@@ -127,7 +126,7 @@ public class KanjiQuizMultipleOptions extends AppCompatActivity {
         alertDialog.setNegativeButton("Leave the game", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                KanjiQuizMultipleOptions.this.finish();
+                QuizActivity.this.finish();
             }
         });
         alertDialog.show();

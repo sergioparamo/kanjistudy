@@ -3,6 +3,7 @@ package com.kanjistudy.views.quiz;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -83,5 +84,39 @@ public class QuizMenu extends FragmentActivity {
         kanjiQuizTextView = findViewById(R.id.kanjiQuizTextView);
         hiraganaQuizTextView = findViewById(R.id.hiraganaQuizTextView);
         katakanaQuizTextView = findViewById(R.id.katakanaQuizTextView);
+
+        subtitleQuizMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(QuizMenu.this, QuizActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        kanjiQuizTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(QuizMenu.this, QuizActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        hiraganaQuizTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(QuizMenu.this, QuizActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        katakanaQuizTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(QuizMenu.this, QuizActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 }

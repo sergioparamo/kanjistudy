@@ -14,7 +14,7 @@ import com.kanjistudy.models.Kana;
 import com.kanjistudy.models.Kanji;
 import com.kanjistudy.models.User;
 
-import static com.kanjistudy.views.quiz.KanjiQuizMultipleOptions.toastsConfig;
+import static com.kanjistudy.views.quiz.QuizActivity.toastsConfig;
 
 public class Data {
 

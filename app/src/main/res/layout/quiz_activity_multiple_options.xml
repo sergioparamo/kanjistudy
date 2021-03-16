@@ -1,27 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBlue"
     android:orientation="vertical"
-    tools:context=".views.quiz.KanjiQuizMultipleOptions"
+    tools:context=".views.quiz.QuizActivity"
 
     >
 
     <TextView
         android:id="@+id/questionTextView"
-
+        style="@style/ItemsStyle"
         android:layout_width="350dp"
         android:layout_height="220dp"
         android:layout_gravity="center"
-        android:layout_marginTop="80dp"
         android:layout_marginLeft="30dp"
+        android:layout_marginTop="80dp"
         android:gravity="center"
         android:orientation="horizontal"
-        android:text=""
+        android:text="Meaning of 雨"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,12 +31,12 @@
     <ProgressBar
         android:id="@+id/simpleProgressBar"
         style="?android:attr/progressBarStyleHorizontal"
-        android:background="@color/colorWhite"
-
         android:layout_width="fill_parent"
+
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="330dp"
+        android:background="@color/colorWhite"
         android:max="100"
         android:orientation="horizontal"
         android:progress="10" />
@@ -47,31 +46,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginLeft="125dp"
         android:layout_marginTop="400dp"
-        android:layout_marginLeft="200dp"
-        android:orientation="horizontal"
-        android:text=""
+        android:orientation="vertical"
+        android:text="Question 1 of 10"
         android:textColor="@color/colorWhite"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
 
-        />
+
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/firstOptionButtonQuiz"
         style="@style/ButtonStyle"
         android:layout_width="170dp"
         android:layout_height="60dp"
-        android:layout_gravity="left"
-        android:layout_marginTop="470dp"
+
         android:layout_marginStart="20dp"
+        android:layout_marginTop="470dp"
 
         android:orientation="horizontal"
-        android:text="@string/trueAnswerButton"
-        android:textSize="25sp"
-        android:textStyle="bold"
+        android:text="Rain"
+
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -82,14 +82,13 @@
         style="@style/ButtonStyle"
         android:layout_width="170dp"
         android:layout_height="60dp"
-        android:layout_gravity="left"
-        android:layout_marginTop="530dp"
+
         android:layout_marginStart="20dp"
+        android:layout_marginTop="530dp"
 
         android:orientation="horizontal"
-        android:text="@string/falseAnswerButton"
-        android:textSize="25sp"
-        android:textStyle="bold"
+        android:text="Circle"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -103,13 +102,12 @@
         android:layout_width="170dp"
         android:layout_height="60dp"
         android:layout_gravity="center"
+        android:layout_marginStart="220dp"
         android:layout_marginTop="470dp"
-        android:layout_marginStart="200dp"
 
-        android:orientation="horizontal"
-        android:text="@string/trueAnswerButton"
-        android:textSize="25sp"
-        android:textStyle="bold"
+
+        android:text="King"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -120,13 +118,10 @@
         style="@style/ButtonStyle"
         android:layout_width="170dp"
         android:layout_height="60dp"
-        android:layout_gravity="center"
+        android:layout_marginStart="220dp"
         android:layout_marginTop="530dp"
-        android:layout_marginStart="200dp"
-        android:orientation="horizontal"
-        android:text="@string/falseAnswerButton"
-        android:textSize="25sp"
-        android:textStyle="bold"
+
+        android:text="One"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
