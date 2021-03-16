@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_mainActivity_to_kanjiMenuActivity"
             app:destination="@id/kanjiMenuActivity" />
+        <action
+            android:id="@+id/action_mainActivity_to_quizActivity"
+            app:destination="@id/quizMenu" />
     </activity>
     <activity
         android:id="@+id/kanjiMenuActivity"
@@ -34,4 +37,39 @@
         android:id="@+id/kanjiActivity"
         android:name="com.kanjistudy.views.vocabularyViews.KanjiActivity"
         android:label="KanjiActivity" />
+    <activity
+        android:id="@+id/quizActivity"
+        android:name="com.kanjistudy.views.quiz.QuizActivity"
+        android:label="quiz_activity_multiple_options"
+        tools:layout="@layout/quiz_activity_multiple_options" />
+    <activity
+        android:id="@+id/registerActivity"
+        android:name="com.kanjistudy.views.loginProcess.RegisterActivity"
+        android:label="register_activity"
+        tools:layout="@layout/register_activity" >
+        <action
+            android:id="@+id/action_registerActivity_to_loginActivity3"
+            app:destination="@id/loginActivity3" />
+    </activity>
+    <activity
+        android:id="@+id/loginActivity3"
+        android:name="com.kanjistudy.views.loginProcess.LoginActivity"
+        android:label="login_activity"
+        tools:layout="@layout/login_activity" >
+        <action
+            android:id="@+id/action_loginActivity3_to_mainActivity"
+            app:destination="@id/mainActivity" />
+        <action
+            android:id="@+id/action_loginActivity3_to_registerActivity"
+            app:destination="@id/registerActivity" />
+    </activity>
+    <activity
+        android:id="@+id/quizMenu"
+        android:name="com.kanjistudy.views.quiz.QuizMenu"
+        android:label="drawer_quiz_menu_layout"
+        tools:layout="@layout/drawer_quiz_menu_layout" >
+        <action
+            android:id="@+id/action_quizMenu_to_quizActivity"
+            app:destination="@id/quizActivity" />
+    </activity>
 </navigation>
