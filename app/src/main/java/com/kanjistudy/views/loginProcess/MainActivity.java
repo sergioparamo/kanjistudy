@@ -21,7 +21,7 @@ import com.kanjistudy.R;
 
 import com.kanjistudy.database.resources.Data;
 import com.kanjistudy.views.KanjiMenuActivity;
-import com.kanjistudy.views.quiz.QuizMenu;
+import com.kanjistudy.views.quiz.QuizActivity;
 import com.kanjistudy.views.vocabularyViews.KanaActivity;
 
 public class MainActivity extends FragmentActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -34,7 +34,7 @@ public class MainActivity extends FragmentActivity implements NavigationView.OnN
     BottomNavigationView bottomNavigationView;
     String username;
 
-    TextView kanjiTextView, kanaTextView, hiraganaTextView, welcomeTextView;
+    TextView kanjiTextView, kanaTextView, hiraganaTextView, welcomeTextView, quizTextView;
 
 
     @Override
@@ -60,6 +60,7 @@ public class MainActivity extends FragmentActivity implements NavigationView.OnN
         kanaTextView = findViewById(R.id.kanaActivityTextViewMain);
         hiraganaTextView = findViewById(R.id.hiraganaActivityTextViewMain);
         welcomeTextView = findViewById(R.id.welcomeTextViewMain);
+        quizTextView = findViewById(R.id.quizActivityTextViewMain);
 
         welcomeTextView.setText("ようこそ " + username + "!");
 
@@ -88,7 +89,7 @@ public class MainActivity extends FragmentActivity implements NavigationView.OnN
                         startActivity(fromLandingToKatakanaIntentBottom);
                         break;
                     case R.id.bottom_bar_quiz:
-                        Intent fromLandingToQuizMenuIntentBottom = new Intent(MainActivity.this, QuizMenu.class);
+                        Intent fromLandingToQuizMenuIntentBottom = new Intent(MainActivity.this, QuizActivity.class);
                         startActivity(fromLandingToQuizMenuIntentBottom);
                         break;
                 }
@@ -140,6 +141,14 @@ public class MainActivity extends FragmentActivity implements NavigationView.OnN
                 Intent fromMainToKatakanaActivity = new Intent(getApplicationContext(), KanaActivity.class);
                 fromMainToKatakanaActivity.putExtra("type", "katakana");
                 startActivity(fromMainToKatakanaActivity);
+            }
+        });
+
+        quizTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent quizIntent = new Intent(getApplicationContext(), QuizActivity.class);
+                startActivity(quizIntent);
             }
         });
 

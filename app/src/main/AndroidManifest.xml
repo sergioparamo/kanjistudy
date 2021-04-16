@@ -23,7 +23,6 @@
         <activity android:name=".views.vocabularyViews.KanaActivity" />
         <activity android:name=".views.loginProcess.LoginActivity" />
         <activity android:name=".views.loginProcess.RegisterActivity" />
-        <activity android:name=".views.quiz.QuizMenu" />
         <activity android:name=".views.quiz.QuizActivity"/>
     </application>
 

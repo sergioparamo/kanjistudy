@@ -41,7 +41,7 @@
         android:id="@+id/quizActivity"
         android:name="com.kanjistudy.views.quiz.QuizActivity"
         android:label="quiz_activity_multiple_options"
-        tools:layout="@layout/quiz_activity_multiple_options" />
+        tools:layout="@layout/quiz_activity" />
     <activity
         android:id="@+id/registerActivity"
         android:name="com.kanjistudy.views.loginProcess.RegisterActivity"

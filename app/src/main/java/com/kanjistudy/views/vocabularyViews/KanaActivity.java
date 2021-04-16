@@ -23,7 +23,7 @@ import com.kanjistudy.database.resources.Data;
 import com.kanjistudy.models.Kana;
 import com.kanjistudy.views.KanjiMenuActivity;
 import com.kanjistudy.views.loginProcess.MainActivity;
-import com.kanjistudy.views.quiz.QuizMenu;
+import com.kanjistudy.views.quiz.QuizActivity;
 
 import java.util.List;
 
@@ -78,7 +78,7 @@ public class KanaActivity extends FragmentActivity {
                         startActivity(fromKanaToKatakanaIntentBottom);
                         break;
                     case R.id.bottom_bar_quiz:
-                        Intent fromKanaToQuizMenuIntentBottom = new Intent(KanaActivity.this, QuizMenu.class);
+                        Intent fromKanaToQuizMenuIntentBottom = new Intent(KanaActivity.this, QuizActivity.class);
                         startActivity(fromKanaToQuizMenuIntentBottom);
                         break;
                 }

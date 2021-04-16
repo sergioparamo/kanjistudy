@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,7 +17,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.kanjistudy.R;
 import com.kanjistudy.views.loginProcess.MainActivity;
-import com.kanjistudy.views.quiz.QuizMenu;
+import com.kanjistudy.views.quiz.QuizActivity;
 import com.kanjistudy.views.vocabularyViews.KanaActivity;
 import com.kanjistudy.views.vocabularyViews.KanjiActivity;
 
@@ -59,7 +58,7 @@ public class KanjiMenuActivity extends FragmentActivity {
                         startActivity(fromKanjiMenuToKatakanaIntentBottom);
                         break;
                     case R.id.bottom_bar_quiz:
-                        Intent fromKanjiMenuToQuizMenuIntentBottom = new Intent(KanjiMenuActivity.this, QuizMenu.class);
+                        Intent fromKanjiMenuToQuizMenuIntentBottom = new Intent(KanjiMenuActivity.this, QuizActivity.class);
                         startActivity(fromKanjiMenuToQuizMenuIntentBottom);
                         break;
                 }

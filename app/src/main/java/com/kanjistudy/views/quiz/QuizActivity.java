@@ -26,7 +26,7 @@ public class QuizActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.quiz_activity_multiple_options);
+        setContentView(R.layout.quiz_activity);
 
         // register our buttons to listen to click events
         questionTextView = findViewById(R.id.questionTextView);

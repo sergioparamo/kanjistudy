@@ -35,10 +35,11 @@
 
     <TextView
         android:id="@+id/welcomeTextViewMain"
-        android:layout_width="220dp"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="70dp"
+
         android:layout_marginLeft="100dp"
         android:gravity="center"
         android:hint="ようこそ user!"
@@ -71,7 +72,7 @@
         style="@style/ItemsStyleBorder"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="260dp"
         android:layout_alignStart="@+id/kanjiActivityTextViewMain"
         android:gravity="center"
         android:text="@string/study_hiragana"
@@ -84,13 +85,29 @@
         style="@style/ItemsStyleBorder"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="420dp"
+        android:layout_marginTop="370dp"
         android:layout_alignStart="@+id/hiraganaActivityTextViewMain"
         android:gravity="center"
         android:text="@string/study_katakana"
         android:textStyle="bold"
 
         />
+
+    <TextView
+        android:id="@+id/quizActivityTextViewMain"
+
+        style="@style/ItemsStyleBorder"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="480dp"
+        android:layout_alignStart="@+id/kanaActivityTextViewMain"
+        android:gravity="center"
+        android:text="@string/quiz_title"
+        android:textStyle="bold"
+
+        />
+
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation_main"
@@ -99,6 +116,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/colorAccent"
         app:menu="@menu/bottom_navigation_menu" />
+
 
 
 
