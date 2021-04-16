@@ -48,4 +48,22 @@
     <string name="email_exists_error">This email has already been used, please provide another one! :)</string>
     <string name="username_exists_error">This username has already been used, please provide another one! :)</string>
     <string name="quiz_title">Start Quiz</string>
+
+
+
+
+    <string name="question_1">The meaning of 雨 is Rain</string>
+    <string name="question_2">The meaning of 羽 is Song</string>
+    <string name="question_3">The meaning of 域 is Area</string>
+    <string name="question_4">The meaning of 緯 is Prestige</string>
+    <string name="question_5">The meaning of 解 is Solution</string>
+
+    //kana questions
+    <string name="question_6">The pronunciation of あ is A</string>
+    <string name="question_7">The pronunciation of お is E</string>
+    <string name="question_8">The pronunciation of す is Su</string>
+    <string name="question_9">The pronunciation of な is Ni</string>
+    <string name="question_10">The pronunciation of の is No</string>
+
+
 </resources>

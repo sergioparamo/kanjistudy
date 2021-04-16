@@ -16,9 +16,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="30dp"
         android:gravity="center"
-        android:text="Quiz"
+        android:text="Kanji Study Quiz"
         android:textAlignment="center"
 
 
@@ -69,8 +69,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginLeft="125dp"
-        android:layout_marginTop="400dp"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="370dp"
         android:orientation="vertical"
         android:text="Question 1 of 10"
         android:textColor="@color/colorWhite"
@@ -83,16 +83,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/firstOptionButtonQuiz"
+        android:id="@+id/trueButtonQuiz"
         style="@style/ButtonStyle"
         android:layout_width="170dp"
         android:layout_height="60dp"
 
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="470dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="420dp"
 
         android:orientation="horizontal"
-        android:text="Rain"
+        android:text="True"
 
 
         app:layout_constraintBottom_toBottomOf="parent"
@@ -101,16 +101,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/secondOptionButtonQuiz"
+        android:id="@+id/falseButtonQuiz"
         style="@style/ButtonStyle"
         android:layout_width="170dp"
         android:layout_height="60dp"
 
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="530dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="490dp"
 
         android:orientation="horizontal"
-        android:text="Circle"
+        android:text="False"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -119,37 +119,26 @@
 
         />
 
+
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/thirdOptionButtonQuiz"
+        android:id="@+id/leaveQuizButton"
         style="@style/ButtonStyle"
         android:layout_width="170dp"
         android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="470dp"
 
+        android:layout_below="@+id/falseButtonQuiz"
+        android:layout_marginStart="120dp"
 
-        android:text="King"
+        android:layout_marginTop="14dp"
+        android:orientation="horizontal"
+        android:text="Return"
 
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/fourthOptionButtonQuiz"
-        style="@style/ButtonStyle"
-        android:layout_width="170dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="530dp"
-
-        android:text="One"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
-        />
 
 </RelativeLayout>
