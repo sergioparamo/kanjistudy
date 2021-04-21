@@ -109,7 +109,7 @@ public class KanjiActivity extends FragmentActivity {
 
         lastLevel = findViewById(R.id.previous_level_button);
         nextLevel = findViewById(R.id.next_level_button);
-        currentLevelTextView = findViewById(R.id.welcomeTextViewMain);
+        currentLevelTextView = findViewById(R.id.levelTitle);
         currentLevelTextView.setText("Level " + levelIndex);
 
         if (levelIndex == 1) {
@@ -121,7 +121,7 @@ public class KanjiActivity extends FragmentActivity {
 
         kanjiAdapter = new KanjiAdapter(this,localKanjiList);
 
-        recyclerViewMain = findViewById(R.id.recyclerViewMain);
+        recyclerViewMain = findViewById(R.id.recyclerViewKanji);
         recyclerViewMain.setAdapter(kanjiAdapter);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);

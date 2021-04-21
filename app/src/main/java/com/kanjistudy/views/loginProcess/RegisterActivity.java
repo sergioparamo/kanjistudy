@@ -23,15 +23,11 @@ import com.kanjistudy.models.User;
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button loginButton, registerButton;
-    MaterialCheckBox checkBox;
 
-    TextInputLayout usernameInput, passwordInput, repeatInput, emailInput, nameInput, surnameInput, genderInput;
+    TextInputLayout usernameInput, passwordInput, repeatInput, emailInput, nameInput, surnameInput;
 
     TextInputEditText usernameEditText, passwordEditText, repeatEditText, emailEditText, nameEditText, surnameEditText;
 
-    private String[] genders = {"Male", "Female", "Others"};
-
-    private AutoCompleteTextView genderDropDown;
 
 
     @Override
@@ -49,7 +45,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         nameInput = findViewById(R.id.nameInput);
         surnameInput = findViewById(R.id.surnameInput);
 
-        genderInput = findViewById(R.id.genderInput);
         usernameEditText = findViewById(R.id.usernameEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         repeatEditText = findViewById(R.id.repeatEditText);
@@ -57,15 +52,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         nameEditText = findViewById(R.id.nameEditText);
         surnameEditText = findViewById(R.id.surnameEditText);
 
-        checkBox = findViewById(R.id.acceptCheckBox);
-        genderDropDown = findViewById(R.id.genderAutoComplete);
-        checkBox.setOnClickListener(this);
         registerButton.setOnClickListener(this);
         loginButton.setOnClickListener(this);
 
 
-        ArrayAdapter<String> genderListAdapter = new ArrayAdapter<String>(RegisterActivity.this, R.layout.gender_items_list, genders);
-        genderDropDown.setAdapter(genderListAdapter);
 
         usernameEditText.addTextChangedListener(new AppListener(this, usernameInput));
         passwordEditText.addTextChangedListener(new AppListener(this, passwordInput));
@@ -74,7 +64,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         nameEditText.addTextChangedListener(new AppListener(this, nameInput));
         surnameEditText.addTextChangedListener(new AppListener(this, surnameInput));
 
-        genderDropDown.addTextChangedListener(new AppListener(this, genderInput));
 
 
     }
@@ -106,13 +95,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(loginIntent);
                 break;
-            case R.id.acceptCheckBox:
-                checkBox.setTextColor(getResources().getColor(R.color.colorPrimary));
-                break;
             case R.id.register_button_register:
                 if (usernameEditText.getText().toString().isEmpty() || passwordEditText.getText().length() < 8 || surnameEditText.getText().toString().isEmpty() ||
                         !passwordEditText.getText().toString().equals(repeatEditText.getText().toString()) || emailEditText.getText().toString().isEmpty()
-                        || nameEditText.getText().toString().isEmpty() || genderDropDown.getText().toString().isEmpty() || !checkBox.isChecked()) {
+                        || nameEditText.getText().toString().isEmpty()) {
 
                     if (usernameEditText.getText().toString().isEmpty()) {
                         textInput = getString(R.string.password_less_8);
@@ -146,22 +132,14 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                         textInput = getString(R.string.empty);
                         surnameInput.setError(textInput);
                     }
-                    if (genderDropDown.getText().toString().isEmpty()) {
-                        textInput = getString(R.string.empty);
-                        nameInput.setError(textInput);
-                    }
-                    if (!checkBox.isChecked()) {
-                        textInput = getString(R.string.empty);
-                        checkBox.setError(textInput);
-                    }
+
                 } else {
 
                     User intentUser = new User(usernameEditText.getText().toString(),
                             passwordEditText.getText().toString(),
                             emailEditText.getText().toString(),
                             nameEditText.getText().toString()
-                            , surnameEditText.getText().toString(),
-                            genderDropDown.getText().toString());
+                            , surnameEditText.getText().toString());
 
                     boolean userExists = Data.checkUserName(intentUser.getUserName());
                     if (!userExists) {

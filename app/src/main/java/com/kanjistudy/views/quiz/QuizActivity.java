@@ -38,7 +38,7 @@ public class QuizActivity extends AppCompatActivity {
             qViewModel = new ViewModelProvider(this).get(QuizViewModel.class);
         }
 
-        alertDialog = new AlertDialog.Builder(this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quiz_activity);
 
@@ -105,7 +105,7 @@ public class QuizActivity extends AppCompatActivity {
             falseButton.setVisibility(View.INVISIBLE);
             leaveButton.setVisibility(View.VISIBLE);
 
-            alertDialog();
+
         } else {
             nextQuestion();
         }
@@ -124,30 +124,6 @@ public class QuizActivity extends AppCompatActivity {
         progressText.setText(qViewModel.progressText());
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void alertDialog() {
 
-
-        trueButton.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-            @Override
-            public void onClick(View v) {
-                alertDialog();
-            }
-        });
-
-        falseButton.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-            @Override
-            public void onClick(View v) {
-                alertDialog();
-            }
-        });
-
-
-        alertDialog.setTitle("You have completed the quiz!" + '\n' + "Results: " + qViewModel.getScoreCounter() + " questions right out of " + qViewModel.getTotalQuestions() + '\n');
-        alertDialog.show();
-
-    }
 
 }

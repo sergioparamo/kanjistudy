@@ -57,9 +57,9 @@ public class MainActivity extends FragmentActivity implements NavigationView.OnN
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation_main);
         kanjiTextView = findViewById(R.id.kanjiActivityTextViewMain);
-        kanaTextView = findViewById(R.id.kanaActivityTextViewMain);
+        kanaTextView = findViewById(R.id.katakanaActivityTextViewMain);
         hiraganaTextView = findViewById(R.id.hiraganaActivityTextViewMain);
-        welcomeTextView = findViewById(R.id.welcomeTextViewMain);
+        welcomeTextView = findViewById(R.id.levelTitle);
         quizTextView = findViewById(R.id.quizActivityTextViewMain);
 
         welcomeTextView.setText("ようこそ " + username + "!");

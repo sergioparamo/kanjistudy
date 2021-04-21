@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/quizActivityId"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,7 +12,7 @@
     >
 
     <TextView
-        android:id="@+id/welcomeTextViewMain"
+        android:id="@+id/levelTitle"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -37,7 +38,7 @@
         style="@style/ItemsStyle"
         android:layout_width="350dp"
         android:layout_height="150dp"
-        android:layout_below="@+id/welcomeTextViewMain"
+        android:layout_below="@+id/levelTitle"
         android:layout_gravity="center"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="23dp"

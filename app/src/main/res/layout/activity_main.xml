@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainActivityId"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -34,7 +35,7 @@
 
 
     <TextView
-        android:id="@+id/welcomeTextViewMain"
+        android:id="@+id/levelTitle"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -61,7 +62,7 @@
 
         android:layout_marginTop="150dp"
 
-        android:layout_alignStart="@id/welcomeTextViewMain"
+        android:layout_alignStart="@id/levelTitle"
         android:gravity="center"
         android:text="Study \nKanjis"
 
@@ -80,7 +81,7 @@
 
     <!--Bottom Navigation View-->
     <TextView
-        android:id="@+id/kanaActivityTextViewMain"
+        android:id="@+id/katakanaActivityTextViewMain"
 
         style="@style/ItemsStyleBorder"
         android:layout_width="220dp"
@@ -100,7 +101,7 @@
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="480dp"
-        android:layout_alignStart="@+id/kanaActivityTextViewMain"
+        android:layout_alignStart="@+id/katakanaActivityTextViewMain"
         android:gravity="center"
         android:text="@string/quiz_title"
         android:textStyle="bold"

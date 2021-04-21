@@ -43,6 +43,7 @@
     <string name="study_katakana">Study Katakana</string>
     <string name="study_hiragana">Study Hiragana</string>
     <string name="hiragana_dictionary">Hiragana Dictionary</string>
+    <string name="katakana_dictionary">Katakana Dictionary</string>
     <string name="wrong_password">Wrong password, please try again</string>
     <string name="wrong_username">The username doesn\'t exist, please try again</string>
     <string name="email_exists_error">This email has already been used, please provide another one! :)</string>
